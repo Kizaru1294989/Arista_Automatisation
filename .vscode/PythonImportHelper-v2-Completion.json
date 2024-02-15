@@ -1,0 +1,89 @@
+[
+    {
+        "label": "*",
+        "importPath": "consolemenu",
+        "description": "consolemenu",
+        "isExtraImport": true,
+        "detail": "consolemenu",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "consolemenu.items",
+        "description": "consolemenu.items",
+        "isExtraImport": true,
+        "detail": "consolemenu.items",
+        "documentation": {}
+    },
+    {
+        "label": "terminal",
+        "importPath": "Tools.Terminal.console_menu",
+        "description": "Tools.Terminal.console_menu",
+        "isExtraImport": true,
+        "detail": "Tools.Terminal.console_menu",
+        "documentation": {}
+    },
+    {
+        "label": "configparser",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "configparser",
+        "description": "configparser",
+        "detail": "configparser",
+        "documentation": {}
+    },
+    {
+        "label": "terminal",
+        "kind": 2,
+        "importPath": "Tools.Terminal.console_menu",
+        "description": "Tools.Terminal.console_menu",
+        "peekOfCode": "def terminal():\n    menu = ConsoleMenu(\"Net-Framework\", \"Arista\")\n    # Create some items\n    # MenuItem is the base class for all items, it doesn't do anything when selected\n    menu_item = MenuItem(\"Menu Item\")\n    # A FunctionItem runs a Python function when selected\n    function_item = FunctionItem(\"Call a Python function\", input, [\"Enter an input\"])\n    # A CommandItem runs a console command\n    command_item = CommandItem(\"Run a console command\",  \"touch hello.txt\")\n    # A SelectionMenu constructs a menu from a list of strings",
+        "detail": "Tools.Terminal.console_menu",
+        "documentation": {}
+    },
+    {
+        "label": "input",
+        "kind": 2,
+        "importPath": "Tools.Terminal.input",
+        "description": "Tools.Terminal.input",
+        "peekOfCode": "def input():",
+        "detail": "Tools.Terminal.input",
+        "documentation": {}
+    },
+    {
+        "label": "get_ip_addresses",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_ip_addresses():\n    ip_addresses = {}\n    for spine_number in range(1, 3):\n        spine_ip = input(f\"Veuillez saisir l'adresse IP du Spine {spine_number}: \")\n        spine_user = input(f\"Veuillez saisir l'user du Spine {spine_number}: \")\n        spine_pswd = input(f\"Veuillez saisir le mot de passe du Spine {spine_number}: \")\n        ip_addresses[f\"Spine {spine_number}\"] = spine_ip\n    for leaf_number in range(1, 5):\n        leaf_ip = input(f\"Veuillez saisir l'adresse IP du Leaf {leaf_number}: \")\n        leaf_user = input(f\"Veuillez saisir l'user du Leaf {leaf_number}: \")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "generate_inventory",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def generate_inventory(ip_addresses):\n    config = configparser.ConfigParser()\n    for device, ip in ip_addresses.items():\n        config[device] = {\"ansible_host\": ip, \"ansible_user\": \"your_username\", \"ansible_password\": \"your_password\"}\n    with open('inventory.ini', 'w') as configfile:\n        config.write(configfile)\n    print(\"Fichier inventory.ini généré avec succès.\")\ndef generate_cfg(ip_addresses):\n    with open('config.cfg', 'w') as cfg_file:\n        for device, ip in ip_addresses.items():",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "generate_cfg",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def generate_cfg(ip_addresses):\n    with open('config.cfg', 'w') as cfg_file:\n        for device, ip in ip_addresses.items():\n            cfg_file.write(f\"{device} {ip}\\n\")\n    print(\"Fichier config.cfg généré avec succès.\")\ndef main():\n    ip_addresses = get_ip_addresses()\n    print(\"Adresses IP des équipements:\")\n    for device, ip in ip_addresses.items():\n        print(f\"{device}: IP = {ip}\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def main():\n    ip_addresses = get_ip_addresses()\n    print(\"Adresses IP des équipements:\")\n    for device, ip in ip_addresses.items():\n        print(f\"{device}: IP = {ip}\")\n    while True:\n        cli = input(\"Est-ce correct ? (o/n) : \")\n        if cli.lower() == \"o\":\n            generate_inventory(ip_addresses)\n            generate_cfg(ip_addresses)",
+        "detail": "main",
+        "documentation": {}
+    }
+]
