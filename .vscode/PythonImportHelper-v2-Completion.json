@@ -1,5 +1,23 @@
 [
     {
+        "label": "paramiko",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "paramiko",
+        "description": "paramiko",
+        "detail": "paramiko",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "*",
         "importPath": "consolemenu",
         "description": "consolemenu",
@@ -33,6 +51,31 @@
         "documentation": {}
     },
     {
+        "label": "connect_to_arista_switch",
+        "importPath": "Arista.make_eapi_active",
+        "description": "Arista.make_eapi_active",
+        "isExtraImport": true,
+        "detail": "Arista.make_eapi_active",
+        "documentation": {}
+    },
+    {
+        "label": "Server",
+        "importPath": "jsonrpclib",
+        "description": "jsonrpclib",
+        "isExtraImport": true,
+        "detail": "jsonrpclib",
+        "documentation": {}
+    },
+    {
+        "label": "connect_to_arista_switch",
+        "kind": 2,
+        "importPath": "Arista.make_eapi_active",
+        "description": "Arista.make_eapi_active",
+        "peekOfCode": "def connect_to_arista_switch(hostname, username, password):\n    try:\n        # Connexion SSH\n        client = paramiko.SSHClient()\n        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n        client.connect(hostname=hostname, username=username, password=password, timeout=10)\n        # Création d'un canal interactif\n        channel = client.invoke_shell()\n        # Attente de l'invite de commande\n        while not channel.recv_ready():",
+        "detail": "Arista.make_eapi_active",
+        "documentation": {}
+    },
+    {
         "label": "terminal",
         "kind": 2,
         "importPath": "Tools.Terminal.console_menu",
@@ -55,7 +98,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def get_ip_addresses():\n    ip_addresses = {}\n    for spine_number in range(1, 3):\n        spine_ip = input(f\"Veuillez saisir l'adresse IP du Spine {spine_number}: \")\n        spine_user = input(f\"Veuillez saisir l'user du Spine {spine_number}: \")\n        spine_pswd = input(f\"Veuillez saisir le mot de passe du Spine {spine_number}: \")\n        ip_addresses[f\"Spine {spine_number}\"] = spine_ip\n    for leaf_number in range(1, 5):\n        leaf_ip = input(f\"Veuillez saisir l'adresse IP du Leaf {leaf_number}: \")\n        leaf_user = input(f\"Veuillez saisir l'user du Leaf {leaf_number}: \")",
+        "peekOfCode": "def get_ip_addresses():\n    switch = {}\n    for spine_number in range(1, 3):\n        spine_ip = input(f\"Veuillez saisir l'adresse IP du Spine {spine_number}: \")\n        spine_user = input(f\"Veuillez saisir l'utilisateur du Spine {spine_number}: \")\n        spine_pswd = input(f\"Veuillez saisir le mot de passe du Spine {spine_number}: \")\n        switch[f\"Spine {spine_number}\"] = {\"ip\": spine_ip, \"user\": spine_user, \"password\": spine_pswd}\n    for leaf_number in range(1, 5):\n        leaf_ip = input(f\"Veuillez saisir l'adresse IP du Leaf {leaf_number}: \")\n        leaf_user = input(f\"Veuillez saisir l'utilisateur du Leaf {leaf_number}: \")",
         "detail": "main",
         "documentation": {}
     },
@@ -64,7 +107,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def generate_inventory(ip_addresses):\n    config = configparser.ConfigParser()\n    for device, ip in ip_addresses.items():\n        config[device] = {\"ansible_host\": ip, \"ansible_user\": \"your_username\", \"ansible_password\": \"your_password\"}\n    with open('inventory.ini', 'w') as configfile:\n        config.write(configfile)\n    print(\"Fichier inventory.ini généré avec succès.\")\ndef generate_cfg(ip_addresses):\n    with open('config.cfg', 'w') as cfg_file:\n        for device, ip in ip_addresses.items():",
+        "peekOfCode": "def generate_inventory(ip_addresses):\n    config = configparser.ConfigParser()\n    for device, details in ip_addresses.items():\n        config[device] = {\"ansible_host\": details[\"ip\"], \"ansible_user\": details[\"user\"], \"ansible_password\": details[\"password\"]}\n    with open('Ansible/inventory.ini', 'w') as configfile:\n        config.write(configfile)\n    print(\"Fichier inventory.ini généré avec succès.\")\ndef generate_cfg(ip_addresses):\n    with open('Ansible/config.cfg', 'w') as cfg_file:\n        for device, details in ip_addresses.items():",
         "detail": "main",
         "documentation": {}
     },
@@ -73,7 +116,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def generate_cfg(ip_addresses):\n    with open('config.cfg', 'w') as cfg_file:\n        for device, ip in ip_addresses.items():\n            cfg_file.write(f\"{device} {ip}\\n\")\n    print(\"Fichier config.cfg généré avec succès.\")\ndef main():\n    ip_addresses = get_ip_addresses()\n    print(\"Adresses IP des équipements:\")\n    for device, ip in ip_addresses.items():\n        print(f\"{device}: IP = {ip}\")",
+        "peekOfCode": "def generate_cfg(ip_addresses):\n    with open('Ansible/config.cfg', 'w') as cfg_file:\n        for device, details in ip_addresses.items():\n            cfg_file.write(f\"{device}: IP = {details['ip']}, User = {details['user']}, Password = {details['password']}\\n\")\n    print(\"Fichier config.cfg généré avec succès.\")\ndef main():\n    equipement = get_ip_addresses()\n    print(\"Adresses IP des équipements:\")\n    for device, details in equipement.items():\n        print(f\"{device}: IP = {details['ip']}, User = {details['user']}, Password = {details['password']}\")",
         "detail": "main",
         "documentation": {}
     },
@@ -82,8 +125,26 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    ip_addresses = get_ip_addresses()\n    print(\"Adresses IP des équipements:\")\n    for device, ip in ip_addresses.items():\n        print(f\"{device}: IP = {ip}\")\n    while True:\n        cli = input(\"Est-ce correct ? (o/n) : \")\n        if cli.lower() == \"o\":\n            generate_inventory(ip_addresses)\n            generate_cfg(ip_addresses)",
+        "peekOfCode": "def main():\n    equipement = get_ip_addresses()\n    print(\"Adresses IP des équipements:\")\n    for device, details in equipement.items():\n        print(f\"{device}: IP = {details['ip']}, User = {details['user']}, Password = {details['password']}\")\n    while True:\n        cli = input(\"Est-ce correct ? (o/n) : \")\n        if cli.lower() == \"o\":\n            generate_inventory(equipement)\n            generate_cfg(equipement)",
         "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "switch",
+        "kind": 5,
+        "importPath": "z",
+        "description": "z",
+        "peekOfCode": "switch = Server (\"http://cvpadmin:eve@10.43.193.148/\")\nresponse = switch.runCmds( 1, [\"show version\"] )\nprint(response)",
+        "detail": "z",
+        "documentation": {}
+    },
+    {
+        "label": "response",
+        "kind": 5,
+        "importPath": "z",
+        "description": "z",
+        "peekOfCode": "response = switch.runCmds( 1, [\"show version\"] )\nprint(response)",
+        "detail": "z",
         "documentation": {}
     }
 ]
