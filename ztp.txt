@@ -1,6 +1,0 @@
-Avec le Zero Touch Provisioning, les appareils peuvent être déployés et configurés sans nécessiter d'intervention manuelle sur chaque appareil individuel.
-Cela se fait souvent en utilisant des outils de gestion centralisée et des scripts automatisés pour déployer les configurations nécessaires sur les appareils 
-dès qu'ils sont connectés au réseau.
-
-Le ZTP permet de gagner du temps et de réduire les erreurs humaines potentielles associées à la configuration manuelle des appareils réseau, 
-ce qui en fait une approche efficace pour les déploiements à grande échelle et les environnements dynamiques.
