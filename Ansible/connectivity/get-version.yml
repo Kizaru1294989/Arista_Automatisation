@@ -13,4 +13,4 @@
       register: version
     - name: Display result
       debug:
-        msg: "{{ version.stdout[0] }}
+        msg: "{{ version.stdout[0] }}" 

@@ -29,6 +29,6 @@ def save_to_json(admin_user,admin_password, fabric):
     directory = 'Ansible/connectivity/'
     os.makedirs(directory, exist_ok=True)
 
-    with open(directory + 'fabric.json', 'w') as f:
+    with open(directory + 'hosts.json', 'w') as f:
         json.dump(data, f, indent=4)
         print("✅ hosts.json créé avec succès")

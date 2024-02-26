@@ -267,7 +267,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\n    run_ansible_playbook(\"/Ansible/connectivity/get-version.yml\")\nif __name__ == '__main__':\n    main()",
+        "peekOfCode": "def main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\n    run_ansible_playbook(\"Ansible/connectivity/get-version.yml\")\nif __name__ == '__main__':\n    main()",
         "detail": "main",
         "documentation": {}
     }

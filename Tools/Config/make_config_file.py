@@ -21,7 +21,7 @@ def generate_ansible_yaml(filename):
       register: version
     - name: Display result
       debug:
-        msg: "{{{{ version.stdout[0] }}}}"""
+        msg: "{{{{ version.stdout[0] }}}}" """
     
     with open(filename, "w") as file:
         file.write(yaml_content)

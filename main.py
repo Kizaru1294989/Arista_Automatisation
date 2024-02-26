@@ -25,7 +25,7 @@ def main():
     admin_password = fabric_info['password']
     save_to_json(admin_user,admin_password,fabric_info)
     init()
-    run_ansible_playbook("/Ansible/connectivity/get-version.yml")
+    run_ansible_playbook("Ansible/connectivity/get-version.yml")
 
 if __name__ == '__main__':
     main()
