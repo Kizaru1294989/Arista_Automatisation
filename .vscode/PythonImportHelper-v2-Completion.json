@@ -75,6 +75,15 @@
         "documentation": {}
     },
     {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
         "label": "init",
         "importPath": "Tools.Config.make_config_file",
         "description": "Tools.Config.make_config_file",
@@ -245,11 +254,20 @@
         "documentation": {}
     },
     {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        print(f\"Erreur lors de l'exécution du playbook : {e}\")\n    else:\n        print(\"Le playbook a été exécuté avec succès.\")\ndef main():\n    print(welcome)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\nif __name__ == '__main__':\n    main()",
+        "peekOfCode": "def main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\n    run_ansible_playbook(\"/Ansible/connectivity/get-version.yml\")\nif __name__ == '__main__':\n    main()",
         "detail": "main",
         "documentation": {}
     }
