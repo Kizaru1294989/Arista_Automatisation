@@ -6,14 +6,16 @@ from Tools.Config.make_config_file import init
 import os
 
 
+
 def run_ansible_playbook(playbook_path):
     os.chdir(os.path.dirname(playbook_path))
     try:
         subprocess.run(["ansible-playbook", os.path.basename(playbook_path)], check=True)
     except subprocess.CalledProcessError as e:
-        print(f"Erreur lors de l'exécution du playbook : {e}")
+        print(f"Le test de connection a échoué : {e}")
     else:
-        print("Le playbook a été exécuté avec succès.")
+        print("Le test de connection a été exécuté avec succès.")
+
 
 
     
