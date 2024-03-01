@@ -25,6 +25,15 @@
         "documentation": {}
     },
     {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
         "label": "re",
         "kind": 6,
         "isExtraImport": true,
@@ -57,31 +66,6 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "consolemenu",
-        "description": "consolemenu",
-        "isExtraImport": true,
-        "detail": "consolemenu",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "consolemenu.items",
-        "description": "consolemenu.items",
-        "isExtraImport": true,
-        "detail": "consolemenu.items",
         "documentation": {}
     },
     {
@@ -240,6 +224,24 @@
         "documentation": {}
     },
     {
+        "label": "mlag",
+        "kind": 2,
+        "importPath": "Tools.Config.Network.Mlag.mlag",
+        "description": "Tools.Config.Network.Mlag.mlag",
+        "peekOfCode": "def mlag(port_channel):\n    print(\"Création du Mlag sur les Leafs\")",
+        "detail": "Tools.Config.Network.Mlag.mlag",
+        "documentation": {}
+    },
+    {
+        "label": "port_channel",
+        "kind": 2,
+        "importPath": "Tools.Config.Network.port_channel",
+        "description": "Tools.Config.Network.port_channel",
+        "peekOfCode": "def port_channel():\n    int_port_channel = input(\"selectionnez le numéro de port channel :\")",
+        "detail": "Tools.Config.Network.port_channel",
+        "documentation": {}
+    },
+    {
         "label": "init",
         "kind": 2,
         "importPath": "Tools.Config.make_config_file",
@@ -255,6 +257,15 @@
         "description": "Tools.Config.make_config_file",
         "peekOfCode": "def generate_config_file(path_playbook,file_content):\n    with open(path_playbook, \"w\") as file:\n        file.write(file_content)\n        print(f\"✅ {os.path.basename(path_playbook)} créé avec succès\")",
         "detail": "Tools.Config.make_config_file",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "Tools.Config.try_connectivity",
+        "description": "Tools.Config.try_connectivity",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        print(f\"Erreur lors de l'exécution du playbook : {e}\")\n    else:\n        print(\"Le playbook a été exécuté avec succès.\")",
+        "detail": "Tools.Config.try_connectivity",
         "documentation": {}
     },
     {
@@ -303,29 +314,11 @@
         "documentation": {}
     },
     {
-        "label": "terminal",
-        "kind": 2,
-        "importPath": "Tools.Terminal.console_menu",
-        "description": "Tools.Terminal.console_menu",
-        "peekOfCode": "def terminal():\n    menu = ConsoleMenu(\"Net-Framework\", \"Arista\")\n    # Create some items\n    # MenuItem is the base class for all items, it doesn't do anything when selected\n    menu_item = MenuItem(\"Menu Item\")\n    # A FunctionItem runs a Python function when selected\n    function_item = FunctionItem(\"Call a Python function\", input, [\"Enter an input\"])\n    # A CommandItem runs a console command\n    command_item = CommandItem(\"Run a console command\",  \"touch hello.txt\")\n    # A SelectionMenu constructs a menu from a list of strings",
-        "detail": "Tools.Terminal.console_menu",
-        "documentation": {}
-    },
-    {
-        "label": "input",
-        "kind": 2,
-        "importPath": "Tools.Terminal.input",
-        "description": "Tools.Terminal.input",
-        "peekOfCode": "def input():",
-        "detail": "Tools.Terminal.input",
-        "documentation": {}
-    },
-    {
         "label": "mlag_on_leaf",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def mlag_on_leaf():\n    print(\"Mlag\")\ndef main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\n    connection = run_ansible_playbook(\"Ansible/connectivity/get-version.yml\")",
+        "peekOfCode": "def mlag_on_leaf():\n    print(\"Création du Port Channel\")\ndef main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\n    connection = run_ansible_playbook(\"Ansible/connectivity/get-version.yml\")",
         "detail": "main",
         "documentation": {}
     },

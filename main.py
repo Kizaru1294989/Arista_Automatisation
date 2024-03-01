@@ -6,7 +6,7 @@ from Tools.Run_Playbook.run_playbook import run_ansible_playbook
 from Tools.Color.colors import orange, red
 
 def mlag_on_leaf():
-    print("Mlag")
+    print("Création du Port Channel")
 
 def main():
     print(welcome)
