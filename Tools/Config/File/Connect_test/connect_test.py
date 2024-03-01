@@ -17,7 +17,7 @@ yaml_content = f"""---
         
 ansible_data = """
 [defaults]
-inventory = ./hosts.json
+inventory = ../hosts.json
 host_key_checking = False
 roles_path = roles.galaxy:roles
 stdout_callback = yaml

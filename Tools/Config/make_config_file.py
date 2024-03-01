@@ -11,4 +11,4 @@ def init():
 def generate_config_file(path_playbook,file_content):
     with open(path_playbook, "w") as file:
         file.write(file_content)
-        print(f"✅{os.path.basename(path_playbook)} créé avec succès")
+        print(f"✅ {os.path.basename(path_playbook)} créé avec succès")

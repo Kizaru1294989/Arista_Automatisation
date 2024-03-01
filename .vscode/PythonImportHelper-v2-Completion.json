@@ -34,6 +34,15 @@
         "documentation": {}
     },
     {
+        "label": "Tools.Color",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "Tools.Color",
+        "description": "Tools.Color",
+        "detail": "Tools.Color",
+        "documentation": {}
+    },
+    {
         "label": "colors",
         "importPath": "Tools.Color",
         "description": "Tools.Color",
@@ -48,6 +57,15 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
         "documentation": {}
     },
     {
@@ -91,20 +109,35 @@
         "documentation": {}
     },
     {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
         "label": "init",
         "importPath": "Tools.Config.make_config_file",
         "description": "Tools.Config.make_config_file",
         "isExtraImport": true,
         "detail": "Tools.Config.make_config_file",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "importPath": "Tools.Run_Playbook.run_playbook",
+        "description": "Tools.Run_Playbook.run_playbook",
+        "isExtraImport": true,
+        "detail": "Tools.Run_Playbook.run_playbook",
+        "documentation": {}
+    },
+    {
+        "label": "orange",
+        "importPath": "Tools.Color.colors",
+        "description": "Tools.Color.colors",
+        "isExtraImport": true,
+        "detail": "Tools.Color.colors",
+        "documentation": {}
+    },
+    {
+        "label": "red",
+        "importPath": "Tools.Color.colors",
+        "description": "Tools.Color.colors",
+        "isExtraImport": true,
+        "detail": "Tools.Color.colors",
         "documentation": {}
     },
     {
@@ -166,7 +199,7 @@
         "kind": 5,
         "importPath": "Tools.Config.File.Connect_test.connect_test",
         "description": "Tools.Config.File.Connect_test.connect_test",
-        "peekOfCode": "ansible_data = \"\"\"\n[defaults]\ninventory = ./hosts.json\nhost_key_checking = False\nroles_path = roles.galaxy:roles\nstdout_callback = yaml\n                \"\"\"",
+        "peekOfCode": "ansible_data = \"\"\"\n[defaults]\ninventory = ../hosts.json\nhost_key_checking = False\nroles_path = roles.galaxy:roles\nstdout_callback = yaml\n                \"\"\"",
         "detail": "Tools.Config.File.Connect_test.connect_test",
         "documentation": {}
     },
@@ -175,7 +208,7 @@
         "kind": 5,
         "importPath": "Tools.Config.File.Connect_test.connect_test",
         "description": "Tools.Config.File.Connect_test.connect_test",
-        "peekOfCode": "inventory = ./hosts.json\nhost_key_checking = False\nroles_path = roles.galaxy:roles\nstdout_callback = yaml\n                \"\"\"",
+        "peekOfCode": "inventory = ../hosts.json\nhost_key_checking = False\nroles_path = roles.galaxy:roles\nstdout_callback = yaml\n                \"\"\"",
         "detail": "Tools.Config.File.Connect_test.connect_test",
         "documentation": {}
     },
@@ -211,7 +244,7 @@
         "kind": 2,
         "importPath": "Tools.Config.make_config_file",
         "description": "Tools.Config.make_config_file",
-        "peekOfCode": "def init():\n  path_playbook = \"Ansible/connectivity/get-version.yml\"\n  path_ansible_cfg = \"Ansible/connectivity/ansible.cfg\"\n  generate_config_file(path_ansible_cfg,ansible_data)\n  generate_config_file(path_playbook,yaml_content)\ndef generate_config_file(path_playbook,file_content):\n    with open(path_playbook, \"w\") as file:\n        file.write(file_content)\n        print(f\"✅{os.path.basename(path_playbook)} créé avec succès\")",
+        "peekOfCode": "def init():\n  path_playbook = \"Ansible/connectivity/get-version.yml\"\n  path_ansible_cfg = \"Ansible/connectivity/ansible.cfg\"\n  generate_config_file(path_ansible_cfg,ansible_data)\n  generate_config_file(path_playbook,yaml_content)\ndef generate_config_file(path_playbook,file_content):\n    with open(path_playbook, \"w\") as file:\n        file.write(file_content)\n        print(f\"✅ {os.path.basename(path_playbook)} créé avec succès\")",
         "detail": "Tools.Config.make_config_file",
         "documentation": {}
     },
@@ -220,7 +253,7 @@
         "kind": 2,
         "importPath": "Tools.Config.make_config_file",
         "description": "Tools.Config.make_config_file",
-        "peekOfCode": "def generate_config_file(path_playbook,file_content):\n    with open(path_playbook, \"w\") as file:\n        file.write(file_content)\n        print(f\"✅{os.path.basename(path_playbook)} créé avec succès\")",
+        "peekOfCode": "def generate_config_file(path_playbook,file_content):\n    with open(path_playbook, \"w\") as file:\n        file.write(file_content)\n        print(f\"✅ {os.path.basename(path_playbook)} créé avec succès\")",
         "detail": "Tools.Config.make_config_file",
         "documentation": {}
     },
@@ -261,6 +294,15 @@
         "documentation": {}
     },
     {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "Tools.Run_Playbook.run_playbook",
+        "description": "Tools.Run_Playbook.run_playbook",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True",
+        "detail": "Tools.Run_Playbook.run_playbook",
+        "documentation": {}
+    },
+    {
         "label": "terminal",
         "kind": 2,
         "importPath": "Tools.Terminal.console_menu",
@@ -279,11 +321,11 @@
         "documentation": {}
     },
     {
-        "label": "run_ansible_playbook",
+        "label": "mlag_on_leaf",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        print(f\"Le test de connection a échoué : {e}\")\n    else:\n        print(\"Le test de connection a été exécuté avec succès.\")\ndef main():\n    print(welcome)",
+        "peekOfCode": "def mlag_on_leaf():\n    print(\"Mlag\")\ndef main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\n    connection = run_ansible_playbook(\"Ansible/connectivity/get-version.yml\")",
         "detail": "main",
         "documentation": {}
     },
@@ -292,7 +334,7 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\n    run_ansible_playbook(\"Ansible/connectivity/get-version.yml\")\nif __name__ == '__main__':\n    main()",
+        "peekOfCode": "def main():\n    print(welcome)\n    fabric_info = input_fabric()\n    admin_user = fabric_info['admin_user']\n    admin_password = fabric_info['password']\n    save_to_json(admin_user,admin_password,fabric_info)\n    init()\n    connection = run_ansible_playbook(\"Ansible/connectivity/get-version.yml\")\n    if connection : \n        print(f\"{orange} Test de connexion réussie\")",
         "detail": "main",
         "documentation": {}
     }

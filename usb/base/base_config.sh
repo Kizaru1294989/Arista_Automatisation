@@ -28,6 +28,11 @@ echo -n $'\033[1;32m' && echo -n $'                 `!!8888888888888888899fT|!^"
 echo -n $'\033[1;32m' && echo -n $'                   `!988888888899fT|!^"\'\n'
 echo -n $'\033[1;32m' && echo -n $'                     `!9899fT|!^"\'\n'
 echo -n $'\033[1;32m' && echo -n $""
+echo -n $'\033[1;32m' && echo -n $""
+echo -n $'\033[1;32m' && echo -n $""
+echo -n $'\033[1;32m' && echo -n $""
+echo -n $'\033[1;32m' && echo -n $""
+echo -n $'\033[1;32m' && echo -n $""
 
 
 FastCli -c "zerotouch cancel" -p 15
