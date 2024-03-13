@@ -61,6 +61,7 @@ if [ -z "$username" ] || [ -z "$password" ]; then
     exit 1
 fi
 
+FastCli -p 15 -c $'enable \n conf \n enable password '"$password" -p 15
 FastCli -p 15 -c $'enable \n conf \n username '"$username"' privilege 15 secret '"$password" -p 15
 
 echo "✅ Utilisateur ajouté"
@@ -70,9 +71,17 @@ echo "Api activé"
 FastCli -p 15 -c $'enable \n conf \n ip route 0.0.0.0/0 '"$gateway_ip" -p 15
 echo "route par défault active"
 
-FastCli -c "sh run" -p 15
+
+echo "Veuillez entrer le Hostname souhaité (ex : Leaf1) :"
+read hostname
+FastCli -p 15 -c $'enable \n conf \n hostname '"$hostname" -p 15
+
+#echo "Radius ? O/N "
+#read radius_choice
+
+
 
 FastCli -c "wr mem" -p 15
-
+FastCli -c "sh run" -p 15
 
 echo "✅ Done"

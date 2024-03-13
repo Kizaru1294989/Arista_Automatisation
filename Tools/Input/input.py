@@ -11,12 +11,52 @@ welcome = f"""{colors.red}
 \_| |_/_|  |_|___/\__\__,_|
 """
 
+def network_choice():
+    network_fabric = input(f"{colors.orange}Veuillez entrer le réseau de votre fabrique (exemple : 10.43.193.1)\nSi vous voulez utiliser le VLAN 193, entrez 'o', sinon entrez 'n': ")
 
-def validate_ip(ip):
-    ip_pattern = re.compile("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$")
-    return bool(ip_pattern.match(ip))
+    while network_fabric.strip() not in ["o", "n"]:
+        if network_fabric.strip() == "":
+            print("❌ L'entrée ne peut pas être vide.")
+        else:
+            print("❌ Veuillez entrer 'o' pour utiliser le VLAN 193 ou 'n' pour entrer un autre réseau.")
+        network_fabric = input(f"{colors.orange}Veuillez entrer le réseau de votre fabrique (exemple : 10.43.193.1)\nSi vous voulez utiliser le VLAN 193, entrez 'o', sinon entrez 'n': ")
+
+    if network_fabric == "o":
+        return "10.43.193.1"
+    else:
+        return input("Veuillez entrer le réseau de votre fabrique au format (XX.XX.XX.XX) : ")
+
+
+def last_octet(adresse_ip):
+    octets = adresse_ip.split('.')  
+    octets.pop()
+    nouvelle_adresse_ip = '.'.join(octets)
+    return nouvelle_adresse_ip
+    
+def fill_input_fabric(network,fabric):
+    for i in range(8):
+        while True:
+            ip = input("Veuillez entrer le dernier octet de l'ip du leaf {}  : ".format(i+1))
+            if ip.strip() == "":
+                print("L'adresse IP ne peut pas être vide.")
+            else:
+                ip_address = (network + "." + ip)
+                fabric['leafs']['leaf{}'.format(i+1)] = ip_address
+                break
+
+    for i in range(4):
+        while True:
+            ip = input("Veuillez entrer le dernier octet de l'ip du spine {}  : ".format(i+1))
+            if ip.strip() == "":
+                print("L'adresse IP ne peut pas être vide.")
+            else:
+                ip_address = (network + "." + ip)
+                fabric['spines']['spine{}'.format(i+1)] = ip_address
+                break
 
 def input_fabric():
+    network_fabric = network_choice()
+    network = last_octet(network_fabric)
     admin_user = input(f"{colors.orange}Veuillez entrer le admin user : ")
     admin_password = input(f"{colors.orange}Veuillez entrer le mot de passe admin user : ")
     
@@ -29,27 +69,8 @@ def input_fabric():
               ,'leafs': {}
               , 'spines': {}
               }
+    fill_input_fabric(network,fabric)
 
-    for i in range(4):
-        while True:
-            ip = input("Veuillez entrer l'adresse IP du leaf {} (format IP/mask ex: 10.0.0.0/24) : ".format(i+1))
-            if ip.strip() == "":
-                print("L'adresse IP ne peut pas être vide.")
-            elif not validate_ip(ip):
-                print("L'adresse IP saisie n'est pas valide ou ne respecte pas le format.")
-            else:
-                fabric['leafs']['leaf{}'.format(i+1)] = ip
-                break
 
-    for i in range(2):
-        while True:
-            ip = input("Veuillez entrer l'adresse IP du spine {} (format IP/mask ex: 10.0.0.0/24) : ".format(i+1))
-            if ip.strip() == "":
-                print("L'adresse IP ne peut pas être vide.")
-            elif not validate_ip(ip):
-                print("L'adresse IP saisie n'est pas valide ou ne respecte pas le format.")
-            else:
-                fabric['spines']['spine{}'.format(i+1)] = ip
-                break
 
     return fabric

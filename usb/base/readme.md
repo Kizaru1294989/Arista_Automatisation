@@ -1,6 +1,6 @@
 # Prérequis
 
-Ce script en bash est un script qui a pour objectif de configurer un équiepemnt vierge pour ensuite faire fonctionne le framework Python avec Ansible
+Ce script en bash est un script qui a pour objectif de configurer un équipement vierge pour ensuite faire fonctionne le framework Python avec Ansible
 
 ### Implémentation
 
@@ -12,5 +12,6 @@ Copier le script et le lancer dans la partie bash .
 - zero touch cancel
 - ip sur l'interface Management 1
 - crée un utilisateur de privilege 15 et un mot de passe secret
+- enable password
 - active l'eapi sur l'équipement
 - ajoute une route static pour que toutes les machines du réseau ait accès a l'eapi
