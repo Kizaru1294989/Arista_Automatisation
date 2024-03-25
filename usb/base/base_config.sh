@@ -63,6 +63,7 @@ fi
 
 FastCli -p 15 -c $'enable \n conf \n enable password '"$password" -p 15
 FastCli -p 15 -c $'enable \n conf \n username '"$username"' privilege 15 secret '"$password" -p 15
+FastCli -p 15 -c $'enable \n conf \n username scp privilege 15 secret scp shell /bin/bash' -p 15
 
 echo "✅ Utilisateur ajouté"
 
@@ -76,12 +77,25 @@ echo "Veuillez entrer le Hostname souhaité (ex : Leaf1) :"
 read hostname
 FastCli -p 15 -c $'enable \n conf \n hostname '"$hostname" -p 15
 
-#echo "Radius ? O/N "
-#read radius_choice
+aaa authentication login console local
+aaa authorization exec default local
 
 
+# echo "Voulez-vous entrer une Configuration Radius ? (O/N)"
+# read radius_choice
+
+# if [ "$radius_choice" = "O" ] || [ "$radius_choice" = "o" ]; then
+#     echo "Entrez l'IP sur serveur Radius :"
+#     read radius
+#     echo "Entrez l'encryption key du serveur :"
+#     read key
+# elif [ "$radius_choice" = "N" ] || [ "$radius_choice" = "n" ]; then
+#     echo "Pas de config Radius"
+# else
+#     echo "Entrée non valide. Veuillez entrer 'O' ou 'N'."
+# fi
 
 FastCli -c "wr mem" -p 15
 FastCli -c "sh run" -p 15
 
-echo "✅ Done"
+echo "✅ Terminé"

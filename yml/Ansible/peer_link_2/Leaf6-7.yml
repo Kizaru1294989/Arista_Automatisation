@@ -1,0 +1,49 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+    mlag_peer_link_description: "MLAG PEER LINK - LEAF-3 <=> LEAF-6"
+    mlag_peer_links:
+      - ip_address: "172.16.4.1/30"
+        interface_description: "MLAG PEER LINK Leaf3-Side"
+      - ip_address: "172.16.4.2/30"
+        interface_description: "MLAG PEER LINK Leaf6-Side"
+
+  tasks:
+    - name: Configure {{ mlag_peer_link_description }}
+      eos_config:
+        lines:
+          - configure
+
+          - interface ethernet 4
+          - description "{{ mlag_peer_link_description }}"
+          - channel-group 10 mode active
+
+          - interface ethernet 6
+          - description "{{ mlag_peer_link_description }}"
+          - channel-group 10 mode active
+
+          - interface port-channel 10
+          - description "{{ mlag_peer_link_description }}"
+          - switchport mode trunk
+          - switchport trunk group MLAGPEER
+          - no spanning-tree vlan-id 4094
+          
+          - vlan 4094
+          - trunk group MLAGPEER
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configure IP addresses on MLAG peer links
+      eos_config:
+        lines:
+          - configure
+          - interface vlan 4094
+          - description "{{ item.interface_description }}"
+          - ip address {{ item.ip_address }}
+
+      when: ansible_network_os == 'eos'
+      loop: "{{ mlag_peer_links }}"

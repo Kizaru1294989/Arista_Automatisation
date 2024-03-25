@@ -17,9 +17,9 @@ def main():
     init()
     connection = run_ansible_playbook("Ansible/connectivity/get-version.yml")
     if connection : 
-        print(f"{orange} Test de connexion réussie")
+        print(f"{orange} Test de connexion réussie \n MLAG configuration ")
     else :
-        print(f"{red} Test de connexion échoué")
+        print(f"{red} Test de connexion échoué , touts les équipements de l'infrastructure doivent etre accessible pour pouvoir continuer")
 
 if __name__ == '__main__':
     main()

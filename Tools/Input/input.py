@@ -2,7 +2,7 @@ import re
 from Tools.Color import colors
 
 
-welcome = f"""{colors.red}
+welcome = f"""{colors.orange}
   ___       _     _        
  / _ \     (_)   | |       
 / /_\ \_ __ _ ___| |_ __ _ 
