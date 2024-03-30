@@ -318,7 +318,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef main():\n    run_ansible_playbook(\"Ansible/connectivity/get-version.yml\")",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef main():\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -327,8 +327,26 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def main():\n    run_ansible_playbook(\"Ansible/connectivity/get-version.yml\")\n    print(\"MLAG PEER LINK - LEAF-4 <=> LEAF-5\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/peer_link_1/Leaf_4/leaf_4.json\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/peer_link_1/Leaf_5/leaf_5.json\")\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-6\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/peer_link_2/Leaf6-7.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VLAN_MLAG/vlan_mlag.yml\")\nif __name__ == '__main__':\n    main()",
+        "peekOfCode": "def main():\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")\n    # print(\"MLAG PEER LINK - LEAF-4 <=> LEAF-5 \\n\")\n    # print(\"LEAF_4\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/peer_link_1/Leaf_4/Leaf4.yml\")\n    # print(\"LEAF_5\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/peer_link_1/Leaf_5/Leaf5.yml\")\n    # print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-6\")\n    # print(\"LEAF_3\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/peer_link_2/Leaf_3/Leaf3.yml\")",
         "detail": "yml.main",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "yml.startup-config",
+        "description": "yml.startup-config",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef main():\n    print(\"Startup-Config \\n\")",
+        "detail": "yml.startup-config",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "yml.startup-config",
+        "description": "yml.startup-config",
+        "peekOfCode": "def main():\n    print(\"Startup-Config \\n\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Startup-Config/Leaf/Leaf.yml\")\nif __name__ == '__main__':\n    main()",
+        "detail": "yml.startup-config",
         "documentation": {}
     },
     {

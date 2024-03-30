@@ -1,12 +1,8 @@
 {
     "arista": {
         "hosts": {
-            "leaf3": {
-                "ansible_host": "10.43.193.155",
-                "ansible_httpapi_port": 443
-            },
-            "leaf6": {
-                "ansible_host": "10.43.193.99",
+            "Spine2": {
+                "ansible_host": "10.43.193.148",
                 "ansible_httpapi_port": 443
             }
         },

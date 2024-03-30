@@ -16,6 +16,22 @@
             "leaf6": {
                 "ansible_host": "10.43.193.99",
                 "ansible_httpapi_port": 443
+            },
+            "spine1": {
+                "ansible_host": "10.43.193.40",
+                "ansible_httpapi_port": 443
+            },
+            "spine2": {
+                "ansible_host": "10.43.193.41",
+                "ansible_httpapi_port": 443
+            },
+            "spine3": {
+                "ansible_host": "10.43.193.148",
+                "ansible_httpapi_port": 443
+            },
+            "spine4": {
+                "ansible_host": "10.43.193.144",
+                "ansible_httpapi_port": 443
             }
         },
         "vars": {

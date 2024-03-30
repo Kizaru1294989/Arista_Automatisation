@@ -1,0 +1,41 @@
+{
+    "arista": {
+        "hosts": {
+            
+                "arista": {
+                    "hosts": {
+                        "leaf3": {
+                            "ansible_host": "10.43.193.155",
+                            "ansible_httpapi_port": 443
+                        },
+                        "leaf4": {
+                            "ansible_host": "10.43.193.251",
+                            "ansible_httpapi_port": 443
+                        },
+                        "leaf5": {
+                            "ansible_host": "10.43.193.134",
+                            "ansible_httpapi_port": 443
+                        },
+                        "leaf6": {
+                            "ansible_host": "10.43.193.99",
+                            "ansible_httpapi_port": 443
+                        }
+                    },
+                    "vars": {
+                        "ansible_network_os": "eos",
+                        "ansible_httpapi_use_ssl": "yes",
+                        "ansible_httpapi_validate_certs": "no",
+                        "ansible_user": "cvpadmin",
+                        "ansible_httpapi_password": "Exaprobe1234"
+                    }
+                }
+            }
+        },
+        "vars": {
+            "ansible_network_os": "eos",
+            "ansible_httpapi_use_ssl": "yes",
+            "ansible_httpapi_validate_certs": "no",
+            "ansible_user": "cvpadmin",
+            "ansible_httpapi_password": "Exaprobe1234"
+        }
+    }

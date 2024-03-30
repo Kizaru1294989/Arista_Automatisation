@@ -5,12 +5,14 @@
   gather_facts: no
   vars:
     ansible_python_interpreter: "python"
+
+
   tasks:
-    - name: Execute Arista EOS command
-      eos_command:
-        commands: show version
+    - name: Startup config initilisation
+      eos_config:
+        lines:
+          - configure
+          - copy file:/home/scp/Leaf-4.txt startup-config
+
       when: ansible_network_os == 'eos'
-      register: version
-    - name: Display result
-      debug:
-        msg: "{{ version.stdout[0] }}" 
+
