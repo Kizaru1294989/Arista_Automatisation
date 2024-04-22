@@ -1,0 +1,152 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+    mlag_peer_link_description: "MLAG PEER LINK - SPINE-3"
+    mlag_peer: "MLAGPEER"
+    spine: "SPINE-3"
+
+  tasks:
+    - name: Configuration Du vlan 4094
+      eos_config:
+        lines:
+          - configure
+          - vlan 3
+          - vlan 56
+          - vlan 78
+          - vlan 4094
+          - trunk group "{{ mlag_peer }}"
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 1
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 1
+          - description "{{ mlag_peer_link_description }}"
+          - channel-group 10 mode active
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 2
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 2
+          - description "{{ mlag_peer_link_description }}"
+          - channel-group 10 mode active
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Port Channel 10
+      eos_config:
+        lines:
+          - configure
+
+          - interface port-channel 10
+          - description "{{ mlag_peer_link_description }}"
+          - switchport mode trunk
+          - switchport trunk group "{{ mlag_peer }}"
+          - no spanning-tree vlan-id 4094
+
+      when: ansible_network_os == 'eos'
+
+
+    - name: Configuration IP addresse sur le Port Channel 10 "{{ spine }}"
+      eos_config:
+        lines:
+          - configure
+          - interface vlan 4094
+          - description MLAG PEER LINK "{{ spine }}"
+          - ip address 172.16.6.1/24
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration du MLAG peer link
+      eos_config:
+        lines:
+          - configure
+          - mlag configuration
+          - domain-id MLAG40
+          - local-interface Vlan4094
+          - peer-address 172.16.6.2
+          - peer-link Port-Channel10
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 4
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 4
+          - description LEAF 5
+          - channel-group 56 mode active
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 5
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 5
+          - description LEAF 6
+          - channel-group 56 mode active
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 7
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 7
+          - description LEAF 7
+          - channel-group 78 mode active
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 8
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 8
+          - description LEAF 8
+          - channel-group 78 mode active
+
+      when: ansible_network_os == 'eos'
+
+
+    - name: Configuration Port Channel 56
+      eos_config:
+        lines:
+          - configure
+
+          - interface port-channel 56
+          - description MLAG - LEAF5 & 6
+          - switchport mode trunk
+          - mlag 56
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Port Channel 78
+      eos_config:
+        lines:
+          - configure
+
+          - interface port-channel 78
+          - description MLAG - LEAF7 & 8
+          - switchport mode trunk
+          - mlag 78
+
+      when: ansible_network_os == 'eos'
+
+

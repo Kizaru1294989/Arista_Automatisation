@@ -52,11 +52,11 @@ interface Ethernet8
 !
 interface Management1
    vrf managment
-   ip address 10.43.193.41/24
+   ip address 10.43.192.26/24
 !
 no ip routing
 no ip routing vrf managment
 !
-ip route vrf managment 0.0.0.0/0 10.43.193.254
+ip route vrf managment 0.0.0.0/0 10.43.192.254
 !
 end
