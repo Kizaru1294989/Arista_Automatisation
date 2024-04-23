@@ -11,12 +11,9 @@
       eos_config:
         lines:
           - configure
+          - mlag
+          - no peer-link
 
-          - interface Ethernet 1-2
-          - shutdown
-          - exit
-          - mlag configuration
-          - shutdown
 
 
       when: ansible_network_os == 'eos'

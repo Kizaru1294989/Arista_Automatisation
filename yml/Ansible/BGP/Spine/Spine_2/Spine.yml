@@ -1,0 +1,103 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+
+
+    - name: Configuration Interface Loopback0
+      eos_config:
+        lines:
+          - configure
+
+          - ip routing
+
+          - interface loopback 0
+          - ip address 172.16.0.2/32
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 6
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 6
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 12
+
+          - ip address 172.16.200.17/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 5
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 5
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 12
+          - ip address 172.16.200.21/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 4
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 4
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 34
+          - ip address 172.16.200.25/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 3
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 3
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 34
+          - ip address 172.16.200.29/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Routeur BGP
+      eos_config:
+        lines:
+          - configure
+
+          - router bgp 65000
+          - router-id 172.16.0.2
+          - maximum-paths 4 ecmp 4
+          - neighbor 172.16.200.18 remote-as 65001
+          - neighbor 172.16.200.18 send-community extended
+          - neighbor 172.16.200.18 maximum-routes 12000
+          - neighbor 172.16.200.22 remote-as 65001
+          - neighbor 172.16.200.22 send-community extended
+          - neighbor 172.16.200.22 maximum-routes 12000
+          - neighbor 172.16.200.26 remote-as 65002
+          - neighbor 172.16.200.26 send-community extended
+          - neighbor 172.16.200.26 maximum-routes 12000
+          - neighbor 172.16.200.30 remote-as 65002
+          - neighbor 172.16.200.30 send-community extended
+          - neighbor 172.16.200.30 maximum-routes 12000
+          - network 172.16.0.2/32
+
+
+
+      when: ansible_network_os == 'eos'
+
+

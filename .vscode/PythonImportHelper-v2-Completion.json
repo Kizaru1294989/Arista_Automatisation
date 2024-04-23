@@ -318,7 +318,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef Leaf_mlag():\n    #################################",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -327,7 +327,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_2/Leaf_3/Leaf3.yml\")\n    print(\"LEAF_4\")",
+        "peekOfCode": "def Leaf_mlag():\n    #################################\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    #################################\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -354,7 +354,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def bgp():\n    print(\"BGP\")\n    print(\"NO MLAG SPINE\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/no_mlag_spine.yml\")\ndef main():\n    #mlag()\n    bgp()\nif __name__ == '__main__':\n    main()",
+        "peekOfCode": "def bgp():\n    print(\"BGP\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")\n    print(\"NO MLAG SPINE\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/NO_MLAG/no_mlag_spine.yml\")\n    ################################\n    # print(\"SPINE_1\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_1/Spine.yml\")\n    # print(\"SPINE_2\")    \n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_2/Spine.yml\")",
         "detail": "yml.main",
         "documentation": {}
     },
