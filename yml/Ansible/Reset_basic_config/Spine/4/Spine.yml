@@ -1,0 +1,16 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+    - name: Loop to copy file with modified spine number
+      eos_config:
+        lines: 
+          - "configure"
+          - "write erase"
+          - "copy file:/home/cvpadmin/Spine-4.txt startup-config"
+      when: ansible_network_os == 'eos'

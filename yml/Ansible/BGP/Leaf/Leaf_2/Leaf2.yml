@@ -37,12 +37,12 @@
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 5
+    - name: Configuration Interface Ethernet 6
       eos_config:
         lines:
           - configure
 
-          - interface Ethernet 5
+          - interface Ethernet 6
           - no switchport
           - no switchport mode trunk
           - no channel-group 12 

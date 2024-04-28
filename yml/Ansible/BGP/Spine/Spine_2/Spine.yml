@@ -8,7 +8,6 @@
 
   tasks:
 
-
     - name: Configuration Interface Loopback0
       eos_config:
         lines:
@@ -21,20 +20,6 @@
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 6
-      eos_config:
-        lines:
-          - configure
-
-          - interface Ethernet 6
-          - no switchport
-          - no switchport mode trunk
-          - no channel-group 12
-
-          - ip address 172.16.200.17/30
-
-      when: ansible_network_os == 'eos'
-
     - name: Configuration Interface Ethernet 5
       eos_config:
         lines:
@@ -44,16 +29,30 @@
           - no switchport
           - no switchport mode trunk
           - no channel-group 12
-          - ip address 172.16.200.21/30
+
+          - ip address 172.16.200.17/30
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 4
+    - name: Configuration Interface Ethernet 6
       eos_config:
         lines:
           - configure
 
-          - interface Ethernet 4
+          - interface Ethernet 6
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 12
+          - ip address 172.16.200.21/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 7
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 7
           - no switchport
           - no switchport mode trunk
           - no channel-group 34
@@ -61,12 +60,12 @@
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 3
+    - name: Configuration Interface Ethernet 8
       eos_config:
         lines:
           - configure
 
-          - interface Ethernet 3
+          - interface Ethernet 8
           - no switchport
           - no switchport mode trunk
           - no channel-group 34

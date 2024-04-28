@@ -80,24 +80,13 @@
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 4
+    - name: Configuration Interface Ethernet 8
       eos_config:
         lines:
           - configure
 
-          - interface Ethernet 4
+          - interface Ethernet 8
           - description LEAF 5
-          - channel-group 56 mode active
-
-      when: ansible_network_os == 'eos'
-
-    - name: Configuration Interface Ethernet 5
-      eos_config:
-        lines:
-          - configure
-
-          - interface Ethernet 5
-          - description LEAF 6
           - channel-group 56 mode active
 
       when: ansible_network_os == 'eos'
@@ -108,17 +97,28 @@
           - configure
 
           - interface Ethernet 7
+          - description LEAF 6
+          - channel-group 56 mode active
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 6
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 6
           - description LEAF 7
           - channel-group 78 mode active
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 8
+    - name: Configuration Interface Ethernet 5
       eos_config:
         lines:
           - configure
 
-          - interface Ethernet 8
+          - interface Ethernet 5
           - description LEAF 8
           - channel-group 78 mode active
 

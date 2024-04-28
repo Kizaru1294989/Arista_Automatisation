@@ -69,6 +69,49 @@
         "documentation": {}
     },
     {
+        "label": "pexpect",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pexpect",
+        "description": "pexpect",
+        "detail": "pexpect",
+        "documentation": {}
+    },
+    {
+        "label": "paramiko",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "paramiko",
+        "description": "paramiko",
+        "detail": "paramiko",
+        "documentation": {}
+    },
+    {
+        "label": "SSHClient",
+        "importPath": "paramiko",
+        "description": "paramiko",
+        "isExtraImport": true,
+        "detail": "paramiko",
+        "documentation": {}
+    },
+    {
+        "label": "SCPClient",
+        "importPath": "scp",
+        "description": "scp",
+        "isExtraImport": true,
+        "detail": "scp",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
         "label": "input_fabric",
         "importPath": "Tools.Input.input",
         "description": "Tools.Input.input",
@@ -345,7 +388,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n    else:\n        print(\"❌ Error : network unreachable\")\ndef bgp():\n    print(\"BGP\")",
+        "peekOfCode": "def mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True\n    else:\n        print(\"❌ Error : network unreachable\")\n        return False",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -354,7 +397,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def bgp():\n    print(\"BGP\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")\n    print(\"NO MLAG SPINE\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/NO_MLAG/no_mlag_spine.yml\")\n    ################################\n    # print(\"SPINE_1\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_1/Spine.yml\")\n    # print(\"SPINE_2\")    \n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_2/Spine.yml\")",
+        "peekOfCode": "def bgp():\n    print(\"BGP\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")\n    print(\"NO MLAG SPINE\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/NO_MLAG/no_mlag_spine.yml\")\n    ###############################\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")    \n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_2/Spine.yml\")",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -363,8 +406,44 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def main():\n    #mlag()\n    bgp()\nif __name__ == '__main__':\n    main()",
+        "peekOfCode": "def main():\n    #mlag()\n    bgp()\n    # reponse = mlag()\n    # if reponse :\n    #     choice = input(\"Transofrm the Lab to BGP lab ? Y/N\")\n    #     if choice == \"Y\":\n    #         bgp()\n    #     elif choice == \"N\":\n    #         exit(0)",
         "detail": "yml.main",
+        "documentation": {}
+    },
+    {
+        "label": "ssh_scp_files",
+        "kind": 2,
+        "importPath": "yml.reset",
+        "description": "yml.reset",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.load_system_host_keys()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) \n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")",
+        "detail": "yml.reset",
+        "documentation": {}
+    },
+    {
+        "label": "execute_scp_command",
+        "kind": 2,
+        "importPath": "yml.reset",
+        "description": "yml.reset",
+        "peekOfCode": "def execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-2.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-3.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-4.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.29\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-1.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.30\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-2.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.31\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-3.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.32\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-4.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.33\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-5.txt\", \"/home/cvpadmin/\")",
+        "detail": "yml.reset",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "yml.reset",
+        "description": "yml.reset",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef main():\n    # execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")",
+        "detail": "yml.reset",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "yml.reset",
+        "description": "yml.reset",
+        "peekOfCode": "def main():\n    # execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/1/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/2/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/3/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/4/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml\")",
+        "detail": "yml.reset",
         "documentation": {}
     },
     {

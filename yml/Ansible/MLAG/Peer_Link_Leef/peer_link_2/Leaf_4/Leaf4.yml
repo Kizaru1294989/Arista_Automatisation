@@ -62,7 +62,7 @@
           - configure
           - interface vlan 4094
           - description MLAG PEER LINK "{{ leaf }}"
-          - ip address 172.16.4.2/24
+          - ip address 172.16.34.2/24
 
       when: ansible_network_os == 'eos'
 
@@ -71,9 +71,9 @@
         lines:
           - configure
           - mlag configuration
-          - domain-id MLAG10
+          - domain-id MLAG34
           - local-interface Vlan4094
-          - peer-address 172.16.4.1
+          - peer-address 172.16.34.1
           - peer-link Port-Channel10
 
       when: ansible_network_os == 'eos'
@@ -104,12 +104,12 @@
 
 
 
-    - name: Configuration Interface Ethernet 3
+    - name: Configuration Interface Ethernet 8
       eos_config:
         lines:
           - configure
 
-          - interface Ethernet 3
+          - interface Ethernet 8
           - description SPINE 2 
           - channel-group 34 mode active
 
@@ -139,12 +139,12 @@
       when: ansible_network_os == 'eos'
 
 
-    - name: Configuration Interface Ethernet 8
+    - name: Configuration Interface Ethernet 7
       eos_config:
         lines:
           - configure
 
-          - interface Ethernet 8
+          - interface Ethernet 7
           - description LEAF5
           - channel-group 80 mode active
 
