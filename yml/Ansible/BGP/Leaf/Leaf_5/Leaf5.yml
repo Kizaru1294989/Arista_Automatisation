@@ -17,7 +17,23 @@
           - ip routing
 
           - interface loopback 0
-          - ip address 172.16.0.15/32
+          - ip address 172.16.0.11/32
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 8
+      eos_config:
+        lines:
+          - configure
+
+
+
+          - interface Ethernet 8
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 12 
+
+          - ip address 172.16.200.2/30
 
       when: ansible_network_os == 'eos'
 
@@ -26,28 +42,12 @@
         lines:
           - configure
 
-
-
           - interface Ethernet 5
           - no switchport
           - no switchport mode trunk
-          - no channel-group 56
+          - no channel-group 12 
 
-          - ip address 172.16.200.34/30
-
-      when: ansible_network_os == 'eos'
-
-    - name: Configuration Interface Ethernet 4
-      eos_config:
-        lines:
-          - configure
-
-          - interface Ethernet 4
-          - no switchport
-          - no switchport mode trunk
-          - no channel-group 56
-
-          - ip address 172.16.200.50/30
+          - ip address 172.16.200.18/30
 
       when: ansible_network_os == 'eos'
 
@@ -57,8 +57,8 @@
           - configure
 
           - interface vlan3
-          - ip address 172.16.117.2/24
-          - ip virtual-router address 172.16.117.1
+          - ip address 172.16.115.2/24
+          - ip virtual-router address 172.16.115.1
 
       when: ansible_network_os == 'eos'
 
@@ -67,7 +67,7 @@
         lines:
           - configure
 
-          - ip virtual-router mac-address 00:1c:73:00:00:56
+          - ip virtual-router mac-address 00:1c:73:00:00:12
 
       when: ansible_network_os == 'eos'
 
@@ -77,19 +77,19 @@
         lines:
           - configure
 
-          - router bgp 65004
-          - router-id 172.16.0.15
+          - router bgp 65001
+          - router-id 172.16.0.11
           - maximum-paths 4 ecmp 4
-          - neighbor 172.16.3.2 remote-as 65004
-          - neighbor 172.16.3.2 next-hop-self
-          - neighbor 172.16.200.33 remote-as 65003
-          # - neighbor 172.16.200.33 send-community extended
-          - neighbor 172.16.200.33 maximum-routes 12000
-          - neighbor 172.16.200.49 remote-as 65003
-          # - neighbor 172.16.200.49 send-community extended
-          - neighbor 172.16.200.49 maximum-routes 12000
-          - network 172.16.0.15/32
-          - network 172.16.117.0/24
+          - neighbor 172.16.56.2 remote-as 65001
+          - neighbor 172.16.56.2 next-hop-self
+          - neighbor 172.16.200.1 remote-as 65000
+          # - neighbor 172.16.200.1 send-community extended
+          - neighbor 172.16.200.1 maximum-routes 12000
+          - neighbor 172.16.200.17 remote-as 65000
+          # - neighbor 172.16.200.17 send-community extended
+          - neighbor 172.16.200.17 maximum-routes 12000
+          - network 172.16.0.11/32
+          - network 172.16.115.0/24
 
 
 

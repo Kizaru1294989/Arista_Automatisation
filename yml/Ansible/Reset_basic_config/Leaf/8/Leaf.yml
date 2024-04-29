@@ -13,4 +13,5 @@
           - "configure"
           - "write erase"
           - "copy file:/home/cvpadmin/Leaf-8.txt startup-config"
+          - wr mem
       when: ansible_network_os == 'eos'

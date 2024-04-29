@@ -13,4 +13,5 @@
           - "configure"
           - "write erase"
           - "copy file:/home/cvpadmin/Spine-3.txt startup-config"
+          - wr mem
       when: ansible_network_os == 'eos'

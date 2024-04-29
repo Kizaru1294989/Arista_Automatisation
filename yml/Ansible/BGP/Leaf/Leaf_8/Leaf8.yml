@@ -5,7 +5,10 @@
   gather_facts: no
   vars:
     ansible_python_interpreter: "python"
+
   tasks:
+
+
     - name: Configuration Interface Loopback0
       eos_config:
         lines:
@@ -14,37 +17,42 @@
           - ip routing
 
           - interface loopback 0
-          - ip address 172.16.0.18/32
+          - ip address 172.16.0.14/32
 
       when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 5
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 5
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 34 
+
+          - ip address 172.16.200.14/30
+
+      when: ansible_network_os == 'eos'
+
 
     - name: Configuration Interface Ethernet 8
       eos_config:
         lines:
           - configure
 
+
+
           - interface Ethernet 8
           - no switchport
           - no switchport mode trunk
-          - no channel-group 78
+          - no channel-group 34 
 
-          - ip address 172.16.200.46/30
-
-      when: ansible_network_os == 'eos'
-
-    - name: Configuration Interface Ethernet 7
-      eos_config:
-        lines:
-          - configure
-
-          - interface Ethernet 7
-          - no switchport
-          - no switchport mode trunk
-          - no channel-group 78
-
-          - ip address 172.16.200.62/30
+          - ip address 172.16.200.30/30
 
       when: ansible_network_os == 'eos'
+
+
 
     - name: Configuration Interface Vlan 3
       eos_config:
@@ -52,8 +60,8 @@
           - configure
 
           - interface vlan3
-          - ip address 172.16.118.3/24
-          - ip virtual-router address 172.16.118.1
+          - ip address 172.16.116.3/24
+          - ip virtual-router address 172.16.116.1
 
       when: ansible_network_os == 'eos'
 
@@ -62,7 +70,7 @@
         lines:
           - configure
 
-          - ip virtual-router mac-address 00:1c:73:00:00:78
+          - ip virtual-router mac-address 00:1c:73:00:00:34
 
       when: ansible_network_os == 'eos'
 
@@ -72,19 +80,17 @@
         lines:
           - configure
 
-          - router bgp 65005
-          - router-id 172.16.0.18
+          - router bgp 65002
+          - router-id 172.16.0.14
           - maximum-paths 4 ecmp 4
-          - neighbor 172.16.60.1 remote-as 65005
-          - neighbor 172.16.60.1 next-hop-self
-          - neighbor 172.16.200.45 remote-as 65003
-          # - neighbor 172.16.200.45 send-community extended
-          - neighbor 172.16.200.45 maximum-routes 12000
-          - neighbor 172.16.200.61 remote-as 65003
-          # - neighbor 172.16.200.61 send-community extended
-          - neighbor 172.16.200.61 maximum-routes 12000
-          - network 172.16.0.18/32
-          - network 172.16.118.0/24
+          - neighbor 172.16.78.1 remote-as 65002
+          - neighbor 172.16.78.1 next-hop-self
+          - neighbor 172.16.200.13 remote-as 65000
+          - neighbor 172.16.200.13 maximum-routes 12000
+          - neighbor 172.16.200.29 remote-as 65000
+          - neighbor 172.16.200.29 maximum-routes 12000
+          - network 172.16.0.14/32
+          - network 172.16.116.0/24
 
 
 

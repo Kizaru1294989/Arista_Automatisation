@@ -8,7 +8,6 @@
 
   tasks:
 
-
     - name: Configuration Interface Loopback0
       eos_config:
         lines:
@@ -17,21 +16,7 @@
           - ip routing
 
           - interface loopback 0
-          - ip address 172.16.0.4/32
-
-      when: ansible_network_os == 'eos'
-
-    - name: Configuration Interface Ethernet 4
-      eos_config:
-        lines:
-          - configure
-
-          - interface Ethernet 4
-          - no switchport
-          - no switchport mode trunk
-          - no channel-group 56
-
-          - ip address 172.16.200.49/30
+          - ip address 172.16.0.2/32
 
       when: ansible_network_os == 'eos'
 
@@ -43,8 +28,9 @@
           - interface Ethernet 5
           - no switchport
           - no switchport mode trunk
-          - no channel-group 56
-          - ip address 172.16.200.53/30
+          - no channel-group 12
+
+          - ip address 172.16.200.17/30
 
       when: ansible_network_os == 'eos'
 
@@ -56,8 +42,8 @@
           - interface Ethernet 6
           - no switchport
           - no switchport mode trunk
-          - no channel-group 78
-          - ip address 172.16.200.57/30
+          - no channel-group 12
+          - ip address 172.16.200.21/30
 
       when: ansible_network_os == 'eos'
 
@@ -69,8 +55,21 @@
           - interface Ethernet 7
           - no switchport
           - no switchport mode trunk
-          - no channel-group 78
-          - ip address 172.16.200.61/30
+          - no channel-group 34
+          - ip address 172.16.200.25/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 8
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 8
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 34
+          - ip address 172.16.200.29/30
 
       when: ansible_network_os == 'eos'
 
@@ -79,22 +78,22 @@
         lines:
           - configure
 
-          - router bgp 65003
-          - router-id 172.16.0.4
+          - router bgp 65000
+          - router-id 172.16.0.2
           - maximum-paths 4 ecmp 4
-          - neighbor 172.16.200.50 remote-as 65004
-          - neighbor 172.16.200.50 send-community extended
-          - neighbor 172.16.200.50 maximum-routes 12000
-          - neighbor 172.16.200.54 remote-as 65004
-          - neighbor 172.16.200.54 send-community extended
-          - neighbor 172.16.200.54 maximum-routes 12000
-          - neighbor 172.16.200.58 remote-as 65005
-          - neighbor 172.16.200.58 send-community extended
-          - neighbor 172.16.200.58 maximum-routes 12000
-          - neighbor 172.16.200.62 remote-as 65005
-          - neighbor 172.16.200.62 send-community extended
-          - neighbor 172.16.200.62 maximum-routes 12000
-          - network 172.16.0.4/32
+          - neighbor 172.16.200.18 remote-as 65001
+          - neighbor 172.16.200.18 send-community extended
+          - neighbor 172.16.200.18 maximum-routes 12000
+          - neighbor 172.16.200.22 remote-as 65001
+          - neighbor 172.16.200.22 send-community extended
+          - neighbor 172.16.200.22 maximum-routes 12000
+          - neighbor 172.16.200.26 remote-as 65002
+          - neighbor 172.16.200.26 send-community extended
+          - neighbor 172.16.200.26 maximum-routes 12000
+          - neighbor 172.16.200.30 remote-as 65002
+          - neighbor 172.16.200.30 send-community extended
+          - neighbor 172.16.200.30 maximum-routes 12000
+          - network 172.16.0.2/32
 
 
 

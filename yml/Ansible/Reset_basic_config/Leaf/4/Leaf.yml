@@ -10,7 +10,8 @@
     - name: Loop to copy file with modified Leaf number
       eos_config:
         lines: 
-          - "configure"
-          - "write erase"
-          - "copy file:/home/cvpadmin/Leaf-4.txt startup-config"
+          - configure
+          - write erase
+          - copy file:/home/cvpadmin/Leaf-4.txt startup-config
+          - wr mem
       when: ansible_network_os == 'eos'

@@ -361,7 +361,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef Leaf_mlag():\n    #################################",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef Leaf_mlag():\n    # print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -370,7 +370,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def Leaf_mlag():\n    #################################\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    #################################\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")",
+        "peekOfCode": "def Leaf_mlag():\n    # print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    # print(\"LEAF_1\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    # print(\"LEAF_2\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_2/Leaf_3/Leaf3.yml\")\n    print(\"LEAF_4\")",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -379,7 +379,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def Spine_mlag():\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_2/Spine.yml\")\n    print(\"SPINE_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_3/Spine.yml\")\n    print(\"SPINE_4\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_4/Spine.yml\")\ndef mlag():",
+        "peekOfCode": "def Spine_mlag():\n    print(\"SPINE_1\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\n    # print(\"SPINE_2\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_2/Spine.yml\")\n    # print(\"SPINE_3\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_3/Spine.yml\")\n    # print(\"SPINE_4\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_4/Spine.yml\")\ndef mlag():",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -406,7 +406,7 @@
         "kind": 2,
         "importPath": "yml.main",
         "description": "yml.main",
-        "peekOfCode": "def main():\n    #mlag()\n    bgp()\n    # reponse = mlag()\n    # if reponse :\n    #     choice = input(\"Transofrm the Lab to BGP lab ? Y/N\")\n    #     if choice == \"Y\":\n    #         bgp()\n    #     elif choice == \"N\":\n    #         exit(0)",
+        "peekOfCode": "def main():\n    # mlag()\n    bgp()\n    # reponse = mlag()\n    # if reponse :\n    #     choice = input(\"Transofrm the Lab to BGP lab ? Y/N\")\n    #     if choice == \"Y\":\n    #         bgp()\n    #     elif choice == \"N\":\n    #         exit(0)",
         "detail": "yml.main",
         "documentation": {}
     },
@@ -415,7 +415,7 @@
         "kind": 2,
         "importPath": "yml.reset",
         "description": "yml.reset",
-        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.load_system_host_keys()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) \n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    # ssh.load_system_host_keys()\n    # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) \n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")",
         "detail": "yml.reset",
         "documentation": {}
     },
@@ -433,7 +433,7 @@
         "kind": 2,
         "importPath": "yml.reset",
         "description": "yml.reset",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef main():\n    # execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef main():\n    execute_scp_command(\"cvpadmin\" , \"cvpadmin\")",
         "detail": "yml.reset",
         "documentation": {}
     },
@@ -442,7 +442,7 @@
         "kind": 2,
         "importPath": "yml.reset",
         "description": "yml.reset",
-        "peekOfCode": "def main():\n    # execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/1/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/2/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/3/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/4/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml\")",
+        "peekOfCode": "def main():\n    execute_scp_command(\"cvpadmin\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/1/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/2/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/3/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/4/Leaf.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml\")",
         "detail": "yml.reset",
         "documentation": {}
     },
