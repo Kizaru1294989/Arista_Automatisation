@@ -1,0 +1,62 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+
+
+
+
+    - name: Configuration Interface Ethernet 3
+      eos_config:
+        lines:
+          - configure
+
+
+          - interface Ethernet 3
+          - lacp timer fast
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Loopback1
+      eos_config:
+        lines:
+          - configure
+
+          - ip routing
+
+          - interface loopback 1
+          - ip address 172.16.1.78/32
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Vxlan1
+      eos_config:
+        lines:
+          - configure
+
+          - interface Vxlan1
+          - vxlan source-interface Loopback1
+          - vxlan udp-port 4789
+          - vxlan vlan 3 vni 5678
+          - vxlan flood vtep 172.16.1.56
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Vlan 3
+      eos_config:
+        lines:
+          - configure
+
+          - interface vlan3
+          - ip address 172.16.115.8/24
+          - ip virtual-router address 172.16.115.1
+          - no ip virtual-router address 172.16.118.1
+
+      when: ansible_network_os == 'eos'
+
+
