@@ -2,6 +2,7 @@
 from Labs.mlag import *
 from Labs.bgp import *
 from Labs.vxlan import *
+from Labs.evpn import *
 
 def main():
     print("MAIN")

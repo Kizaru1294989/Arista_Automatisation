@@ -1,0 +1,37 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+
+
+    - name: Configuration service routing protocols model multi-agent
+      eos_config:
+        lines:
+          - configure
+          - service routing protocols model multi-agent
+
+      when: ansible_network_os == 'eos'
+
+    - name: Shutdown Peer-Link 1
+      eos_config:
+        lines:
+          - configure
+          - interface Ethernet 1
+          - shutdown
+
+      when: ansible_network_os == 'eos'
+
+    - name: Shutdown Peer-Link 2
+      eos_config:
+        lines:
+          - configure
+          - interface Ethernet 2
+          - shutdown
+
+      when: ansible_network_os == 'eos'
+

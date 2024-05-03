@@ -1,0 +1,115 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+
+
+    - name: Configuration Interface Loopback0
+      eos_config:
+        lines:
+          - configure
+
+          - ip routing
+
+          - interface loopback 0
+          - ip address 172.16.0.15/32
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 8
+      eos_config:
+        lines:
+          - configure
+
+
+
+          - interface Ethernet 8
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 56
+
+          - ip address 172.16.200.34/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 7
+      eos_config:
+        lines:
+          - configure
+
+
+
+          - interface Ethernet 7
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 80
+
+          - ip address 172.16.200.66/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 5
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 5
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 56
+
+          - ip address 172.16.200.50/30
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Vlan 3
+      eos_config:
+        lines:
+          - configure
+
+          - interface vlan3
+          - ip address 172.16.117.2/24
+          - ip virtual-router address 172.16.117.1
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration MAC virtual routeur
+      eos_config:
+        lines:
+          - configure
+
+          - ip virtual-router mac-address 00:1c:73:00:00:56
+
+      when: ansible_network_os == 'eos'
+
+
+    - name: Configuration Routeur BGP
+      eos_config:
+        lines:
+          - configure
+
+          - router bgp 65004
+          - router-id 172.16.0.15
+          - maximum-paths 4 ecmp 4
+          - neighbor 172.16.56.2 remote-as 65004
+          - neighbor 172.16.56.2 next-hop-self
+          - neighbor 172.16.200.33 remote-as 65003
+          - neighbor 172.16.200.33 maximum-routes 12000
+          - neighbor 172.16.200.49 remote-as 65003
+          - neighbor 172.16.200.49 maximum-routes 12000
+          - neighbor 172.16.200.65 remote-as 65002
+          - neighbor 172.16.200.65 maximum-routes 12000
+          - network 172.16.0.15/32
+          - network 172.16.1.56/32
+          - network 172.16.117.0/24
+
+
+
+      when: ansible_network_os == 'eos'
+
+

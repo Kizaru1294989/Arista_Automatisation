@@ -16,8 +16,6 @@ def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_v
     with SCPClient(ssh.get_transport()) as scp:
         scp.put(source_volume, recursive=True, remote_path=destination_volume)
 
-
-
 def execute_scp_command(password, user):
     ssh_scp_files("10.43.192.25", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt", "/home/cvpadmin/")
     ssh_scp_files("10.43.192.26", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-2.txt", "/home/cvpadmin/")
@@ -34,6 +32,7 @@ def execute_scp_command(password, user):
     ssh_scp_files("10.43.192.35", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-7.txt", "/home/cvpadmin/")
     ssh_scp_files("10.43.192.36", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-8.txt", "/home/cvpadmin/")
 
+# /home/rais/Arista_Automatisation/Backend/usb/basic-config/Host/Host-1.txt
 
 def run_ansible_playbook(playbook_path):
     os.chdir(os.path.dirname(playbook_path))
@@ -52,15 +51,15 @@ def main():
     run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/3/Leaf.yml")
     run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/4/Leaf.yml")
     
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml")
     
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/1/Spine.yml")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/2/Spine.yml")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/3/Spine.yml")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/4/Spine.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/1/Spine.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/2/Spine.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/3/Spine.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/4/Spine.yml")
 
 
 if __name__ == '__main__':
