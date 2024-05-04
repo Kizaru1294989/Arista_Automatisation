@@ -105,8 +105,8 @@
           - no neighbor SPINE-EVPN-TRANSIT activate
 
           - vlan 3
-          - rd 1.1.1.1:12
-          - route-target both 1:12
+          - rd 1.1.1.1:3
+          - route-target both 1:3
           - redistribute learned
             
 
