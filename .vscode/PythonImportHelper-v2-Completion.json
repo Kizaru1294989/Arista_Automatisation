@@ -132,7 +132,7 @@
         "kind": 2,
         "importPath": "Backend.yml.Labs.evpn",
         "description": "Backend.yml.Labs.evpn",
-        "peekOfCode": "def evpn():\n    print(\"EVPN\")\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Spine/Spine_2/Spine.yml\")\n    print(\"LEAF_1\")\n    #run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Leaf/Leaf_1/Leaf1.yml\")\n    # print(\"LEAF_3\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Leaf/Leaf_3/Leaf3.yml\")",
+        "peekOfCode": "def evpn():\n    print(\"EVPN\")\n    print(\"SPINE_1\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Spine/Spine_2/Spine.yml\")\n    print(\"LEAF_1\")\n    #run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Leaf/Leaf_1/Leaf1.yml\")\n    # print(\"LEAF_3\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Leaf/Leaf_3/Leaf3.yml\")",
         "detail": "Backend.yml.Labs.evpn",
         "documentation": {}
     },
