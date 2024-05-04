@@ -8,7 +8,8 @@ def main():
     print("MAIN")
     # mlag()
     # bgp()
-    vxlan()
+    #vxlan()
+    evpn()
     # reponse = mlag()
     # if reponse :
     #     choice = input("Transofrm the Lab to BGP lab ? Y/N")

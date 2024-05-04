@@ -132,7 +132,7 @@
         "kind": 2,
         "importPath": "Backend.yml.Labs.evpn",
         "description": "Backend.yml.Labs.evpn",
-        "peekOfCode": "def evpn():\n    print(\"EVPN\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")\n    print(\"NO MLAG SPINE\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/NO_MLAG/no_mlag_spine.yml\")\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")    \n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_2/Spine.yml\")\n    print(\"SPINE_3\") ",
+        "peekOfCode": "def evpn():\n    print(\"EVPN\")\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Spine/Spine_2/Spine.yml\")\n    print(\"LEAF_1\")\n    #run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Leaf/Leaf_1/Leaf1.yml\")\n    # print(\"LEAF_3\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Leaf/Leaf_3/Leaf3.yml\")",
         "detail": "Backend.yml.Labs.evpn",
         "documentation": {}
     },
@@ -186,7 +186,7 @@
         "kind": 2,
         "importPath": "Backend.yml.main",
         "description": "Backend.yml.main",
-        "peekOfCode": "def main():\n    print(\"MAIN\")\n    # mlag()\n    # bgp()\n    vxlan()\n    # reponse = mlag()\n    # if reponse :\n    #     choice = input(\"Transofrm the Lab to BGP lab ? Y/N\")\n    #     if choice == \"Y\":\n    #         bgp()",
+        "peekOfCode": "def main():\n    print(\"MAIN\")\n    # mlag()\n    # bgp()\n    #vxlan()\n    evpn()\n    # reponse = mlag()\n    # if reponse :\n    #     choice = input(\"Transofrm the Lab to BGP lab ? Y/N\")\n    #     if choice == \"Y\":",
         "detail": "Backend.yml.main",
         "documentation": {}
     },
