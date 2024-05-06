@@ -1,0 +1,4 @@
+configparser
+consolemenu
+jsonrpclib
+paramiko

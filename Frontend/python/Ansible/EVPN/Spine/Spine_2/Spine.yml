@@ -1,0 +1,97 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+
+
+    - name: Configuration service routing protocols model multi-agent
+      eos_config:
+        lines:
+          - configure
+          - service routing protocols model multi-agent
+          - no router bgp 65000
+
+      when: ansible_network_os == 'eos'
+
+    - name: Shutdown Peer-Link 1
+      eos_config:
+        lines:
+          - configure
+          - interface Ethernet 1
+          - shutdown
+
+      when: ansible_network_os == 'eos'
+
+    - name: Shutdown Peer-Link 2
+      eos_config:
+        lines:
+          - configure
+          - interface Ethernet 2
+          - shutdown
+
+      when: ansible_network_os == 'eos'
+
+
+    - name: Route-map
+      eos_config:
+        lines:
+          - configure
+          - route-map rt-conn permit 10
+          - match ip address prefix-list rt-conn
+
+      when: ansible_network_os == 'eos'
+      
+    - name: ip prefix-list
+      eos_config:
+        lines:
+          - configure
+          - ip prefix-list rt-conn
+          - seq 10 permit 172.16.0.2/32
+
+      when: ansible_network_os == 'eos'
+
+   
+   
+    - name: Configuration bgp VTEP
+      eos_config:
+        lines:
+          - configure
+
+          - router bgp 65000
+          - router-id 172.16.0.2
+          - maximum-paths 2 ecmp 2
+          - neighbor VTEP peer group
+          - neighbor VTEP bfd
+          - neighbor VTEP send-community
+          - neighbor VTEP maximum-routes 12000
+          - neighbor VTEP-EVPN-TRANSIT peer group
+          - neighbor VTEP-EVPN-TRANSIT next-hop-unchanged
+          - neighbor VTEP-EVPN-TRANSIT update-source Loopback0
+          - neighbor VTEP-EVPN-TRANSIT ebgp-multihop
+          - neighbor VTEP-EVPN-TRANSIT send-community extended
+          - neighbor VTEP-EVPN-TRANSIT maximum-routes 0
+          - neighbor 172.16.0.11 peer group VTEP-EVPN-TRANSIT
+          - neighbor 172.16.0.11 remote-as 65001
+          - neighbor 172.16.0.14 peer group VTEP-EVPN-TRANSIT
+          - neighbor 172.16.0.14 remote-as 65002
+          - neighbor 172.16.0.13 peer group VTEP-EVPN-TRANSIT
+          - neighbor 172.16.0.13 remote-as 65002
+          - neighbor 172.16.200.18 peer group VTEP
+          - neighbor 172.16.200.18 remote-as 65001
+          - neighbor 172.16.200.26 peer group VTEP
+          - neighbor 172.16.200.26 remote-as 65002
+          - neighbor 172.16.200.30 peer group VTEP
+          - neighbor 172.16.200.30 remote-as 65002
+          - redistribute connected route-map rt-conn
+   
+          - address-family evpn
+          - bgp next-hop-unchanged
+          - neighbor VTEP-EVPN-TRANSIT activate
+   
+          - address-family ipv4
+          - no neighbor VTEP-EVPN-TRANSIT activate

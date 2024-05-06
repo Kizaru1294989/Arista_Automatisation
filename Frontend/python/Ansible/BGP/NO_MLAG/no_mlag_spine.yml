@@ -1,0 +1,23 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+    - name: no mlag
+      eos_config:
+        lines:
+          - configure
+          - mlag
+          - no peer-link
+
+
+
+      when: ansible_network_os == 'eos'
+
+
+
+

@@ -1,0 +1,112 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+
+
+    - name: Configuration service routing protocols model multi-agent
+      eos_config:
+        lines:
+          - configure
+          - service routing protocols model multi-agent
+          - no router bgp 65001
+          - no interface Vxlan1
+
+      when: ansible_network_os == 'eos'
+
+    - name: Shutdown Peer-Link 1
+      eos_config:
+        lines:
+          - configure
+          - interface Ethernet 1
+          - shutdown
+
+      when: ansible_network_os == 'eos'
+
+    - name: Shutdown Peer-Link 2
+      eos_config:
+        lines:
+          - configure
+          - interface Ethernet 2
+          - shutdown
+
+      when: ansible_network_os == 'eos'
+
+
+    - name: interface Loopback1
+      eos_config:
+        lines:
+          - configure
+          - interface Loopback 1
+          - ip address 1.1.1.1/32
+          - ip address 99.99.99.99/32 secondary
+
+      when: ansible_network_os == 'eos'
+
+    - name: interface vlan 3
+      eos_config:
+        lines:
+          - configure
+          - interface vlan 3
+          - no ip virtual-router address 172.16.115.1
+          - no ip address 172.16.115.2/24
+          - ip address virtual 172.16.112.1/24
+
+      when: ansible_network_os == 'eos'
+
+
+    - name: Configuration Interface Vxlan1
+
+      eos_config:
+        lines:
+          - configure
+
+          - interface Vxlan1
+          - vxlan source-interface Loopback1
+          - vxlan udp-port 4789
+          - vxlan vlan 3 vni 1234
+
+      when: ansible_network_os == 'eos'
+   
+   
+    - name: Configuration bgp VTEP
+      eos_config:
+        lines:
+          - configure
+
+          - router bgp 65001
+          - router-id 172.16.0.11
+          - maximum-paths 2 ecmp 2
+          - neighbor SPINE peer group
+          - neighbor SPINE remote-as 65000
+          - neighbor SPINE bfd
+          - neighbor SPINE maximum-routes 12000
+          - neighbor SPINE-EVPN-TRANSIT peer group
+          - neighbor SPINE-EVPN-TRANSIT remote-as 65000
+          - neighbor SPINE-EVPN-TRANSIT update-source Loopback0
+          - neighbor SPINE-EVPN-TRANSIT ebgp-multihop
+          - neighbor SPINE-EVPN-TRANSIT send-community
+          - neighbor SPINE-EVPN-TRANSIT maximum-routes 0
+          - neighbor 172.16.0.1 peer group SPINE-EVPN-TRANSIT
+          - neighbor 172.16.0.2 peer group SPINE-EVPN-TRANSIT
+          - neighbor 172.16.200.1 peer group SPINE
+          - neighbor 172.16.200.17 peer group SPINE
+          - redistribute connected
+
+          - address-family evpn
+          - neighbor SPINE-EVPN-TRANSIT activate
+            
+          - address-family ipv4
+          - no neighbor SPINE-EVPN-TRANSIT activate
+
+          - vlan 3
+          - rd 1.1.1.1:3
+          - route-target both 1:3
+          - redistribute learned
+            
+

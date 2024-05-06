@@ -1,0 +1,100 @@
+---
+- name: Run commands on remote cEOS-lab device
+  hosts: arista
+  connection: httpapi
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: "python"
+
+  tasks:
+
+
+    - name: Configuration Interface Loopback0
+      eos_config:
+        lines:
+          - configure
+
+          - ip routing
+
+          - interface loopback 0
+          - ip address 172.16.0.18/32
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration Interface Ethernet 5
+      eos_config:
+        lines:
+          - configure
+
+          - interface Ethernet 5
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 78 
+
+          - ip address 172.16.200.46/30
+
+      when: ansible_network_os == 'eos'
+
+
+    - name: Configuration Interface Ethernet 8
+      eos_config:
+        lines:
+          - configure
+
+
+
+          - interface Ethernet 8
+          - no switchport
+          - no switchport mode trunk
+          - no channel-group 78
+
+          - ip address 172.16.200.62/30
+
+      when: ansible_network_os == 'eos'
+
+
+
+    - name: Configuration Interface Vlan 3
+      eos_config:
+        lines:
+          - configure
+
+          - interface vlan3
+          - ip address 172.16.118.3/24
+          - ip virtual-router address 172.16.118.1
+
+      when: ansible_network_os == 'eos'
+
+    - name: Configuration MAC virtual routeur
+      eos_config:
+        lines:
+          - configure
+
+          - ip virtual-router mac-address 00:1c:73:00:00:78
+
+      when: ansible_network_os == 'eos'
+
+
+    - name: Configuration Routeur BGP
+      eos_config:
+        lines:
+          - configure
+
+          - router bgp 65005
+          - router-id 172.16.0.18
+          - maximum-paths 4 ecmp 4
+          - neighbor 172.16.78.1 remote-as 65005
+          - neighbor 172.16.78.1 next-hop-self
+          - neighbor 172.16.200.45 remote-as 65003
+          - neighbor 172.16.200.45 maximum-routes 12000
+          - neighbor 172.16.200.61 remote-as 65003
+          - neighbor 172.16.200.61 maximum-routes 12000
+          - network 172.16.0.18/32
+          - network 172.16.1.78/32
+          - network 172.16.118.0/24
+
+
+
+      when: ansible_network_os == 'eos'
+
+
