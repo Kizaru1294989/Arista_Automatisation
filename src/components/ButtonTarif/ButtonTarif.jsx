@@ -6,10 +6,10 @@ export const ButtonTarif = ({onClick, Text }) => {
   return (
     <Button
       sx={{
-        width: "350px",
+        width: "299px",
         height: "60px",
         fontFamily: "DM Sans",
-        color: "white",
+        color: "#58afd1",
         textTransform: "none",
         fontSize: "20px",
       }}
