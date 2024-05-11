@@ -32,6 +32,10 @@ def execute_scp_command(password, user):
     ssh_scp_files("10.43.192.35", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-7.txt", "/home/cvpadmin/")
     ssh_scp_files("10.43.192.36", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-8.txt", "/home/cvpadmin/")
 
+    ssh_scp_files("10.43.192.37", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Host/Leaf-5.txt", "/home/cvpadmin/")
+    ssh_scp_files("10.43.192.38", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Host/Leaf-6.txt", "/home/cvpadmin/")
+    ssh_scp_files("10.43.192.39", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Host/Leaf-7.txt", "/home/cvpadmin/")
+    ssh_scp_files("10.43.192.40", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Host/Leaf-8.txt", "/home/cvpadmin/")
 # /home/rais/Arista_Automatisation/Backend/usb/basic-config/Host/Host-1.txt
 
 def run_ansible_playbook(playbook_path):
@@ -44,7 +48,7 @@ def run_ansible_playbook(playbook_path):
         return True
     
 
-def main():
+def reset():
     execute_scp_command("cvpadmin" , "cvpadmin")
     run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/1/Leaf.yml")
     run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/2/Leaf.yml")
@@ -63,4 +67,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    reset()

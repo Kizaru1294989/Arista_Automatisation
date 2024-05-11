@@ -13,11 +13,15 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { ButtonTarif } from '../../ButtonTarif/ButtonTarif';
 import { useState } from 'react';
 import ButtonHomePage from '../../ButtonHomePage/ButtonHomePage';
+import HomeCard from './HomeCard';
+import { Loading } from '../../loading/Loading';
+
 
 export default function MediaControlCard() {
   const theme = useTheme();
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
+  const [start, setStart] = useState(null);
 
   const postData = async () => {
     try {
@@ -47,34 +51,28 @@ export default function MediaControlCard() {
     <>
     <Grid sx={{ display: 'flex'  , backgroundColor : '#2d3436', backgroundImage : 'linear-gradient(315deg, #2d3436 0%, #000000 74%)'}}>
       <Box sx={{  display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography color={'white'} component="div" variant="h5">
-            Automatisation Arista Labs
-          </Typography>
-          <Typography color={'white'}  variant="subtitle1" component="div">
-            Python , Ansible
-          </Typography>
-          <Typography color={'white'}  variant="subtitle2"  component="div">
-            Lab Eve Ng http://10.43.192.100/
-          </Typography>
-          <Typography color={'white'}  variant="subtitle1"  component="div">
-            Username : cvpadmin
-
-          </Typography>
-          <Typography color={'white'}  variant="subtitle1" component="div">
-            Password : Exaprobe1234
-          </Typography>
-        </CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+        <HomeCard/>
+        <Box sx={{ display: 'flex', alignItems: 'center' ,justifyContent : 'center' , margin : '125px' , pl: 1, pb: 1 }}>
         
           <ButtonTarif onClick={postData} Text={"Start"}/>
           {error && <p>Error: {error}</p>}
           {response && <p>Response from Server: {response}</p>}
   
+
+  
         </Box>
+        
       </Box>
+     
 
     </Grid>
+    <Grid className="card-right" >
+    <Grid className="schema">
+
+      
+    </Grid>
+
+</Grid>
     <Grid>
 
     </Grid>

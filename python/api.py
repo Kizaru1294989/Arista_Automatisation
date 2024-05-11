@@ -4,6 +4,7 @@ from Labs.bgp import *
 from Labs.vxlan import *
 from Labs.evpn import *
 from Labs.mlag import *
+from reset import reset
 
 
 
@@ -16,14 +17,16 @@ def receive_integer():
         data = request.get_json()
         int_value = data.get('intValue')
         print(f"Received integer: {int_value}")
-        main()
         return {'message': 'Integer received successfully'}, 200
         
     except Exception as e:
         return {'error': str(e)}, 500
 
 
-
+def choice(int_choice):
+    if int_choice == 0 :
+        reset()
+        
 
 
 def main():
