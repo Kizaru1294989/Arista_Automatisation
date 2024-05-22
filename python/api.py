@@ -12,6 +12,7 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route('/python/post', methods=['POST'])
+
 def receive_integer():
     try:
         data = request.get_json()
@@ -31,9 +32,9 @@ def choice(int_choice):
 
 def main():
     print("MAIN")
-    mlag()
-    bgp()
-    vxlan()
+    # mlag()
+    # bgp()
+   # vxlan()
     evpn()
     # reponse = mlag()
     # if reponse :

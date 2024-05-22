@@ -8,95 +8,96 @@
 
   tasks:
 
-    - name: Configuration Interface Loopback0
+
+    - name: Configuration service routing protocols model multi-agent
       eos_config:
         lines:
           - configure
-
-          - ip routing
-
-          - interface loopback 0
-          - ip address 172.16.0.4/32
+          - service routing protocols model multi-agent
+          - no router bgp 65003
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 5
+    - name: Shutdown Peer-Link 1
       eos_config:
         lines:
           - configure
-
-          - interface Ethernet 5
-          - no switchport
-          - no switchport mode trunk
-          - no channel-group 56
-
-          - ip address 172.16.200.49/30
+          - interface Ethernet 1
+          - shutdown
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 6
+    - name: Shutdown Peer-Link 2
       eos_config:
         lines:
           - configure
-
-          - interface Ethernet 6
-          - no switchport
-          - no switchport mode trunk
-          - no channel-group 56
-          - ip address 172.16.200.53/30
+          - interface Ethernet 2
+          - shutdown
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Interface Ethernet 7
+
+    - name: Route-map
       eos_config:
         lines:
           - configure
-
-          - interface Ethernet 7
-          - no switchport
-          - no switchport mode trunk
-          - no channel-group 78
-          - ip address 172.16.200.57/30
+          - route-map rt-conn permit 10
+          - match ip address prefix-list rt-conn
 
       when: ansible_network_os == 'eos'
-
-    - name: Configuration Interface Ethernet 8
+      
+    - name: ip prefix-list
       eos_config:
         lines:
           - configure
-
-          - interface Ethernet 8
-          - no switchport
-          - no switchport mode trunk
-          - no channel-group 78
-          - ip address 172.16.200.61/30
+          - ip prefix-list rt-conn
+          - seq 10 permit 172.16.0.4/32
 
       when: ansible_network_os == 'eos'
 
-    - name: Configuration Routeur BGP
+   
+   
+    - name: Configuration bgp VTEP
       eos_config:
         lines:
           - configure
 
           - router bgp 65003
           - router-id 172.16.0.4
-          - maximum-paths 4 ecmp 4
+          - maximum-paths 2 ecmp 2
+          - neighbor VTEP peer group
+          - neighbor VTEP bfd
+          - neighbor VTEP send-community
+          - neighbor VTEP maximum-routes 12000
+          - neighbor VTEP-EVPN-TRANSIT peer group
+          - neighbor VTEP-EVPN-TRANSIT next-hop-unchanged
+          - neighbor VTEP-EVPN-TRANSIT update-source Loopback0
+          - neighbor VTEP-EVPN-TRANSIT ebgp-multihop
+          - neighbor VTEP-EVPN-TRANSIT send-community extended
+          - neighbor VTEP-EVPN-TRANSIT maximum-routes 0
+          - neighbor 172.16.0.15 peer group VTEP-EVPN-TRANSIT
+          - neighbor 172.16.0.15 remote-as 65004
+          - neighbor 172.16.0.16 peer group VTEP-EVPN-TRANSIT
+          - neighbor 172.16.0.16 remote-as 65004
+          - neighbor 172.16.0.17 peer group VTEP-EVPN-TRANSIT
+          - neighbor 172.16.0.17 remote-as 65005
+          - neighbor 172.16.0.18 peer group VTEP-EVPN-TRANSIT
+          - neighbor 172.16.0.18 remote-as 65005
+          - neighbor 172.16.200.50 peer group VTEP
           - neighbor 172.16.200.50 remote-as 65004
-          - neighbor 172.16.200.50 send-community extended
-          - neighbor 172.16.200.50 maximum-routes 12000
+          - neighbor 172.16.200.54 peer group VTEP
           - neighbor 172.16.200.54 remote-as 65004
-          - neighbor 172.16.200.54 send-community extended
-          - neighbor 172.16.200.54 maximum-routes 12000
+          - neighbor 172.16.200.58 peer group VTEP
           - neighbor 172.16.200.58 remote-as 65005
-          - neighbor 172.16.200.58 send-community extended
-          - neighbor 172.16.200.58 maximum-routes 12000
+          - neighbor 172.16.200.62 peer group VTEP
           - neighbor 172.16.200.62 remote-as 65005
-          - neighbor 172.16.200.62 send-community extended
-          - neighbor 172.16.200.62 maximum-routes 12000
-          - network 172.16.0.4/32
-
-
+          - redistribute connected route-map rt-conn
+   
+          - address-family evpn
+          - bgp next-hop-unchanged
+          - neighbor VTEP-EVPN-TRANSIT activate
+   
+          - address-family ipv4
+          - no neighbor VTEP-EVPN-TRANSIT activate
 
       when: ansible_network_os == 'eos'
-
-

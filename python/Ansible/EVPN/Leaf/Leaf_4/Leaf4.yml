@@ -105,18 +105,19 @@
           - no neighbor SPINE-EVPN-TRANSIT activate
             
 
+      when: ansible_network_os == 'eos'
             
 
-    - name: Configuration router bgp 65002 vlan 3
+    # - name: Configuration router bgp 65002 vlan 3
 
-      eos_config:
-        lines:
-          - configure
+    #   eos_config:
+    #     lines:
+    #       - configure
 
-          - router bgp 65002
-          - vlan 3
-          - rd 4.4.4.4:3
-          - route-target both 4:3
-          - redistribute learned
+    #       - router bgp 65002
+    #       - vlan 3
+    #       - rd 4.4.4.4:3
+    #       - route-target both 4:3
+    #       - redistribute learned
 
-      when: ansible_network_os == 'eos'
+    #   when: ansible_network_os == 'eos'

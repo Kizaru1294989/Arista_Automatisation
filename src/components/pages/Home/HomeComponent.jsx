@@ -49,7 +49,7 @@ export default function MediaControlCard() {
 
   return (
     <>
-    <Grid sx={{ display: 'flex'  , backgroundColor : '#2d3436', backgroundImage : 'linear-gradient(315deg, #2d3436 0%, #000000 74%)'}}>
+    <Grid sx={{ display: 'flex'  , backgroundColor : '#2d3436', backgroundImage : 'linear-gradient(315deg, #2d3436 0%, #000000 74%)' , width : '500px'}}>
       <Box sx={{  display: 'flex', flexDirection: 'column' }}>
         <HomeCard/>
         <Box sx={{ display: 'flex', alignItems: 'center' ,justifyContent : 'center' , margin : '125px' , pl: 1, pb: 1 }}>

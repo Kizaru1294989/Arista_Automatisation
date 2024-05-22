@@ -10,8 +10,8 @@ export const HomeCard = () => {
                 <Typography color={'white'} component="div" variant="h3">
                     Automatisation Arista Labs
                 </Typography>
-                <a href='http://10.43.192.100/'>
-                    Lab Eve Ng http://10.43.192.100/
+                <a href='http://10.43.192.129/'>
+                    Lab Eve Ng http://10.43.192.129/
                 </a>
                 <Typography color={'white'} variant="subtitle1" component="div">
                     Python , Ansible
@@ -24,7 +24,7 @@ export const HomeCard = () => {
                 </Typography>
             </CardContent>
 
-            <CardContent style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+            <CardContent style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' , justifyContent : 'center' , alignItems : 'center' }}>
                 <div style={{ flex: '1 0 50%' }}>
                     <Typography color={'white'} variant="subtitle1" component="div">
                         4 Spines
