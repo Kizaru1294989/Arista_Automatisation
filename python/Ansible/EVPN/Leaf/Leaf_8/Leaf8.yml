@@ -19,23 +19,23 @@
 
       when: ansible_network_os == 'eos'
 
-    - name: Shutdown Peer-Link 1
-      eos_config:
-        lines:
-          - configure
-          - interface Ethernet 1
-          - shutdown
+    # - name: Shutdown Peer-Link 1
+    #   eos_config:
+    #     lines:
+    #       - configure
+    #       - interface Ethernet 1
+    #       - shutdown
 
-      when: ansible_network_os == 'eos'
+    #   when: ansible_network_os == 'eos'
 
-    - name: Shutdown Peer-Link 2
-      eos_config:
-        lines:
-          - configure
-          - interface Ethernet 2
-          - shutdown
+    # - name: Shutdown Peer-Link 2
+    #   eos_config:
+    #     lines:
+    #       - configure
+    #       - interface Ethernet 2
+    #       - shutdown
 
-      when: ansible_network_os == 'eos'
+    #   when: ansible_network_os == 'eos'
 
 
     - name: interface Loopback1

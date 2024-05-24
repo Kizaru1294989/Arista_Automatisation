@@ -19,23 +19,23 @@
 
       when: ansible_network_os == 'eos'
 
-    - name: Shutdown Peer-Link 1
-      eos_config:
-        lines:
-          - configure
-          - interface Ethernet 1
-          - shutdown
+    # - name: Shutdown Peer-Link 1
+    #   eos_config:
+    #     lines:
+    #       - configure
+    #       - interface Ethernet 1
+    #       - shutdown
 
-      when: ansible_network_os == 'eos'
+    #   when: ansible_network_os == 'eos'
 
-    - name: Shutdown Peer-Link 2
-      eos_config:
-        lines:
-          - configure
-          - interface Ethernet 2
-          - shutdown
+    # - name: Shutdown Peer-Link 2
+    #   eos_config:
+    #     lines:
+    #       - configure
+    #       - interface Ethernet 2
+    #       - shutdown
 
-      when: ansible_network_os == 'eos'
+    #   when: ansible_network_os == 'eos'
 
 
     - name: interface Loopback1
@@ -98,11 +98,33 @@
           - neighbor 172.16.200.29 peer group SPINE
           - redistribute connected
 
+
+          - neighbor DCI-SPINE peer group
+          - neighbor DCI-SPINE remote-as 65004
+          - neighbor DCI-SPINE bfd
+          - neighbor DCI-SPINE maximum-routes 12000
+          - neighbor DCI-SPINE-EVPN-TRANSIT peer group
+          - neighbor DCI-SPINE-EVPN-TRANSIT remote-as 65004
+          - neighbor DCI-SPINE-EVPN-TRANSIT update-source Loopback0
+          - neighbor DCI-SPINE-EVPN-TRANSIT ebgp-multihop
+          - neighbor DCI-SPINE-EVPN-TRANSIT send-community
+          - neighbor DCI-SPINE-EVPN-TRANSIT maximum-routes 0
+          - neighbor 172.16.200.66 peer group DCI-SPINE
+          - neighbor 172.16.0.15 peer group DCI-SPINE-EVPN-TRANSIT
+          - redistribute connected
+
+
+
           - address-family evpn
           - neighbor SPINE-EVPN-TRANSIT activate
+          - neighbor DCI-SPINE-EVPN-TRANSIT activate
             
           - address-family ipv4
           - no neighbor SPINE-EVPN-TRANSIT activate
+          - no neighbor DCI-SPINE-EVPN-TRANSIT activate
+
+
+
             
 
       when: ansible_network_os == 'eos'
