@@ -1,50 +1,43 @@
 [
     {
-        "label": "Flask",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "json",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "flask",
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
         "documentation": {}
     },
     {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "stringify",
+        "importPath": "flatted",
+        "description": "flatted",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "flatted",
         "documentation": {}
     },
     {
-        "label": "Flask",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "parse",
+        "importPath": "flatted",
+        "description": "flatted",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "flatted",
         "documentation": {}
     },
     {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "stringify",
+        "importPath": "flatted",
+        "description": "flatted",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "flatted",
         "documentation": {}
     },
     {
-        "label": "Flask",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "parse",
+        "importPath": "flatted",
+        "description": "flatted",
         "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
+        "detail": "flatted",
         "documentation": {}
     },
     {
@@ -66,19 +59,53 @@
         "documentation": {}
     },
     {
-        "label": "run_ansible_playbook",
-        "importPath": "main",
-        "description": "main",
+        "label": "paramiko",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "main",
+        "importPath": "paramiko",
+        "description": "paramiko",
+        "detail": "paramiko",
         "documentation": {}
     },
     {
-        "label": "*",
-        "importPath": "Labs.mlag",
-        "description": "Labs.mlag",
+        "label": "SSHClient",
+        "importPath": "paramiko",
+        "description": "paramiko",
         "isExtraImport": true,
-        "detail": "Labs.mlag",
+        "detail": "paramiko",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "CORS",
+        "importPath": "flask_cors",
+        "description": "flask_cors",
+        "isExtraImport": true,
+        "detail": "flask_cors",
         "documentation": {}
     },
     {
@@ -106,29 +133,28 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "Labs.mlag",
+        "description": "Labs.mlag",
+        "isExtraImport": true,
+        "detail": "Labs.mlag",
+        "documentation": {}
+    },
+    {
+        "label": "reset",
+        "importPath": "reset",
+        "description": "reset",
+        "isExtraImport": true,
+        "detail": "reset",
+        "documentation": {}
+    },
+    {
         "label": "pexpect",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "pexpect",
         "description": "pexpect",
         "detail": "pexpect",
-        "documentation": {}
-    },
-    {
-        "label": "paramiko",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "paramiko",
-        "description": "paramiko",
-        "detail": "paramiko",
-        "documentation": {}
-    },
-    {
-        "label": "SSHClient",
-        "importPath": "paramiko",
-        "description": "paramiko",
-        "isExtraImport": true,
-        "detail": "paramiko",
         "documentation": {}
     },
     {
@@ -146,193 +172,6 @@
         "importPath": "logging",
         "description": "logging",
         "detail": "logging",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "stringify",
-        "importPath": "flatted",
-        "description": "flatted",
-        "isExtraImport": true,
-        "detail": "flatted",
-        "documentation": {}
-    },
-    {
-        "label": "parse",
-        "importPath": "flatted",
-        "description": "flatted",
-        "isExtraImport": true,
-        "detail": "flatted",
-        "documentation": {}
-    },
-    {
-        "label": "hello",
-        "kind": 2,
-        "importPath": "Backend.API.api",
-        "description": "Backend.API.api",
-        "peekOfCode": "def hello():\n    return jsonify({'message': 'Hello from Flask!'})\nif __name__ == '__main__':\n    app.run(debug=True)",
-        "detail": "Backend.API.api",
-        "documentation": {}
-    },
-    {
-        "label": "app",
-        "kind": 5,
-        "importPath": "Backend.API.api",
-        "description": "Backend.API.api",
-        "peekOfCode": "app = Flask(__name__)\n@app.route('/api/hello')\ndef hello():\n    return jsonify({'message': 'Hello from Flask!'})\nif __name__ == '__main__':\n    app.run(debug=True)",
-        "detail": "Backend.API.api",
-        "documentation": {}
-    },
-    {
-        "label": "run_ansible_playbook",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.bgp",
-        "description": "Backend.yml.Labs.bgp",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True  \ndef bgp():\n    print(\"BGP\")",
-        "detail": "Backend.yml.Labs.bgp",
-        "documentation": {}
-    },
-    {
-        "label": "bgp",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.bgp",
-        "description": "Backend.yml.Labs.bgp",
-        "peekOfCode": "def bgp():\n    print(\"BGP\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")\n    print(\"NO MLAG SPINE\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/NO_MLAG/no_mlag_spine.yml\")\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")    \n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_2/Spine.yml\")\n    print(\"SPINE_3\") ",
-        "detail": "Backend.yml.Labs.bgp",
-        "documentation": {}
-    },
-    {
-        "label": "run_ansible_playbook",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.evpn",
-        "description": "Backend.yml.Labs.evpn",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True  \ndef evpn():\n    print(\"EVPN\")",
-        "detail": "Backend.yml.Labs.evpn",
-        "documentation": {}
-    },
-    {
-        "label": "evpn",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.evpn",
-        "description": "Backend.yml.Labs.evpn",
-        "peekOfCode": "def evpn():\n    print(\"EVPN\")\n    print(\"SPINE_1\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Spine/Spine_2/Spine.yml\")\n    print(\"LEAF_1\")\n    #run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Leaf/Leaf_1/Leaf1.yml\")\n    # print(\"LEAF_3\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/Backend/Ansible/EVPN/Leaf/Leaf_3/Leaf3.yml\")",
-        "detail": "Backend.yml.Labs.evpn",
-        "documentation": {}
-    },
-    {
-        "label": "Leaf_mlag",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.mlag",
-        "description": "Backend.yml.Labs.mlag",
-        "peekOfCode": "def Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_2/Leaf_3/Leaf3.yml\")\n    print(\"LEAF_4\")",
-        "detail": "Backend.yml.Labs.mlag",
-        "documentation": {}
-    },
-    {
-        "label": "Spine_mlag",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.mlag",
-        "description": "Backend.yml.Labs.mlag",
-        "peekOfCode": "def Spine_mlag():\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_2/Spine.yml\")\n    print(\"SPINE_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_3/Spine.yml\")\n    print(\"SPINE_4\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_4/Spine.yml\")\ndef mlag():",
-        "detail": "Backend.yml.Labs.mlag",
-        "documentation": {}
-    },
-    {
-        "label": "mlag",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.mlag",
-        "description": "Backend.yml.Labs.mlag",
-        "peekOfCode": "def mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True\n    else:\n        print(\"❌ Error : network unreachable\")\n        return False",
-        "detail": "Backend.yml.Labs.mlag",
-        "documentation": {}
-    },
-    {
-        "label": "run_ansible_playbook",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.vxlan",
-        "description": "Backend.yml.Labs.vxlan",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef vxlan():\n    print(\"VXLAN\")",
-        "detail": "Backend.yml.Labs.vxlan",
-        "documentation": {}
-    },
-    {
-        "label": "vxlan",
-        "kind": 2,
-        "importPath": "Backend.yml.Labs.vxlan",
-        "description": "Backend.yml.Labs.vxlan",
-        "peekOfCode": "def vxlan():\n    print(\"VXLAN\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/I/Leaf_1/Leaf1.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/I/Leaf_2/Leaf2.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/I/Leaf_3/Leaf3.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/I/Leaf_4/Leaf4.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/II/Leaf_5/Leaf5.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/II/Leaf_6/Leaf6.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/II/Leaf_7/Leaf7.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/II/Leaf_8/Leaf8.yml\")",
-        "detail": "Backend.yml.Labs.vxlan",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "Backend.yml.main",
-        "description": "Backend.yml.main",
-        "peekOfCode": "def main():\n    print(\"MAIN\")\n    # mlag()\n    # bgp()\n    #vxlan()\n    evpn()\n    # reponse = mlag()\n    # if reponse :\n    #     choice = input(\"Transofrm the Lab to BGP lab ? Y/N\")\n    #     if choice == \"Y\":",
-        "detail": "Backend.yml.main",
-        "documentation": {}
-    },
-    {
-        "label": "ssh_scp_files",
-        "kind": 2,
-        "importPath": "Backend.yml.reset",
-        "description": "Backend.yml.reset",
-        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    # ssh.load_system_host_keys()\n    # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) \n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")",
-        "detail": "Backend.yml.reset",
-        "documentation": {}
-    },
-    {
-        "label": "execute_scp_command",
-        "kind": 2,
-        "importPath": "Backend.yml.reset",
-        "description": "Backend.yml.reset",
-        "peekOfCode": "def execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-2.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-3.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-4.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.29\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-1.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.30\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-2.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.31\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-3.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.32\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-4.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.33\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-5.txt\", \"/home/cvpadmin/\")",
-        "detail": "Backend.yml.reset",
-        "documentation": {}
-    },
-    {
-        "label": "run_ansible_playbook",
-        "kind": 2,
-        "importPath": "Backend.yml.reset",
-        "description": "Backend.yml.reset",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef main():\n    execute_scp_command(\"cvpadmin\" , \"cvpadmin\")",
-        "detail": "Backend.yml.reset",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "Backend.yml.reset",
-        "description": "Backend.yml.reset",
-        "peekOfCode": "def main():\n    execute_scp_command(\"cvpadmin\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/1/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/2/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/3/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/4/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml\")",
-        "detail": "Backend.yml.reset",
-        "documentation": {}
-    },
-    {
-        "label": "hello",
-        "kind": 2,
-        "importPath": "Frontend.api.api",
-        "description": "Frontend.api.api",
-        "peekOfCode": "def hello():\n    return jsonify({'message': 'Hello from Flask!'})\nif __name__ == '__main__':\n    app.run(debug=True)",
-        "detail": "Frontend.api.api",
-        "documentation": {}
-    },
-    {
-        "label": "app",
-        "kind": 5,
-        "importPath": "Frontend.api.api",
-        "description": "Frontend.api.api",
-        "peekOfCode": "app = Flask(__name__)\n@app.route('/api/hello')\ndef hello():\n    return jsonify({'message': 'Hello from Flask!'})\nif __name__ == '__main__':\n    app.run(debug=True)",
-        "detail": "Frontend.api.api",
         "documentation": {}
     },
     {
@@ -507,21 +346,345 @@
         "documentation": {}
     },
     {
-        "label": "hello",
+        "label": "_Known",
+        "kind": 6,
+        "importPath": "node_modules.flatted.python.flatted",
+        "description": "node_modules.flatted.python.flatted",
+        "peekOfCode": "class _Known:\n    def __init__(self):\n        self.key = []\n        self.value = []\nclass _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    keys = []\n    i = 0",
+        "detail": "node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "_String",
+        "kind": 6,
+        "importPath": "node_modules.flatted.python.flatted",
+        "description": "node_modules.flatted.python.flatted",
+        "peekOfCode": "class _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    keys = []\n    i = 0\n    for _ in value:\n        keys.append(i)\n        i += 1\n    return keys",
+        "detail": "node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "parse",
         "kind": 2,
-        "importPath": "Frontend.src.tools.api",
-        "description": "Frontend.src.tools.api",
-        "peekOfCode": "def hello():\n    return jsonify({'message': 'Hello from Flask!'})\nif __name__ == '__main__':\n    app.run(debug=True)",
-        "detail": "Frontend.src.tools.api",
+        "importPath": "node_modules.flatted.python.flatted",
+        "description": "node_modules.flatted.python.flatted",
+        "peekOfCode": "def parse(value, *args, **kwargs):\n    json = _json.loads(value, *args, **kwargs)\n    wrapped = []\n    for value in json:\n        wrapped.append(_wrap(value))\n    input = []\n    for value in wrapped:\n        if isinstance(value, _String):\n            input.append(value.value)\n        else:",
+        "detail": "node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "stringify",
+        "kind": 2,
+        "importPath": "node_modules.flatted.python.flatted",
+        "description": "node_modules.flatted.python.flatted",
+        "peekOfCode": "def stringify(value, *args, **kwargs):\n    known = _Known()\n    input = []\n    output = []\n    i = int(_index(known, input, value))\n    while i < len(input):\n        output.append(_transform(known, input, input[i]))\n        i += 1\n    return _json.dumps(output, *args, **kwargs)",
+        "detail": "node_modules.flatted.python.flatted",
+        "documentation": {}
+    },
+    {
+        "label": "stringify",
+        "kind": 2,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "def stringify(value):\n    return _stringify(value, separators=(',', ':'))\nassert stringify([None, None]) == '[[null,null]]'\na = []\no = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "a = []\no = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['o']",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)\na.append('two')\na.append(True)\no['one'] = 1\no['two'] = 'two'",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "b = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)\na.append('two')\na.append(True)\no['one'] = 1\no['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['one']",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o['one'] = 1\no['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['two']",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['three']",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])\no['test'] = {'test': 'OK'}",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['a']",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])\no['test'] = {'test': 'OK'}\no['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['test']",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o['test'] = {'test': 'OK'}\no['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o['array']",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "a2",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "a2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "o2",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "o2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "str",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "str = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "oo",
+        "kind": 5,
+        "importPath": "node_modules.flatted.python.test",
+        "description": "node_modules.flatted.python.test",
+        "peekOfCode": "oo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
+        "detail": "node_modules.flatted.python.test",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "python.Labs.bgp",
+        "description": "python.Labs.bgp",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True  \ndef bgp():\n    print(\"BGP\")",
+        "detail": "python.Labs.bgp",
+        "documentation": {}
+    },
+    {
+        "label": "bgp",
+        "kind": 2,
+        "importPath": "python.Labs.bgp",
+        "description": "python.Labs.bgp",
+        "peekOfCode": "def bgp():\n    print(\"BGP\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")\n    print(\"NO MLAG SPINE\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/NO_MLAG/no_mlag_spine.yml\")\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")    \n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_2/Spine.yml\")\n    print(\"SPINE_3\") ",
+        "detail": "python.Labs.bgp",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "python.Labs.evpn",
+        "description": "python.Labs.evpn",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True  \ndef ssh_connection(ip, bgp_router_id,rd_ip):\n    client = paramiko.SSHClient()",
+        "detail": "python.Labs.evpn",
+        "documentation": {}
+    },
+    {
+        "label": "ssh_connection",
+        "kind": 2,
+        "importPath": "python.Labs.evpn",
+        "description": "python.Labs.evpn",
+        "peekOfCode": "def ssh_connection(ip, bgp_router_id,rd_ip):\n    client = paramiko.SSHClient()\n    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    client.connect(ip, port=22, username=\"cvpadmin\", password=\"Exaprobe1234\")\n    shell_session = client.invoke_shell()\n    shell_session.send(\"configure\\n\")\n    time.sleep(1)\n    shell_session.send(f\"router bgp {bgp_router_id}\\n\")\n    time.sleep(1)\n    shell_session.send(\"vlan 3\\n\")",
+        "detail": "python.Labs.evpn",
+        "documentation": {}
+    },
+    {
+        "label": "evpn",
+        "kind": 2,
+        "importPath": "python.Labs.evpn",
+        "description": "python.Labs.evpn",
+        "peekOfCode": "def evpn():\n    print(\"EVPN\")\n    # print(\"SPINE_1\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_1/Spine.yml\")\n    # print(\"SPINE_2\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_2/Spine.yml\")\n    # print(\"SPINE_3\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_3/Spine.yml\")\n    # print(\"SPINE_4\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_4/Spine.yml\")",
+        "detail": "python.Labs.evpn",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "python.Labs.mlag",
+        "description": "python.Labs.mlag",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")",
+        "detail": "python.Labs.mlag",
+        "documentation": {}
+    },
+    {
+        "label": "Leaf_mlag",
+        "kind": 2,
+        "importPath": "python.Labs.mlag",
+        "description": "python.Labs.mlag",
+        "peekOfCode": "def Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_2/Leaf_3/Leaf3.yml\")\n    print(\"LEAF_4\")",
+        "detail": "python.Labs.mlag",
+        "documentation": {}
+    },
+    {
+        "label": "Spine_mlag",
+        "kind": 2,
+        "importPath": "python.Labs.mlag",
+        "description": "python.Labs.mlag",
+        "peekOfCode": "def Spine_mlag():\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_2/Spine.yml\")\n    print(\"SPINE_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_3/Spine.yml\")\n    print(\"SPINE_4\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_4/Spine.yml\")\ndef mlag():",
+        "detail": "python.Labs.mlag",
+        "documentation": {}
+    },
+    {
+        "label": "mlag",
+        "kind": 2,
+        "importPath": "python.Labs.mlag",
+        "description": "python.Labs.mlag",
+        "peekOfCode": "def mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True\n    else:\n        print(\"❌ Error : network unreachable\")\n        return False",
+        "detail": "python.Labs.mlag",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "python.Labs.vxlan",
+        "description": "python.Labs.vxlan",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False \n    else:\n        return True\ndef vxlan():\n    print(\"VXLAN\")",
+        "detail": "python.Labs.vxlan",
+        "documentation": {}
+    },
+    {
+        "label": "vxlan",
+        "kind": 2,
+        "importPath": "python.Labs.vxlan",
+        "description": "python.Labs.vxlan",
+        "peekOfCode": "def vxlan():\n    print(\"VXLAN\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/I/Leaf_1/Leaf1.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/I/Leaf_2/Leaf2.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/I/Leaf_3/Leaf3.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/I/Leaf_4/Leaf4.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/II/Leaf_5/Leaf5.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/II/Leaf_6/Leaf6.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/II/Leaf_7/Leaf7.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/VXLAN/Leaf/II/Leaf_8/Leaf8.yml\")",
+        "detail": "python.Labs.vxlan",
+        "documentation": {}
+    },
+    {
+        "label": "receive_integer",
+        "kind": 2,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "def receive_integer():\n    try:\n        data = request.get_json()\n        int_value = data.get('intValue')\n        print(f\"Received integer: {int_value}\")\n        return {'message': 'Integer received successfully'}, 200\n    except Exception as e:\n        return {'error': str(e)}, 500\ndef choice(int_choice):\n    if int_choice == 0 :",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "choice",
+        "kind": 2,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "def choice(int_choice):\n    if int_choice == 0 :\n        reset()\ndef main():\n    print(\"MAIN\")\n    # mlag()\n    # bgp()\n   # vxlan()\n    evpn()\n    # reponse = mlag()",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "def main():\n    print(\"MAIN\")\n    # mlag()\n    # bgp()\n   # vxlan()\n    evpn()\n    # reponse = mlag()\n    # if reponse :\n    #     choice = input(\"Transofrm the Lab to BGP lab ? Y/N\")\n    #     if choice == \"Y\":",
+        "detail": "python.api",
         "documentation": {}
     },
     {
         "label": "app",
         "kind": 5,
-        "importPath": "Frontend.src.tools.api",
-        "description": "Frontend.src.tools.api",
-        "peekOfCode": "app = Flask(__name__)\n@app.route('/api/hello')\ndef hello():\n    return jsonify({'message': 'Hello from Flask!'})\nif __name__ == '__main__':\n    app.run(debug=True)",
-        "detail": "Frontend.src.tools.api",
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app)\n@app.route('/python/post', methods=['POST'])\ndef receive_integer():\n    try:\n        data = request.get_json()\n        int_value = data.get('intValue')\n        print(f\"Received integer: {int_value}\")\n        return {'message': 'Integer received successfully'}, 200\n    except Exception as e:",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "ssh_scp_files",
+        "kind": 2,
+        "importPath": "python.reset",
+        "description": "python.reset",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    # ssh.load_system_host_keys()\n    # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) \n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")",
+        "detail": "python.reset",
+        "documentation": {}
+    },
+    {
+        "label": "execute_scp_command",
+        "kind": 2,
+        "importPath": "python.reset",
+        "description": "python.reset",
+        "peekOfCode": "def execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-2.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-3.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-4.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.29\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-1.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.30\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-2.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.31\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-3.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.32\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-4.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.33\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-5.txt\", \"/home/cvpadmin/\")",
+        "detail": "python.reset",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "python.reset",
+        "description": "python.reset",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef reset():\n    execute_scp_command(\"cvpadmin\" , \"cvpadmin\")",
+        "detail": "python.reset",
+        "documentation": {}
+    },
+    {
+        "label": "reset",
+        "kind": 2,
+        "importPath": "python.reset",
+        "description": "python.reset",
+        "peekOfCode": "def reset():\n    execute_scp_command(\"cvpadmin\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/1/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/2/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/3/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/4/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml\")",
+        "detail": "python.reset",
         "documentation": {}
     }
 ]

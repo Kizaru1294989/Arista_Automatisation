@@ -1,20 +1,53 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { ButtonTarif } from '../../ButtonTarif/ButtonTarif';
+import { useState } from 'react';
+import { useTheme } from '@mui/material/styles';
 
 export const HomeCard = () => {
+    const theme = useTheme();
+    const [response, setResponse] = useState(null);
+    const [error, setError] = useState(null);
+    const [start, setStart] = useState(null);
+
+
+    const postData = async () => {
+
+        try {
+          const intValue = 42; // Par exemple, vous pouvez utiliser n'importe quelle valeur entière ici
+          const res = await fetch('http://127.0.0.1:5000/python/post', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ intValue }) // Convertit l'entier en JSON pour l'envoyer
+          });
+    
+          if (!res.ok) {
+            throw new Error('Network response was not ok');
+          }
+    
+          const data = await res.json();
+          setResponse(data.message);
+        } catch (error) {
+          setError(error.message);
+        }
+      };
     return (
       <>
        
-            <CardContent style={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography color={'white'} component="div" variant="h3">
-                    Automatisation Arista Labs
+            <CardContent style={{ display: 'flex', flexDirection: 'column', width : '100%' }}>
+                <Typography color={'white'} component="div" variant="h4">
+                    Automatisation Arista Labs 
                 </Typography>
+                
                 <a href='http://10.43.192.129/'>
-                    Lab Eve Ng http://10.43.192.129/
+                    10.43.192.129
                 </a>
                 <Typography color={'white'} variant="subtitle1" component="div">
-                    Python , Ansible
+                MLAG / BGP / VXLAN-EVPN-L2
                 </Typography>
                 <Typography color={'white'} variant="subtitle1" component="div">
                     Username : cvpadmin
@@ -22,10 +55,13 @@ export const HomeCard = () => {
                 <Typography color={'white'} variant="subtitle1" component="div">
                     Password : Exaprobe1234
                 </Typography>
+                <Typography color={'white'} variant="subtitle1" component="div">
+                
+                </Typography>
             </CardContent>
 
             <CardContent style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' , justifyContent : 'center' , alignItems : 'center' }}>
-                <div style={{ flex: '1 0 50%' }}>
+                <div style={{ flex: '0 0 100%' }}>
                     <Typography color={'white'} variant="subtitle1" component="div">
                         4 Spines
                     </Typography>
@@ -43,7 +79,7 @@ export const HomeCard = () => {
                     </Typography>
                 </div>
 
-                <div style={{ flex: '0 0 50%' }}>
+                <div style={{ flex: '0 0 100%' }}>
                     <Typography color={'white'} variant="subtitle1" component="div">
                         8 Leafs
                     </Typography>
@@ -89,6 +125,13 @@ export const HomeCard = () => {
                         - 4 : <a href="http://10.43.192.40/">10.43.192.40</a>
                     </Typography>
                 </div>
+                <div style={{ marginTop : '20px'}}>
+                <ButtonTarif onClick={postData} Text={"Start Lab"}/>
+                {error && <p>Error: {error}</p>}
+                {response && <p>Response from Server: {response}</p>}
+                </div>
+ {/* cloud vision LAB guide( fiche explicative ) une option pour tout faire et une option pour laisser un seul leaf non config     */}
+
 
             </CardContent>
             </>
