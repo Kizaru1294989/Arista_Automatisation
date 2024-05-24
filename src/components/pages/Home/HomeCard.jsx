@@ -3,38 +3,12 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { ButtonTarif } from '../../ButtonTarif/ButtonTarif';
 import { useState } from 'react';
-import { useTheme } from '@mui/material/styles';
+import { SlideDialog } from '../../Dialog/SlideDialog';
+import InfoTips from './InfoTips';
+import { SlideDialogLab } from '../../Dialog/SlideDialogLab';
 
 export const HomeCard = () => {
-    const theme = useTheme();
-    const [response, setResponse] = useState(null);
-    const [error, setError] = useState(null);
-    const [start, setStart] = useState(null);
 
-
-    const postData = async () => {
-
-        try {
-          const intValue = 42; // Par exemple, vous pouvez utiliser n'importe quelle valeur entière ici
-          const res = await fetch('http://127.0.0.1:5000/python/post', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({ intValue }) // Convertit l'entier en JSON pour l'envoyer
-          });
-    
-          if (!res.ok) {
-            throw new Error('Network response was not ok');
-          }
-    
-          const data = await res.json();
-          setResponse(data.message);
-        } catch (error) {
-          setError(error.message);
-        }
-      };
     return (
       <>
        
@@ -46,6 +20,7 @@ export const HomeCard = () => {
                 <a href='http://10.43.192.129/'>
                     10.43.192.129
                 </a>
+            
                 <Typography color={'white'} variant="subtitle1" component="div">
                 MLAG / BGP / VXLAN-EVPN-L2
                 </Typography>
@@ -54,9 +29,6 @@ export const HomeCard = () => {
                 </Typography>
                 <Typography color={'white'} variant="subtitle1" component="div">
                     Password : Exaprobe1234
-                </Typography>
-                <Typography color={'white'} variant="subtitle1" component="div">
-                
                 </Typography>
             </CardContent>
 
@@ -108,7 +80,7 @@ export const HomeCard = () => {
                         - 8 : <a href="http://10.43.192.36/">10.43.192.36</a>
                     </Typography>
                 </div>
-                <div style={{ flex: '1 0 50%' }}>
+                <div style={{ flex: '0 0 100%' }}>
                     <Typography color={'white'} variant="subtitle1" component="div">
                         4 Host
                     </Typography>
@@ -124,15 +96,17 @@ export const HomeCard = () => {
                     <Typography color={'white'} variant="subtitle1" component="div">
                         - 4 : <a href="http://10.43.192.40/">10.43.192.40</a>
                     </Typography>
+                    
                 </div>
-                <div style={{ marginTop : '20px'}}>
+                
+              {/*   <div style={{ marginTop : '5px' , marginBottom : '10px'}}>
                 <ButtonTarif onClick={postData} Text={"Start Lab"}/>
                 {error && <p>Error: {error}</p>}
                 {response && <p>Response from Server: {response}</p>}
-                </div>
+                </div>  */}
+                <SlideDialogLab />
  {/* cloud vision LAB guide( fiche explicative ) une option pour tout faire et une option pour laisser un seul leaf non config     */}
-
-
+                <SlideDialog/>
             </CardContent>
             </>
     )
