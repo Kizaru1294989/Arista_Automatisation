@@ -2,7 +2,7 @@ import * as React  from 'react';
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import { CardContent } from '@mui/material';
-import YourImage from '../../../assets/img/MLAG_schema.png';
+import MLAG from '../../../assets/img/MLAG_schema.png';
 import HomeCard from './HomeCard';
 
 export default function MediaControlCard() {
@@ -20,7 +20,7 @@ export default function MediaControlCard() {
           <CardContent sx={{ backgroundColor : 'black'}}>
             <Grid>
               <h1 style={{ color : 'white'}}>Lab Arista étape I : MLAG</h1>
-              <img src={YourImage} alt="Votre Image" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+              <img src={MLAG} alt="Votre Image" style={{ maxWidth: '100%', maxHeight: '100%' }} />
             </Grid>
           </CardContent>
         </Card>

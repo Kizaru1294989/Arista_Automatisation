@@ -5,38 +5,52 @@ import logging
 import os
 import subprocess
 import paramiko
+import time
 
 def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):
     logging.info("In ssh_scp_files() method, copying files to the server")
     ssh = SSHClient()
-    # ssh.load_system_host_keys()
-    # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) 
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)
 
     with SCPClient(ssh.get_transport()) as scp:
         scp.put(source_volume, recursive=True, remote_path=destination_volume)
 
 def execute_scp_command(password, user):
-    ssh_scp_files("10.43.192.25", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.26", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-2.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.27", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-3.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.28", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-4.txt", "/home/cvpadmin/")
+    # print("SPINE 1")
+    # ssh_scp_files("10.43.192.25", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/1/conf.txt", "/home/cvpadmin/")
+    # print("SPINE 2")
+    # ssh_scp_files("10.43.192.26", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/2/conf.txt", "/home/cvpadmin/")
+    # print("SPINE 3")
+    # ssh_scp_files("10.43.192.27", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/3/conf.txt", "/home/cvpadmin/")
+    # print("SPINE 4")
+    # ssh_scp_files("10.43.192.28", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/4/conf.txt", "/home/cvpadmin/")
 
-    ssh_scp_files("10.43.192.29", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-1.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.30", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-2.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.31", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-3.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.32", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-4.txt", "/home/cvpadmin/")
-
-    ssh_scp_files("10.43.192.33", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-5.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.34", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-6.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.35", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-7.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.36", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-8.txt", "/home/cvpadmin/")
-
-    ssh_scp_files("10.43.192.37", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Host/Leaf-5.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.38", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Host/Leaf-6.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.39", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Host/Leaf-7.txt", "/home/cvpadmin/")
-    ssh_scp_files("10.43.192.40", user, password, "/home/rais/Arista_Automatisation/usb/basic-config/Host/Leaf-8.txt", "/home/cvpadmin/")
-# /home/rais/Arista_Automatisation/Backend/usb/basic-config/Host/Host-1.txt
+    # print("LEAF 1")
+    # ssh_scp_files("10.43.192.29", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/1/conf.txt", "/home/cvpadmin/")
+    # print("LEAF 2")
+    # ssh_scp_files("10.43.192.30", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/2/conf.txt", "/home/cvpadmin/")
+    # print("LEAF 3")
+    # ssh_scp_files("10.43.192.31", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/3/conf.txt", "/home/cvpadmin/")
+    # print("LEAF 4")
+    # ssh_scp_files("10.43.192.32", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/4/conf.txt", "/home/cvpadmin/")
+    # print("LEAF 5")
+    # ssh_scp_files("10.43.192.33", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/5/conf.txt", "/home/cvpadmin/")
+    # print("LEAF 6")
+    # ssh_scp_files("10.43.192.34", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/6/conf.txt", "/home/cvpadmin/")
+    # print("LEAF 7")
+    # ssh_scp_files("10.43.192.35", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/7/conf.txt", "/home/cvpadmin/")
+    # print("LEAF 8")
+    # ssh_scp_files("10.43.192.36", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/8/conf.txt", "/home/cvpadmin/")
+    
+    print("HOST 1")
+    ssh_scp_files("10.43.192.37", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Host/1/conf.txt", "/home/cvpadmin/")
+    print("HOST 2")
+    ssh_scp_files("10.43.192.38", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Host/2/conf.txt", "/home/cvpadmin/")
+    print("HOST 3")
+    ssh_scp_files("10.43.192.39", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Host/3/conf.txt", "/home/cvpadmin/")
+    print("HOST 4")
+    ssh_scp_files("10.43.192.40", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Host/4/conf.txt", "/home/cvpadmin/")
 
 def run_ansible_playbook(playbook_path):
     os.chdir(os.path.dirname(playbook_path))
@@ -46,25 +60,10 @@ def run_ansible_playbook(playbook_path):
         return False
     else:
         return True
-    
 
 def reset():
-    execute_scp_command("cvpadmin" , "cvpadmin")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/1/Leaf.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/2/Leaf.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/3/Leaf.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/4/Leaf.yml")
-    
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml")
-    
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/1/Spine.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/2/Spine.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/3/Spine.yml")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Spine/4/Spine.yml")
-
+    execute_scp_command("Exaprobe1234" , "cvpadmin")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml")
 
 if __name__ == '__main__':
     reset()
