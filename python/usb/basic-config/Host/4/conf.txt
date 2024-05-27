@@ -1,5 +1,5 @@
 ! Command: show running-config
-! device: Host1 (vEOS-lab, EOS-4.29.0.2F)
+! device: Host4 (vEOS-lab, EOS-4.29.0.2F)
 !
 ! boot system flash:/vEOS-lab.swi
 !

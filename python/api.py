@@ -17,8 +17,7 @@ def receive_lab_type():
         
         lab_type = data.get('lab')
         print(f"Received lab type: {lab_type}")
-
-        # Call the corresponding function and handle the response for mlag
+        
         response = call_lab_function(lab_type)
 
         if response is not None:
