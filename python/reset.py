@@ -62,8 +62,10 @@ def run_ansible_playbook(playbook_path):
         return True
 
 def reset():
-    execute_scp_command("Exaprobe1234" , "cvpadmin")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml")
+    # execute_scp_command("Exaprobe1234" , "cvpadmin")
+    # run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml")
+    return True
 
 if __name__ == '__main__':
     reset()

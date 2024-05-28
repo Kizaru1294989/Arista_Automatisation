@@ -10,7 +10,7 @@ export const Loading = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        height: "100vh",
+        height: "10vh",
       }}
     >
       <Stack sx={{ color: "#fdfdfd" }} spacing={2} direction="row">

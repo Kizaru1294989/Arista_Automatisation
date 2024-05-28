@@ -25,22 +25,6 @@
         "documentation": {}
     },
     {
-        "label": "stringify",
-        "importPath": "flatted",
-        "description": "flatted",
-        "isExtraImport": true,
-        "detail": "flatted",
-        "documentation": {}
-    },
-    {
-        "label": "parse",
-        "importPath": "flatted",
-        "description": "flatted",
-        "isExtraImport": true,
-        "detail": "flatted",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -101,6 +85,14 @@
         "documentation": {}
     },
     {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "CORS",
         "importPath": "flask_cors",
         "description": "flask_cors",
@@ -109,7 +101,7 @@
         "documentation": {}
     },
     {
-        "label": "*",
+        "label": "bgp",
         "importPath": "Labs.bgp",
         "description": "Labs.bgp",
         "isExtraImport": true,
@@ -117,7 +109,7 @@
         "documentation": {}
     },
     {
-        "label": "*",
+        "label": "vxlan",
         "importPath": "Labs.vxlan",
         "description": "Labs.vxlan",
         "isExtraImport": true,
@@ -125,7 +117,7 @@
         "documentation": {}
     },
     {
-        "label": "*",
+        "label": "evpn",
         "importPath": "Labs.evpn",
         "description": "Labs.evpn",
         "isExtraImport": true,
@@ -133,7 +125,7 @@
         "documentation": {}
     },
     {
-        "label": "*",
+        "label": "mlag",
         "importPath": "Labs.mlag",
         "description": "Labs.mlag",
         "isExtraImport": true,
@@ -146,6 +138,15 @@
         "description": "reset",
         "isExtraImport": true,
         "detail": "reset",
+        "documentation": {}
+    },
+    {
+        "label": "stat",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "stat",
+        "description": "stat",
+        "detail": "stat",
         "documentation": {}
     },
     {
@@ -172,177 +173,6 @@
         "importPath": "logging",
         "description": "logging",
         "detail": "logging",
-        "documentation": {}
-    },
-    {
-        "label": "_Known",
-        "kind": 6,
-        "importPath": "Frontend.node_modules.flatted.python.flatted",
-        "description": "Frontend.node_modules.flatted.python.flatted",
-        "peekOfCode": "class _Known:\n    def __init__(self):\n        self.key = []\n        self.value = []\nclass _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    keys = []\n    i = 0",
-        "detail": "Frontend.node_modules.flatted.python.flatted",
-        "documentation": {}
-    },
-    {
-        "label": "_String",
-        "kind": 6,
-        "importPath": "Frontend.node_modules.flatted.python.flatted",
-        "description": "Frontend.node_modules.flatted.python.flatted",
-        "peekOfCode": "class _String:\n    def __init__(self, value):\n        self.value = value\ndef _array_keys(value):\n    keys = []\n    i = 0\n    for _ in value:\n        keys.append(i)\n        i += 1\n    return keys",
-        "detail": "Frontend.node_modules.flatted.python.flatted",
-        "documentation": {}
-    },
-    {
-        "label": "parse",
-        "kind": 2,
-        "importPath": "Frontend.node_modules.flatted.python.flatted",
-        "description": "Frontend.node_modules.flatted.python.flatted",
-        "peekOfCode": "def parse(value, *args, **kwargs):\n    json = _json.loads(value, *args, **kwargs)\n    wrapped = []\n    for value in json:\n        wrapped.append(_wrap(value))\n    input = []\n    for value in wrapped:\n        if isinstance(value, _String):\n            input.append(value.value)\n        else:",
-        "detail": "Frontend.node_modules.flatted.python.flatted",
-        "documentation": {}
-    },
-    {
-        "label": "stringify",
-        "kind": 2,
-        "importPath": "Frontend.node_modules.flatted.python.flatted",
-        "description": "Frontend.node_modules.flatted.python.flatted",
-        "peekOfCode": "def stringify(value, *args, **kwargs):\n    known = _Known()\n    input = []\n    output = []\n    i = int(_index(known, input, value))\n    while i < len(input):\n        output.append(_transform(known, input, input[i]))\n        i += 1\n    return _json.dumps(output, *args, **kwargs)",
-        "detail": "Frontend.node_modules.flatted.python.flatted",
-        "documentation": {}
-    },
-    {
-        "label": "stringify",
-        "kind": 2,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "def stringify(value):\n    return _stringify(value, separators=(',', ':'))\nassert stringify([None, None]) == '[[null,null]]'\na = []\no = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "a",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "a = []\no = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o = {}\nassert stringify(a) == '[[]]'\nassert stringify(o) == '[{}]'\na.append(a)\no['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o['o']",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o['o'] = o\nassert stringify(a) == '[[\"0\"]]'\nassert stringify(o) == '[{\"o\":\"0\"}]'\nb = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)\na.append('two')\na.append(True)\no['one'] = 1\no['two'] = 'two'",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "b",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "b = parse(stringify(a))\nassert isinstance(b, list) and b[0] == b\na.append(1)\na.append('two')\na.append(True)\no['one'] = 1\no['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o['one']",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o['one'] = 1\no['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o['two']",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o['two'] = 'two'\no['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o['three']",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o['three'] = True\nassert stringify(a) == '[[\"0\",1,\"1\",true],\"two\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true},\"two\"]'\na.append(o)\no['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])\no['test'] = {'test': 'OK'}",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o['a']",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o['a'] = a\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\"}]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\"},\"two\",[\"2\",1,\"1\",true,\"0\"]]'\na.append({'test': 'OK'})\na.append([1, 2, 3])\no['test'] = {'test': 'OK'}\no['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o['test']",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o['test'] = {'test': 'OK'}\no['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o['array']",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o['array'] = [1, 2, 3]\nassert stringify(a) == '[[\"0\",1,\"1\",true,\"2\",\"3\",\"4\"],\"two\",{\"o\":\"2\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"0\",\"test\":\"3\",\"array\":\"4\"},{\"test\":\"5\"},[1,2,3],\"OK\"]'\nassert stringify(o) == '[{\"o\":\"0\",\"one\":1,\"two\":\"1\",\"three\":true,\"a\":\"2\",\"test\":\"3\",\"array\":\"4\"},\"two\",[\"2\",1,\"1\",true,\"0\",\"3\",\"4\"],{\"test\":\"5\"},[1,2,3],\"OK\"]'\na2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "a2",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "a2 = parse(stringify(a));\no2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "o2",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "o2 = parse(stringify(o));\nassert a2[0] == a2\nassert o2['o'] == o2\nassert a2[1] == 1 and a2[2] == 'two' and a2[3] == True and isinstance(a2[4], dict)\nassert a2[4] == a2[4]['o'] and a2 == a2[4]['o']['a']\nstr = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "str",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "str = parse('[{\"prop\":\"1\",\"a\":\"2\",\"b\":\"3\"},{\"value\":123},[\"4\",\"5\"],{\"e\":\"6\",\"t\":\"7\",\"p\":4},{},{\"b\":\"8\"},\"f\",{\"a\":\"9\"},[\"10\"],\"sup\",{\"a\":1,\"d\":2,\"c\":\"7\",\"z\":\"11\",\"h\":1},{\"g\":2,\"a\":\"7\",\"b\":\"12\",\"f\":6},{\"r\":4,\"u\":\"7\",\"c\":5}]')\nassert str['b']['t']['a'] == 'sup' and str['a'][1]['b'][0]['c'] == str['b']['t']\noo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
-        "detail": "Frontend.node_modules.flatted.python.test",
-        "documentation": {}
-    },
-    {
-        "label": "oo",
-        "kind": 5,
-        "importPath": "Frontend.node_modules.flatted.python.test",
-        "description": "Frontend.node_modules.flatted.python.test",
-        "peekOfCode": "oo = parse('[{\"a\":\"1\",\"b\":\"0\",\"c\":\"2\"},{\"aa\":\"3\"},{\"ca\":\"4\",\"cb\":\"5\",\"cc\":\"6\",\"cd\":\"7\",\"ce\":\"8\",\"cf\":\"9\"},{\"aaa\":\"10\"},{\"caa\":\"4\"},{\"cba\":\"5\"},{\"cca\":\"2\"},{\"cda\":\"4\"},\"value2\",\"value3\",\"value1\"]');\nassert oo['a']['aa']['aaa'] == 'value1' and oo == oo['b'] and oo['c']['ca']['caa'] == oo['c']['ca']\nprint('OK')",
-        "detail": "Frontend.node_modules.flatted.python.test",
         "documentation": {}
     },
     {
@@ -575,7 +405,7 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Leef/peer_link_2/Leaf_3/Leaf3.yml\")\n    print(\"LEAF_4\")",
+        "peekOfCode": "def Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_2/Leaf_3/Leaf3.yml\")\n    print(\"LEAF_4\")",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -584,7 +414,16 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def Spine_mlag():\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_2/Spine.yml\")\n    print(\"SPINE_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_3/Spine.yml\")\n    print(\"SPINE_4\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_4/Spine.yml\")\ndef mlag():",
+        "peekOfCode": "def Spine_mlag():\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_2/Spine.yml\")\n    print(\"SPINE_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_3/Spine.yml\")\n    print(\"SPINE_4\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_4/Spine.yml\")\ndef Host_mlag():",
+        "detail": "python.Labs.mlag",
+        "documentation": {}
+    },
+    {
+        "label": "Host_mlag",
+        "kind": 2,
+        "importPath": "python.Labs.mlag",
+        "description": "python.Labs.mlag",
+        "peekOfCode": "def Host_mlag():\n    print(\"HOST\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\ndef mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -593,7 +432,7 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True\n    else:\n        print(\"❌ Error : network unreachable\")\n        return False",
+        "peekOfCode": "def mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True\n    else:\n        print(\"❌ Error : network unreachable\")\n        return False",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -616,29 +455,65 @@
         "documentation": {}
     },
     {
-        "label": "receive_integer",
+        "label": "initialize_status_file",
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def receive_integer():\n    try:\n        data = request.get_json()\n        int_value = data.get('intValue')\n        print(f\"Received integer: {int_value}\")\n        return {'message': 'Integer received successfully'}, 200\n    except Exception as e:\n        return {'error': str(e)}, 500\ndef choice(int_choice):\n    if int_choice == 0 :",
+        "peekOfCode": "def initialize_status_file():\n    if not os.path.exists(STATUS_FILE):\n        with open(STATUS_FILE, 'w') as f:\n            json.dump({}, f)\n        os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef read_lab_status():\n    if not os.path.exists(STATUS_FILE):\n        initialize_status_file()\n    with open(STATUS_FILE, 'r') as f:\n        return json.load(f)",
         "detail": "python.api",
         "documentation": {}
     },
     {
-        "label": "choice",
+        "label": "read_lab_status",
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def choice(int_choice):\n    if int_choice == 0 :\n        reset()\ndef main():\n    print(\"MAIN\")\n    # mlag()\n    # bgp()\n   # vxlan()\n    evpn()\n    # reponse = mlag()",
+        "peekOfCode": "def read_lab_status():\n    if not os.path.exists(STATUS_FILE):\n        initialize_status_file()\n    with open(STATUS_FILE, 'r') as f:\n        return json.load(f)\ndef write_lab_status(lab_status):\n    with open(STATUS_FILE, 'w') as f:\n        json.dump(lab_status, f, indent=4)\n    os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef update_lab_status(lab_type, status):",
         "detail": "python.api",
         "documentation": {}
     },
     {
-        "label": "main",
+        "label": "write_lab_status",
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def main():\n    print(\"MAIN\")\n    # mlag()\n    # bgp()\n   # vxlan()\n    evpn()\n    # reponse = mlag()\n    # if reponse :\n    #     choice = input(\"Transofrm the Lab to BGP lab ? Y/N\")\n    #     if choice == \"Y\":",
+        "peekOfCode": "def write_lab_status(lab_status):\n    with open(STATUS_FILE, 'w') as f:\n        json.dump(lab_status, f, indent=4)\n    os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef update_lab_status(lab_type, status):\n    lab_status = read_lab_status()\n    lab_status[lab_type] = status\n    write_lab_status(lab_status)\n@app.route('/python/post', methods=['POST'])\ndef receive_lab_type():",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "update_lab_status",
+        "kind": 2,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "def update_lab_status(lab_type, status):\n    lab_status = read_lab_status()\n    lab_status[lab_type] = status\n    write_lab_status(lab_status)\n@app.route('/python/post', methods=['POST'])\ndef receive_lab_type():\n    try:\n        data = request.get_json()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "receive_lab_type",
+        "kind": 2,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "def receive_lab_type():\n    try:\n        data = request.get_json()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')\n        print(f\"Received lab type: {lab_type}\")\n        update_lab_status(lab_type, 'started')\n        response = call_lab_function(lab_type)\n        if response is not None:\n            update_lab_status(lab_type, 'finished')",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "call_lab_function",
+        "kind": 2,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        bgp()\n    elif lab_type == 'mlag':\n        response = mlag()\n        return response\n    elif lab_type == 'vxlan':\n        vxlan()\n    elif lab_type == 'evpn':\n        evpn()",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "delete_status_file",
+        "kind": 2,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "def delete_status_file():\n    if os.path.exists(STATUS_FILE):\n        os.remove(STATUS_FILE)\nif __name__ == '__main__':\n    initialize_status_file()\n    app.run(debug=True)",
         "detail": "python.api",
         "documentation": {}
     },
@@ -647,7 +522,16 @@
         "kind": 5,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "app = Flask(__name__)\nCORS(app)\n@app.route('/python/post', methods=['POST'])\ndef receive_integer():\n    try:\n        data = request.get_json()\n        int_value = data.get('intValue')\n        print(f\"Received integer: {int_value}\")\n        return {'message': 'Integer received successfully'}, 200\n    except Exception as e:",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app)\nSTATUS_FILE = '/home/rais/Arista_Automatisation/python/lab_status.json'\ndef initialize_status_file():\n    if not os.path.exists(STATUS_FILE):\n        with open(STATUS_FILE, 'w') as f:\n            json.dump({}, f)\n        os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef read_lab_status():\n    if not os.path.exists(STATUS_FILE):",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "STATUS_FILE",
+        "kind": 5,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "STATUS_FILE = '/home/rais/Arista_Automatisation/python/lab_status.json'\ndef initialize_status_file():\n    if not os.path.exists(STATUS_FILE):\n        with open(STATUS_FILE, 'w') as f:\n            json.dump({}, f)\n        os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef read_lab_status():\n    if not os.path.exists(STATUS_FILE):\n        initialize_status_file()\n    with open(STATUS_FILE, 'r') as f:",
         "detail": "python.api",
         "documentation": {}
     },
@@ -656,7 +540,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    # ssh.load_system_host_keys()\n    # ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) \n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
         "detail": "python.reset",
         "documentation": {}
     },
@@ -665,7 +549,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def execute_scp_command(password, user):\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-1.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-2.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-3.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Spine/Spine-4.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.29\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-1.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.30\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-2.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.31\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-3.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.32\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-4.txt\", \"/home/cvpadmin/\")\n    ssh_scp_files(\"10.43.192.33\", user, password, \"/home/rais/Arista_Automatisation/usb/basic-config/Leaf/Leaf-5.txt\", \"/home/cvpadmin/\")",
+        "peekOfCode": "def execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/1/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 2\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/2/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 3\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/3/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 4\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/4/conf.txt\", \"/home/cvpadmin/\")\n    print(\"LEAF 1\")",
         "detail": "python.reset",
         "documentation": {}
     },
@@ -674,7 +558,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef reset():\n    execute_scp_command(\"cvpadmin\" , \"cvpadmin\")",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef reset():\n    # execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")",
         "detail": "python.reset",
         "documentation": {}
     },
@@ -683,7 +567,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def reset():\n    execute_scp_command(\"cvpadmin\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/1/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/2/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/3/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/4/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/5/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/6/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/7/Leaf.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/Reset_basic_config/Leaf/8/Leaf.yml\")",
+        "peekOfCode": "def reset():\n    # execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\")\n    return True\nif __name__ == '__main__':\n    reset()",
         "detail": "python.reset",
         "documentation": {}
     }

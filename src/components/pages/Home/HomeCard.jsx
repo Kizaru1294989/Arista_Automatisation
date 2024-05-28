@@ -11,13 +11,12 @@ export const HomeCard = () => {
 
     return (
       <>
-       
             <CardContent style={{ display: 'flex', flexDirection: 'column', width : '100%' }}>
                 <Typography color={'white'} component="div" variant="h4">
                     Automatisation Arista Labs 
                 </Typography>
                 
-                <a href='http://10.43.192.129/'>
+                <a href='http://10.43.192.129/' target="_blank">
                     10.43.192.129
                 </a>
             
@@ -38,16 +37,17 @@ export const HomeCard = () => {
                         4 Spines
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 1 : <a href="http://10.43.192.25/">10.43.192.25</a>
+                    Spine 1 : <a href="http://10.43.192.129/html5/#/client/MzI3NzcAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.25</a>
+                    </Typography>
+
+                    <Typography color={'white'} variant="subtitle1" component="div">
+                    Spine  2 : <a href="http://10.43.192.129/html5/#/client/MzI3NzgAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.26</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 2 : <a href="http://10.43.192.26/">10.43.192.26</a>
+                    Spine   3 : <a href="http://10.43.192.129/html5/#/client/MzI3NzkAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.27</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 3 : <a href="http://10.43.192.27/">10.43.192.27</a>
-                    </Typography>
-                    <Typography color={'white'} variant="subtitle1" component="div">
-                        - 4 : <a href="http://10.43.192.28/">10.43.192.28</a>
+                    Spine   4 : <a href="http://10.43.192.129/html5/#/client/MzI3ODAAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.28</a>
                     </Typography>
                 </div>
 
@@ -56,56 +56,50 @@ export const HomeCard = () => {
                         8 Leafs
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 1 : <a href="http://10.43.192.29/">10.43.192.29</a>
+                        Leaf 1 : <a href="http://10.43.192.129/html5/#/client/MzI3NjkAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.29</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 2 : <a href="http://10.43.192.30/">10.43.192.30</a>
+                    Leaf  2 : <a href="http://10.43.192.129/html5/#/client/MzI3NzAAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.30</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 3 : <a href="http://10.43.192.31/">10.43.192.31</a>
+                    Leaf  3 : <a href="http://10.43.192.129/html5/#/client/MzI3NzEAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.31</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 4 : <a href="http://10.43.192.32/">10.43.192.32</a>
+                    Leaf   4 : <a href="http://10.43.192.129/html5/#/client/MzI3NzIAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.32</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 5 : <a href="http://10.43.192.33/">10.43.192.33</a>
+                    Leaf   5 : <a href="http://10.43.192.129/html5/#/client/MzI3NzMAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.33</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 6 : <a href="http://10.43.192.34/">10.43.192.34</a>
+                    Leaf  6 : <a href="http://10.43.192.129/html5/#/client/MzI3NzQAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.34</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 7 : <a href="http://10.43.192.35/">10.43.192.35</a>
+                    Leaf   7 : <a href="http://10.43.192.129/html5/#/client/MzI3NzUAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.35</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 8 : <a href="http://10.43.192.36/">10.43.192.36</a>
+                    Leaf  8 : <a href="http://10.43.192.129/html5/#/client/MzI3NzYAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.36</a>
                     </Typography>
                 </div>
                 <div style={{ flex: '0 0 100%' }}>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        4 Host
+                        4 Hosts
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 1 : <a href="http://10.43.192.37/">10.43.192.37</a>
+                    Host  1 : <a href="http://10.43.192.129/html5/#/client/MzI3ODMAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.37</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 2 : <a href="http://10.43.192.38/">10.43.192.38</a>
+                    Host   2 : <a href="http://10.43.192.129/html5/#/client/MzI3ODEAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.38</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 3 : <a href="http://10.43.192.39/">10.43.192.39</a>
+                    Host  3 : <a href="http://10.43.192.129/html5/#/client/MzI3ODIAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.39</a>
                     </Typography>
                     <Typography color={'white'} variant="subtitle1" component="div">
-                        - 4 : <a href="http://10.43.192.40/">10.43.192.40</a>
+                    Host  4 : <a href="http://10.43.192.129/html5/#/client/MzI3ODQAYwBteXNxbA==?token=7C4043A4B84D24289BE7FA530EDBB208B2154A0CA7E3B0FD3BC4D7B387EBE834" target="_blank">10.43.192.40</a>
                     </Typography>
                     
                 </div>
                 
-              {/*   <div style={{ marginTop : '5px' , marginBottom : '10px'}}>
-                <ButtonTarif onClick={postData} Text={"Start Lab"}/>
-                {error && <p>Error: {error}</p>}
-                {response && <p>Response from Server: {response}</p>}
-                </div>  */}
                 <SlideDialogLab />
- {/* cloud vision LAB guide( fiche explicative ) une option pour tout faire et une option pour laisser un seul leaf non config     */}
                 <SlideDialog/>
             </CardContent>
             </>
@@ -113,3 +107,4 @@ export const HomeCard = () => {
 }
 
 export default HomeCard;
+

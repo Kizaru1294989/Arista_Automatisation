@@ -34,7 +34,6 @@ def Leaf_mlag():
     print("LEAF_8")
     run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_4/Leaf_8/Leaf8.yml")
     
-    
 def Spine_mlag():
     print("SPINE_1")
     run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml")
@@ -44,7 +43,6 @@ def Spine_mlag():
     run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_3/Spine.yml")
     print("SPINE_4")
     run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_4/Spine.yml")
-    
     
 def Host_mlag():
     print("HOST")
