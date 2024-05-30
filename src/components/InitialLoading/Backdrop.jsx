@@ -8,22 +8,22 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import { Loading } from './Loading';
 
-export default function SimpleBackdrop({over , setOver, start, setStart, title, SendToFlask, response, handleAutomatiqueDialogClose , setLoadingDialog }) {
+export default function SimpleBackdrop({over , setOver, start, setStart, title, setOvererror, response, handleAutomatiqueDialogClose , overerror }) {
   useEffect(() => {
-    setLoadingDialog(true)
-    console.log("setLoadingDialog TRUE")
-    if (response) {
-      // setStart(false);
+    if (response == true) {
       setOver(true);
       handleAutomatiqueDialogClose();
-      console.log("lab finis");
+    }
+    if (response == false) {
+      setOvererror(true);
+      handleAutomatiqueDialogClose();
     }
   }, [response, setStart, handleAutomatiqueDialogClose]);
 
   return (
     <div>
       <Button onClick={() => setStart(true)}>{title}</Button>
-      {start && !over && (
+      {start && !over && !overerror &&  (
         <Backdrop
           sx={{  flexDirection : 'column', alignItems : 'center' ,color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={true}

@@ -2,12 +2,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { ButtonTarif } from '../../ButtonTarif/ButtonTarif';
-import { useState } from 'react';
 import { SlideDialog } from '../../Dialog/SlideDialog';
 import InfoTips from './InfoTips';
 import { SlideDialogLab } from '../../Dialog/SlideDialogLab';
+import React, { useState, useEffect } from 'react';
 
-export const HomeCard = () => {
+export const HomeCard = ({setLoadingDialog}) => {
 
     return (
       <>
@@ -99,7 +99,7 @@ export const HomeCard = () => {
                     
                 </div>
                 
-                <SlideDialogLab />
+                <SlideDialogLab setLoadingDialog={setLoadingDialog}  />
                 <SlideDialog/>
             </CardContent>
             </>

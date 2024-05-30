@@ -1,4 +1,15 @@
 
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Utilisation de box-sizing border-box pour inclure les paddings et bordures dans les dimensions */
+* {
+  box-sizing: border-box;
+}
 .background{
     
     position: fixed;

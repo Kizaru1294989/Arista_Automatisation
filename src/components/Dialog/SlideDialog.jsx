@@ -50,7 +50,7 @@ export const SlideDialog = () => {
           onClose={handleClose}
           aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle><h1>{"Automatisation Arista"}</h1></DialogTitle>
+          <DialogTitle><strong>{"Automatisation Arista"}</strong></DialogTitle>
           <DialogContent>
 
     <p>Ce laboratoire pratique a pour objectif d'automatiser la configuration de protocoles réseau avancés tels que MLAG (Multi-Chassis Link Aggregation), BGP (Border Gateway Protocol), et VXLAN EVPN (Virtual Extensible LAN Ethernet VPN) L2 sur des switchs Arista. Il est conçu pour permettre aux participants de se familiariser avec les techniques et les outils nécessaires pour déployer et gérer ces protocoles de manière efficace et automatisée.</p>

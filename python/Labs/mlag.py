@@ -1,5 +1,6 @@
 import os
 import subprocess
+from database import update_record_device
 
 
 def run_ansible_playbook(playbook_path):
@@ -16,6 +17,11 @@ def Leaf_mlag():
     print("MLAG PEER LINK - LEAF-1 <=> LEAF-2 \n")
     print("LEAF_1")
     run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml")
+    # data = {
+    #         'statut': 'started',       
+    #         'id': 1                
+    #     }
+    # update_record_device(data,"leaf1")
     print("LEAF_2")
     run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml")
     print("MLAG PEER LINK - LEAF-3 <=> LEAF-4 \n")
@@ -50,7 +56,8 @@ def Host_mlag():
     
 def mlag():
     print("✅ Connectivity test")
-    if run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml"):
+    test = run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml")
+    if test:
         print("✅")
         Leaf_mlag()
         Spine_mlag()

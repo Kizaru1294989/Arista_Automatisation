@@ -69,6 +69,22 @@
         "documentation": {}
     },
     {
+        "label": "update_record_device",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",
@@ -147,6 +163,15 @@
         "importPath": "stat",
         "description": "stat",
         "detail": "stat",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
         "documentation": {}
     },
     {
@@ -405,7 +430,7 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    print(\"MLAG PEER LINK - LEAF-3 <=> LEAF-4 \\n\")\n    print(\"LEAF_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_2/Leaf_3/Leaf3.yml\")\n    print(\"LEAF_4\")",
+        "peekOfCode": "def Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    # data = {\n    #         'statut': 'started',       \n    #         'id': 1                \n    #     }\n    # update_record_device(data,\"leaf1\")\n    print(\"LEAF_2\")",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -423,7 +448,7 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def Host_mlag():\n    print(\"HOST\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\ndef mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True",
+        "peekOfCode": "def Host_mlag():\n    print(\"HOST\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\ndef mlag():\n    print(\"✅ Connectivity test\")\n    test = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\")\n    if test:\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -432,7 +457,7 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def mlag():\n    print(\"✅ Connectivity test\")\n    if run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\"):\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True\n    else:\n        print(\"❌ Error : network unreachable\")\n        return False",
+        "peekOfCode": "def mlag():\n    print(\"✅ Connectivity test\")\n    test = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\")\n    if test:\n        print(\"✅\")\n        Leaf_mlag()\n        Spine_mlag()\n        return True\n    else:\n        print(\"❌ Error : network unreachable\")",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -455,47 +480,20 @@
         "documentation": {}
     },
     {
-        "label": "initialize_status_file",
-        "kind": 2,
-        "importPath": "python.api",
-        "description": "python.api",
-        "peekOfCode": "def initialize_status_file():\n    if not os.path.exists(STATUS_FILE):\n        with open(STATUS_FILE, 'w') as f:\n            json.dump({}, f)\n        os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef read_lab_status():\n    if not os.path.exists(STATUS_FILE):\n        initialize_status_file()\n    with open(STATUS_FILE, 'r') as f:\n        return json.load(f)",
-        "detail": "python.api",
-        "documentation": {}
-    },
-    {
-        "label": "read_lab_status",
-        "kind": 2,
-        "importPath": "python.api",
-        "description": "python.api",
-        "peekOfCode": "def read_lab_status():\n    if not os.path.exists(STATUS_FILE):\n        initialize_status_file()\n    with open(STATUS_FILE, 'r') as f:\n        return json.load(f)\ndef write_lab_status(lab_status):\n    with open(STATUS_FILE, 'w') as f:\n        json.dump(lab_status, f, indent=4)\n    os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef update_lab_status(lab_type, status):",
-        "detail": "python.api",
-        "documentation": {}
-    },
-    {
-        "label": "write_lab_status",
-        "kind": 2,
-        "importPath": "python.api",
-        "description": "python.api",
-        "peekOfCode": "def write_lab_status(lab_status):\n    with open(STATUS_FILE, 'w') as f:\n        json.dump(lab_status, f, indent=4)\n    os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef update_lab_status(lab_type, status):\n    lab_status = read_lab_status()\n    lab_status[lab_type] = status\n    write_lab_status(lab_status)\n@app.route('/python/post', methods=['POST'])\ndef receive_lab_type():",
-        "detail": "python.api",
-        "documentation": {}
-    },
-    {
-        "label": "update_lab_status",
-        "kind": 2,
-        "importPath": "python.api",
-        "description": "python.api",
-        "peekOfCode": "def update_lab_status(lab_type, status):\n    lab_status = read_lab_status()\n    lab_status[lab_type] = status\n    write_lab_status(lab_status)\n@app.route('/python/post', methods=['POST'])\ndef receive_lab_type():\n    try:\n        data = request.get_json()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')",
-        "detail": "python.api",
-        "documentation": {}
-    },
-    {
         "label": "receive_lab_type",
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def receive_lab_type():\n    try:\n        data = request.get_json()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')\n        print(f\"Received lab type: {lab_type}\")\n        update_lab_status(lab_type, 'started')\n        response = call_lab_function(lab_type)\n        if response is not None:\n            update_lab_status(lab_type, 'finished')",
+        "peekOfCode": "def receive_lab_type():\n    try:\n        data = request.get_json()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')\n        print(f\"Received lab type: {lab_type}\")\n        # update_lab_status(lab_type, 'started')\n        data = {\n            'statut': 'started',  \n            'lab': lab_type,     ",
+        "detail": "python.api",
+        "documentation": {}
+    },
+    {
+        "label": "send_lab_status",
+        "kind": 2,
+        "importPath": "python.api",
+        "description": "python.api",
+        "peekOfCode": "def send_lab_status():\n    try:    \n            statut , labs = read_records()\n            print(statut)\n            print(labs)\n            return {'statut': statut, 'labs': labs}, 200\n    except Exception as e:\n        return {'error': str(e)}, 500\n# @app.route('/python/device', methods=['get'])\n# def get_data():",
         "detail": "python.api",
         "documentation": {}
     },
@@ -504,16 +502,7 @@
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        bgp()\n    elif lab_type == 'mlag':\n        response = mlag()\n        return response\n    elif lab_type == 'vxlan':\n        vxlan()\n    elif lab_type == 'evpn':\n        evpn()",
-        "detail": "python.api",
-        "documentation": {}
-    },
-    {
-        "label": "delete_status_file",
-        "kind": 2,
-        "importPath": "python.api",
-        "description": "python.api",
-        "peekOfCode": "def delete_status_file():\n    if os.path.exists(STATUS_FILE):\n        os.remove(STATUS_FILE)\nif __name__ == '__main__':\n    initialize_status_file()\n    app.run(debug=True)",
+        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        bgp()\n    elif lab_type == 'mlag':\n        #     data = {\n#         \"message\": \"Bonjour depuis le serveur!\"\n#     }\n#     return jsonify(data)\n        response = mlag()\n        return response",
         "detail": "python.api",
         "documentation": {}
     },
@@ -522,17 +511,35 @@
         "kind": 5,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "app = Flask(__name__)\nCORS(app)\nSTATUS_FILE = '/home/rais/Arista_Automatisation/python/lab_status.json'\ndef initialize_status_file():\n    if not os.path.exists(STATUS_FILE):\n        with open(STATUS_FILE, 'w') as f:\n            json.dump({}, f)\n        os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef read_lab_status():\n    if not os.path.exists(STATUS_FILE):",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app)\n@app.route('/python/post', methods=['POST'])\ndef receive_lab_type():\n    try:\n        data = request.get_json()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')\n        print(f\"Received lab type: {lab_type}\")\n        # update_lab_status(lab_type, 'started')",
         "detail": "python.api",
         "documentation": {}
     },
     {
-        "label": "STATUS_FILE",
-        "kind": 5,
-        "importPath": "python.api",
-        "description": "python.api",
-        "peekOfCode": "STATUS_FILE = '/home/rais/Arista_Automatisation/python/lab_status.json'\ndef initialize_status_file():\n    if not os.path.exists(STATUS_FILE):\n        with open(STATUS_FILE, 'w') as f:\n            json.dump({}, f)\n        os.chmod(STATUS_FILE, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)\ndef read_lab_status():\n    if not os.path.exists(STATUS_FILE):\n        initialize_status_file()\n    with open(STATUS_FILE, 'r') as f:",
-        "detail": "python.api",
+        "label": "update_record",
+        "kind": 2,
+        "importPath": "python.database",
+        "description": "python.database",
+        "peekOfCode": "def update_record(data):\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.lab'\n    update_query = f\"\"\"",
+        "detail": "python.database",
+        "documentation": {}
+    },
+    {
+        "label": "update_record_device",
+        "kind": 2,
+        "importPath": "python.database",
+        "description": "python.database",
+        "peekOfCode": "def update_record_device(data,device):\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.device'\n    update_query = f\"\"\"",
+        "detail": "python.database",
+        "documentation": {}
+    },
+    {
+        "label": "read_records",
+        "kind": 2,
+        "importPath": "python.database",
+        "description": "python.database",
+        "peekOfCode": "def read_records():\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.lab'\n    select_query = f\"SELECT statut, lab FROM {table}\"",
+        "detail": "python.database",
         "documentation": {}
     },
     {
