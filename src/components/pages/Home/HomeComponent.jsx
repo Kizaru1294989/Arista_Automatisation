@@ -12,7 +12,7 @@ const labs = [
 ];
 
 export default function MediaControlCard({ lab, status, setLoadingDialog, formValue }) {
-  const [currentLabIndex, setCurrentLabIndex] = useState(0);
+  const [currentLabIndex, setCurrentLabIndex] = useState(lab === 'bgp' ? 1 : 0); // Set initial lab index based on the value of lab
 
   const handleNextLab = () => {
     setCurrentLabIndex((prevIndex) => (prevIndex + 1) % labs.length);
@@ -40,7 +40,11 @@ export default function MediaControlCard({ lab, status, setLoadingDialog, formVa
             </Grid>
             <Grid>
               <h1 style={{ color: 'white' }}>Etape actuelle : {lab + " LAB " + status}</h1>
-              <img src={labs[currentLabIndex].image} alt="Lab Image" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+              {lab === 'bgp' ? (
+                <img src={BGP} alt="BGP Lab Image" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+              ) : (
+                <img src={MLAG} alt="MLAG Lab Image" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+              )}
             </Grid>
             <Grid sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
               <Button variant="contained" color="primary" onClick={handlePrevLab}>

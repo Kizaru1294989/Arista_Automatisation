@@ -25,21 +25,12 @@
         "documentation": {}
     },
     {
-        "label": "os",
+        "label": "pexpect",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
+        "importPath": "pexpect",
+        "description": "pexpect",
+        "detail": "pexpect",
         "documentation": {}
     },
     {
@@ -68,37 +59,19 @@
         "documentation": {}
     },
     {
-        "label": "time",
-        "kind": 6,
+        "label": "SSHClient",
+        "importPath": "paramiko",
+        "description": "paramiko",
         "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
+        "detail": "paramiko",
         "documentation": {}
     },
     {
-        "label": "insert_record_device",
-        "importPath": "database",
-        "description": "database",
+        "label": "SCPClient",
+        "importPath": "scp",
+        "description": "scp",
         "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "pexpect",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pexpect",
-        "description": "pexpect",
-        "detail": "pexpect",
+        "detail": "scp",
         "documentation": {}
     },
     {
@@ -124,6 +97,49 @@
         "importPath": "logging",
         "description": "logging",
         "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "insert_record_device",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
         "documentation": {}
     },
     {
@@ -213,6 +229,14 @@
         "description": "MLAG.mlag_file",
         "isExtraImport": true,
         "detail": "MLAG.mlag_file",
+        "documentation": {}
+    },
+    {
+        "label": "bgp_file",
+        "importPath": "BGP.bgp_file",
+        "description": "BGP.bgp_file",
+        "isExtraImport": true,
+        "detail": "BGP.bgp_file",
         "documentation": {}
     },
     {
@@ -396,6 +420,42 @@
         "documentation": {}
     },
     {
+        "label": "ssh_scp_files",
+        "kind": 2,
+        "importPath": "python.BGP.bgp_file",
+        "description": "python.BGP.bgp_file",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "detail": "python.BGP.bgp_file",
+        "documentation": {}
+    },
+    {
+        "label": "execute_scp_command",
+        "kind": 2,
+        "importPath": "python.BGP.bgp_file",
+        "description": "python.BGP.bgp_file",
+        "peekOfCode": "def execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 2\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/2/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 3\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/3/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 4\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/4/conf.txt\", \"/home/cvpadmin/\")\n    print(\"LEAF 1\")",
+        "detail": "python.BGP.bgp_file",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "python.BGP.bgp_file",
+        "description": "python.BGP.bgp_file",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef bgp_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")",
+        "detail": "python.BGP.bgp_file",
+        "documentation": {}
+    },
+    {
+        "label": "bgp_file",
+        "kind": 2,
+        "importPath": "python.BGP.bgp_file",
+        "description": "python.BGP.bgp_file",
+        "peekOfCode": "def bgp_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return True\nif __name__ == '__main__':\n    bgp_file()",
+        "detail": "python.BGP.bgp_file",
+        "documentation": {}
+    },
+    {
         "label": "run_ansible_playbook",
         "kind": 2,
         "importPath": "python.Labs.bgp",
@@ -409,7 +469,7 @@
         "kind": 2,
         "importPath": "python.Labs.bgp",
         "description": "python.Labs.bgp",
-        "peekOfCode": "def bgp():\n    print(\"BGP\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/connectivity/get-version.yml\")\n    print(\"NO MLAG SPINE\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/NO_MLAG/no_mlag_spine.yml\")\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")    \n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/yml/Ansible/BGP/Spine/Spine_2/Spine.yml\")\n    print(\"SPINE_3\") ",
+        "peekOfCode": "def bgp():\n    print(\"BGP\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/BGP/NO_MLAG/no_mlag_spine.yml\")\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/BGP/Spine/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")    \n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/BGP/Spine/Spine_2/Spine.yml\")\n    print(\"SPINE_3\") \n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/BGP/Spine/Spine_3/Spine.yml\")\n    print(\"SPINE_4\") ",
         "detail": "python.Labs.bgp",
         "documentation": {}
     },
@@ -562,7 +622,7 @@
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        bgp()\n    elif lab_type == 'mlag':\n        response = mlag_file()\n        return response\n    elif lab_type == 'vxlan':\n        vxlan()\n    elif lab_type == 'evpn':\n        evpn()",
+        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        # mlag_file()\n        response = bgp_file()\n        return response\n    elif lab_type == 'mlag':\n        response = mlag_file()\n        return response\n    elif lab_type == 'vxlan':\n        vxlan()",
         "detail": "python.api",
         "documentation": {}
     },

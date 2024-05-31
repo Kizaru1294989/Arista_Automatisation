@@ -10,6 +10,7 @@ import os
 import stat
 from database import *
 from MLAG.mlag_file import mlag_file
+from BGP.bgp_file import bgp_file
 
 app = Flask(__name__)
 CORS(app)
@@ -78,22 +79,22 @@ def send_lab_status():
             spine2 = device_statut[0]['spine2']
             spine3 = device_statut[0]['spine3']
             spine4 = device_statut[0]['spine4']
-            print("host1:", host1)
-            print("host2:", host2)
-            print("host3:", host3)
-            print("host4:", host4)
-            print("leaf1:", leaf1)
-            print("leaf2:", leaf2)
-            print("leaf3:", leaf3)
-            print("leaf4:", leaf4)
-            print("leaf5:", leaf5)
-            print("leaf6:", leaf6)
-            print("leaf7:", leaf7)
-            print("leaf8:", leaf8)
-            print("spine1:", spine1)
-            print("spine2:", spine2)
-            print("spine3:", spine3)
-            print("spine4:", spine4)
+            # print("host1:", host1)
+            # print("host2:", host2)
+            # print("host3:", host3)
+            # print("host4:", host4)
+            # print("leaf1:", leaf1)
+            # print("leaf2:", leaf2)
+            # print("leaf3:", leaf3)
+            # print("leaf4:", leaf4)
+            # print("leaf5:", leaf5)
+            # print("leaf6:", leaf6)
+            # print("leaf7:", leaf7)
+            # print("leaf8:", leaf8)
+            # print("spine1:", spine1)
+            # print("spine2:", spine2)
+            # print("spine3:", spine3)
+            # print("spine4:", spine4)
 
             print(statut)
             print(labs)
@@ -124,7 +125,9 @@ def send_lab_status():
 
 def call_lab_function(lab_type):
     if lab_type == 'bgp':
-        bgp()
+        # mlag_file()
+        response = bgp_file()
+        return response
     elif lab_type == 'mlag':
         response = mlag_file()
         return response
