@@ -20,7 +20,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const SlideDialogLab = ({setLoadingDialog}) => {
+export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
   const [open, setOpen] = useState(false);
   const [subDialogOpen, setSubDialogOpen] = useState(false);
   const [automatiqueDialogOpen, setAutomatiqueDialogOpen] = useState(false);
@@ -159,6 +159,7 @@ export const SlideDialogLab = ({setLoadingDialog}) => {
           setOvererror={setOvererror}
           overerror={overerror}
           setLoadingDialog={setLoadingDialog}
+          formValue={formValue}
         />
       ) : over ? (
         <Backdrop

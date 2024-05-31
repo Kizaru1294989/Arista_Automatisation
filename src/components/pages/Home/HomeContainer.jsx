@@ -9,6 +9,11 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Button from '@mui/material/Button';
 import './index.scss';
+import DoneIcon from '@mui/icons-material/Done';
+import ErrorIcon from '@mui/icons-material/Error';
+import { getHostStatus } from '../../HostStatus/GetHostStatus';
+import { Chip } from '@mui/material';
+import { DeviceStatus } from '../../HostStatus/DeviceStatus';
 
 export const HomeContainer = () => {
   const [lab, setLab] = useState("");
@@ -17,6 +22,27 @@ export const HomeContainer = () => {
   const [loadingDialog, setLoadingDialog] = useState(false);
   const [dialog, setDialog] = useState(true);
   const [error, setError] = useState("");
+  const [formValue, setFormValue] = useState({
+    host1: "",
+    host2: "",
+    host3: "",
+    host4: "",
+
+    spine1: "",
+    spine2: "",
+    spine3: "",
+    spine4: "",
+
+    leaf1: "",
+    leaf2: "",
+    leaf3: "",
+    leaf4: "",
+    leaf5: "",
+    leaf6: "",
+    leaf7: "",
+    leaf8: "",
+
+  });
 
 
 
@@ -38,9 +64,28 @@ export const HomeContainer = () => {
       const data = await res.json();
 
       if (data.labs !== "") {
+        // console.log(data)
 
         setLab(data.labs[0]);
         setStatus(data.statut[0]);
+        setFormValue({
+          host1: data.host1,
+          host2: data.host2,
+          host3: data.host3,
+          host4: data.host4,
+          spine1: data.spine1,
+          spine2: data.spine2,
+          spine3: data.spine3,
+          spine4: data.spine4,
+          leaf1: data.leaf1,
+          leaf2: data.leaf2,
+          leaf3: data.leaf3,
+          leaf4: data.leaf4,
+          leaf5: data.leaf5,
+          leaf6: data.leaf6,
+          leaf7: data.leaf7,
+          leaf8: data.leaf8,
+        });
         setLoading(false)
         
       } else {
@@ -86,6 +131,7 @@ export const HomeContainer = () => {
           initial={{ opacity: 0, scale: 1 }}
           animate={{ opacity: 3, scale: 1 }}
         >
+ 
           {error ? (
             <p>Error: {error}</p>
           ) : (
@@ -95,8 +141,8 @@ export const HomeContainer = () => {
                   sx={{ flexDirection: 'column', alignItems: 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                   open={dialog}
                 >
-                  <h3>Cela peut prendre quelques minutes, merci de patienter pendant l'installation du Lab {lab} </h3>
-                  <Loading />
+                <DeviceStatus formValue={formValue} getHostStatus={getHostStatus}/>
+                {/* <Loading />     */}
                 </Backdrop>
               )}
               {status === 'finished' && (
@@ -143,7 +189,7 @@ export const HomeContainer = () => {
                               </Backdrop>
    
               )}
-              <HomeComponent lab={lab} status={status} setLoadingDialog={setLoadingDialog} />
+              <HomeComponent lab={lab} status={status} setLoadingDialog={setLoadingDialog} formValue={formValue}/>
             </>
           )}
         </motion.div>

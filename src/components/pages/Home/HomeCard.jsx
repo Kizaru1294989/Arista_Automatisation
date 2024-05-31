@@ -7,7 +7,7 @@ import InfoTips from './InfoTips';
 import { SlideDialogLab } from '../../Dialog/SlideDialogLab';
 import React, { useState, useEffect } from 'react';
 
-export const HomeCard = ({setLoadingDialog}) => {
+export const HomeCard = ({setLoadingDialog,formValue}) => {
 
     return (
       <>
@@ -99,7 +99,7 @@ export const HomeCard = ({setLoadingDialog}) => {
                     
                 </div>
                 
-                <SlideDialogLab setLoadingDialog={setLoadingDialog}  />
+                <SlideDialogLab setLoadingDialog={setLoadingDialog} formValue={formValue}  />
                 <SlideDialog/>
             </CardContent>
             </>

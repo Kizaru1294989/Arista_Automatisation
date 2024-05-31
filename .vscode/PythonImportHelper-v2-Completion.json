@@ -60,6 +60,14 @@
         "documentation": {}
     },
     {
+        "label": "SSHClient",
+        "importPath": "paramiko",
+        "description": "paramiko",
+        "isExtraImport": true,
+        "detail": "paramiko",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -69,7 +77,7 @@
         "documentation": {}
     },
     {
-        "label": "update_record_device",
+        "label": "insert_record_device",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -82,6 +90,40 @@
         "description": "database",
         "isExtraImport": true,
         "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "pexpect",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pexpect",
+        "description": "pexpect",
+        "detail": "pexpect",
+        "documentation": {}
+    },
+    {
+        "label": "SCPClient",
+        "importPath": "scp",
+        "description": "scp",
+        "isExtraImport": true,
+        "detail": "scp",
+        "documentation": {}
+    },
+    {
+        "label": "SCPClient",
+        "importPath": "scp",
+        "description": "scp",
+        "isExtraImport": true,
+        "detail": "scp",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
         "documentation": {}
     },
     {
@@ -166,38 +208,20 @@
         "documentation": {}
     },
     {
+        "label": "mlag_file",
+        "importPath": "MLAG.mlag_file",
+        "description": "MLAG.mlag_file",
+        "isExtraImport": true,
+        "detail": "MLAG.mlag_file",
+        "documentation": {}
+    },
+    {
         "label": "psycopg2",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "psycopg2",
         "description": "psycopg2",
         "detail": "psycopg2",
-        "documentation": {}
-    },
-    {
-        "label": "pexpect",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pexpect",
-        "description": "pexpect",
-        "detail": "pexpect",
-        "documentation": {}
-    },
-    {
-        "label": "SCPClient",
-        "importPath": "scp",
-        "description": "scp",
-        "isExtraImport": true,
-        "detail": "scp",
-        "documentation": {}
-    },
-    {
-        "label": "logging",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
         "documentation": {}
     },
     {
@@ -421,7 +445,7 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True )\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef Leaf_mlag():\n    print(\"LEAF_1\")",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -430,7 +454,7 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def Leaf_mlag():\n    print(\"MLAG PEER LINK - LEAF-1 <=> LEAF-2 \\n\")\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    # data = {\n    #         'statut': 'started',       \n    #         'id': 1                \n    #     }\n    # update_record_device(data,\"leaf1\")\n    print(\"LEAF_2\")",
+        "peekOfCode": "def Leaf_mlag():\n    print(\"LEAF_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_1/Leaf1.yml\")\n    data = {  'leaf1': True }\n    insert_record_device(data,\"leaf1\")\n    print(\"LEAF_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Leef/peer_link_1/Leaf_2/Leaf2.yml\")\n    data = { 'leaf2': True }\n    insert_record_device(data,\"leaf2\")\n    print(\"LEAF_3\")",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -439,7 +463,7 @@
         "kind": 2,
         "importPath": "python.Labs.mlag",
         "description": "python.Labs.mlag",
-        "peekOfCode": "def Spine_mlag():\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_2/Spine.yml\")\n    print(\"SPINE_3\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_3/Spine.yml\")\n    print(\"SPINE_4\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_2/Spine_4/Spine.yml\")\ndef Host_mlag():",
+        "peekOfCode": "def Spine_mlag():\n    print(\"SPINE_1\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_1/Spine.yml\")\n    data = {  'spine1': True }\n    insert_record_device(data,\"spine1\")\n    print(\"SPINE_2\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/MLAG/Peer_Link_Spine/peer_link_1/Spine_2/Spine.yml\")\n    data = {'spine2': True }\n    insert_record_device(data,\"spine2\")\n    print(\"SPINE_3\")",
         "detail": "python.Labs.mlag",
         "documentation": {}
     },
@@ -480,11 +504,47 @@
         "documentation": {}
     },
     {
+        "label": "ssh_scp_files",
+        "kind": 2,
+        "importPath": "python.MLAG.mlag_file",
+        "description": "python.MLAG.mlag_file",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "detail": "python.MLAG.mlag_file",
+        "documentation": {}
+    },
+    {
+        "label": "execute_scp_command",
+        "kind": 2,
+        "importPath": "python.MLAG.mlag_file",
+        "description": "python.MLAG.mlag_file",
+        "peekOfCode": "def execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 2\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/2/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 3\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/3/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 4\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/4/conf.txt\", \"/home/cvpadmin/\")\n    print(\"LEAF 1\")",
+        "detail": "python.MLAG.mlag_file",
+        "documentation": {}
+    },
+    {
+        "label": "run_ansible_playbook",
+        "kind": 2,
+        "importPath": "python.MLAG.mlag_file",
+        "description": "python.MLAG.mlag_file",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef mlag_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")",
+        "detail": "python.MLAG.mlag_file",
+        "documentation": {}
+    },
+    {
+        "label": "mlag_file",
+        "kind": 2,
+        "importPath": "python.MLAG.mlag_file",
+        "description": "python.MLAG.mlag_file",
+        "peekOfCode": "def mlag_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return True\nif __name__ == '__main__':\n    mlag_file()",
+        "detail": "python.MLAG.mlag_file",
+        "documentation": {}
+    },
+    {
         "label": "receive_lab_type",
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def receive_lab_type():\n    try:\n        data = request.get_json()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')\n        print(f\"Received lab type: {lab_type}\")\n        # update_lab_status(lab_type, 'started')\n        data = {\n            'statut': 'started',  \n            'lab': lab_type,     ",
+        "peekOfCode": "def receive_lab_type():\n    try:\n        data = request.get_json()\n        return_to_zero_device_record()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')\n        print(f\"Received lab type: {lab_type}\")\n        data = {\n            'statut': 'started',  \n            'lab': lab_type,     ",
         "detail": "python.api",
         "documentation": {}
     },
@@ -493,7 +553,7 @@
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def send_lab_status():\n    try:    \n            statut , labs = read_records()\n            print(statut)\n            print(labs)\n            return {'statut': statut, 'labs': labs}, 200\n    except Exception as e:\n        return {'error': str(e)}, 500\n# @app.route('/python/device', methods=['get'])\n# def get_data():",
+        "peekOfCode": "def send_lab_status():\n    try:    \n            statut , labs = read_records()\n            device_statut = read_device_records()\n            host1 = device_statut[0]['host1']\n            host2 = device_statut[0]['host2']\n            host3 = device_statut[0]['host3']\n            host4 = device_statut[0]['host4']\n            leaf1 = device_statut[0]['leaf1']\n            leaf2 = device_statut[0]['leaf2']",
         "detail": "python.api",
         "documentation": {}
     },
@@ -502,7 +562,7 @@
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        bgp()\n    elif lab_type == 'mlag':\n        #     data = {\n#         \"message\": \"Bonjour depuis le serveur!\"\n#     }\n#     return jsonify(data)\n        response = mlag()\n        return response",
+        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        bgp()\n    elif lab_type == 'mlag':\n        response = mlag_file()\n        return response\n    elif lab_type == 'vxlan':\n        vxlan()\n    elif lab_type == 'evpn':\n        evpn()",
         "detail": "python.api",
         "documentation": {}
     },
@@ -511,7 +571,7 @@
         "kind": 5,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "app = Flask(__name__)\nCORS(app)\n@app.route('/python/post', methods=['POST'])\ndef receive_lab_type():\n    try:\n        data = request.get_json()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')\n        print(f\"Received lab type: {lab_type}\")\n        # update_lab_status(lab_type, 'started')",
+        "peekOfCode": "app = Flask(__name__)\nCORS(app)\n@app.route('/python/post', methods=['POST'])\ndef receive_lab_type():\n    try:\n        data = request.get_json()\n        return_to_zero_device_record()\n        print(f\"Received data: {data}\")\n        lab_type = data.get('lab')\n        print(f\"Received lab type: {lab_type}\")",
         "detail": "python.api",
         "documentation": {}
     },
@@ -525,11 +585,11 @@
         "documentation": {}
     },
     {
-        "label": "update_record_device",
+        "label": "insert_record_device",
         "kind": 2,
         "importPath": "python.database",
         "description": "python.database",
-        "peekOfCode": "def update_record_device(data,device):\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.device'\n    update_query = f\"\"\"",
+        "peekOfCode": "def insert_record_device(data, device):\n    # Set the ID for the record to be updated\n    record_id = 1\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }",
         "detail": "python.database",
         "documentation": {}
     },
@@ -540,6 +600,33 @@
         "description": "python.database",
         "peekOfCode": "def read_records():\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.lab'\n    select_query = f\"SELECT statut, lab FROM {table}\"",
         "detail": "python.database",
+        "documentation": {}
+    },
+    {
+        "label": "return_to_zero_device_record",
+        "kind": 2,
+        "importPath": "python.database",
+        "description": "python.database",
+        "peekOfCode": "def return_to_zero_device_record():\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.device'\n    update_query = f\"\"\"",
+        "detail": "python.database",
+        "documentation": {}
+    },
+    {
+        "label": "read_device_records",
+        "kind": 2,
+        "importPath": "python.database",
+        "description": "python.database",
+        "peekOfCode": "def read_device_records():\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.device'\n    select_query = f\"SELECT host1, host2, host3, host4, leaf1, leaf2, leaf3, leaf4, leaf5, leaf6, leaf7, leaf8, spine1, spine2, spine3, spine4 FROM {table}\"",
+        "detail": "python.database",
+        "documentation": {}
+    },
+    {
+        "label": "insert_record_device",
+        "kind": 2,
+        "importPath": "python.insert_record_device",
+        "description": "python.insert_record_device",
+        "peekOfCode": "def insert_record_device(data, device):\n    record_id = 1\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.device'",
+        "detail": "python.insert_record_device",
         "documentation": {}
     },
     {
@@ -565,7 +652,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef reset():\n    # execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef reset():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")",
         "detail": "python.reset",
         "documentation": {}
     },
@@ -574,7 +661,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def reset():\n    # execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\")\n    return True\nif __name__ == '__main__':\n    reset()",
+        "peekOfCode": "def reset():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\")\n    return True\nif __name__ == '__main__':\n    reset()",
         "detail": "python.reset",
         "documentation": {}
     }

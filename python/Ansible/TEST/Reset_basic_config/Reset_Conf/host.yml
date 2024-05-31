@@ -6,18 +6,7 @@
   vars:
     ansible_python_interpreter: "python"
 
-
   tasks:
-    # - name: Reset Configuration
-    #   eos_config:
-    #     lines: 
-    #       - configure
-    #       - write erase now
-    #       - copy file:/home/cvpadmin/conf.txt startup-config
-    #       # - write memory
-    #       - reload force
-
-    #   when: ansible_network_os == 'eos'
 
     - name: Reset Configuration
       eos_config:
@@ -25,3 +14,10 @@
           - configure replace file:/home/cvpadmin/conf.txt ignore-errors
 
       when: ansible_network_os == 'eos'
+
+    - name: Execute Python function with parameters
+      command: >
+        python3 /home/rais/Arista_Automatisation/python/insert_record_device.py
+        '{"{{ inventory_hostname }}": true}' {{ inventory_hostname }}
+      when: ansible_network_os == 'eos'
+# UPDATE BDD 

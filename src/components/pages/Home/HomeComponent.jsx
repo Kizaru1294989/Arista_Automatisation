@@ -5,7 +5,7 @@ import { CardContent } from '@mui/material';
 import MLAG from '../../../assets/img/MLAG_schema.png';
 import HomeCard from './HomeCard';
 
-export default function MediaControlCard({lab,status , setLoadingDialog}) {
+export default function MediaControlCard({lab,status , setLoadingDialog,formValue}) {
   // console.log(labStatus)
   // let parsedLabStatus = JSON.parse(labStatus.labStatus.replace(/'/g, '"'));
   // let lab = Object.keys(parsedLabStatus)[0];
@@ -17,7 +17,7 @@ export default function MediaControlCard({lab,status , setLoadingDialog}) {
     <>
     <Grid sx={{ display: 'flex'  , backgroundColor : '#2d3436', backgroundImage : 'linear-gradient(315deg, #2d3436 0%, #000000 74%)' , width : '300px'}}>
       <Grid sx={{  display: 'flex', flexDirection: 'column' }}>
-        <HomeCard setLoadingDialog={setLoadingDialog}/>
+        <HomeCard setLoadingDialog={setLoadingDialog} formValue={formValue}/>
         <Grid sx={{ display: 'flex', alignItems: 'center' ,justifyContent : 'center' , margin : '125px' , pl: 1, pb: 1 }}>  
         </Grid>
       </Grid>
