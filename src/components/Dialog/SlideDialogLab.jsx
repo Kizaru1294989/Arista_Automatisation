@@ -14,7 +14,6 @@ import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import io from 'socket.io-client';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -32,13 +31,23 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
   const [overerror, setOvererror] = useState(false);
   const [labtitle, setLabTitle] = useState("");
 
+
+  const resetStates = () => {
+    setStart(false);
+    setOver(false);
+    setOvererror(false);
+    setResponse(null);
+    setError(null);
+  };
   const SendToFlask = (lab) => {
     console.log(lab);
+    resetStates();
     setStart(true);
     postData(lab);
     GetDeviceStatus()
     setLabTitle(lab)
     handleClose();
+
 
   };
 
@@ -267,7 +276,24 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
                 <DialogTitle><strong>{`Mode ${dialogContent}`}</strong></DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-slide-description">
-                    {dialogContent === "complet" ? "Vous avez choisi le mode complet." : "Vous avez choisi le mode manuel."}
+                  <p>En sélectionnant le mode manuel l'automatisation se déroulera normalement mais 
+                    laissera volontairement l'équipement Leaf4 non configuré</p>
+
+                <h2>Flexibilité offerte à l'utilisateur</h2>
+
+                <p>En laissant le Leaf 4 non configuré, 
+                  nous offrons à l'utilisateur la possibilité de
+                   se familirariser avec l'environnement Arista et de mieux 
+                   comprendre les différents protocoles abordés dans ce lab
+                    en configurant manuellement le switch
+               .</p>
+                <h2>Assistance</h2>
+
+                <p>Bien que la configuration du Leaf 4 soit laissée à l'utilisateur,
+                   nous lui fournirons les commandes nécessaires ainsi que des 
+                   explications détaillées sur la manière de procéder.</p>
+
+
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
@@ -290,12 +316,12 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
                   <Button onClick={() => SendToFlask("bgp")}>
                     BGP
                   </Button>
-                  <Button onClick={() => SendToFlask("evpn")}>
+                  <Button onClick={() => SendToFlask("vxlan evpn")}>
                     VXLAN EVPN L2
                   </Button>
-                  <Button onClick={() => SendToFlask("all")}>
+                  {/* <Button onClick={() => SendToFlask("all")}>
                     ALL
-                  </Button>
+                  </Button> */}
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleAutomatiqueDialogClose}>Fermer</Button>

@@ -64,8 +64,8 @@ def run_ansible_playbook(playbook_path):
 
 def bgp_file():
     execute_scp_command("Exaprobe1234" , "cvpadmin")
-    run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml")
-    return True
+    playbook = run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml")
+    return playbook
 
 if __name__ == '__main__':
     bgp_file()

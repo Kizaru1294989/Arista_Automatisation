@@ -11,6 +11,7 @@ import stat
 from database import *
 from MLAG.mlag_file import mlag_file
 from BGP.bgp_file import bgp_file
+from VXLAN.vxlan_file import vxlan_file
 
 app = Flask(__name__)
 CORS(app)
@@ -125,16 +126,18 @@ def send_lab_status():
 
 def call_lab_function(lab_type):
     if lab_type == 'bgp':
-        # mlag_file()
         response = bgp_file()
         return response
     elif lab_type == 'mlag':
         response = mlag_file()
         return response
-    elif lab_type == 'vxlan':
+    elif lab_type == 'vxlan evpn':
+        # response = vxlan_file()
+        # return response
         vxlan()
-    elif lab_type == 'evpn':
         evpn()
+        
+        return True
     elif lab_type == 'reset':
         response = reset()
         return response

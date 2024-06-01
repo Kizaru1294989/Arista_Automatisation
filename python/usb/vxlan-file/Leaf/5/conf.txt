@@ -66,32 +66,53 @@ interface Ethernet2
 interface Ethernet3
    description HOST3
    channel-group 3 mode active
+   lacp timer fast
 !
 interface Ethernet4
 !
 interface Ethernet5
    description SPINE 4
-   channel-group 56 mode active
+   no switchport
+   ip address 172.16.200.50/30
 !
 interface Ethernet6
 !
 interface Ethernet7
    description LEAF4
-   channel-group 80 mode active
+   no switchport
+   ip address 172.16.200.66/30
 !
 interface Ethernet8
    description SPINE 3
-   channel-group 56 mode active
+   no switchport
+   ip address 172.16.200.34/30
+!
+interface Loopback0
+   ip address 172.16.0.15/32
+!
+interface Loopback1
+   ip address 5.5.5.5/32
+   ip address 99.99.99.99/32 secondary
 !
 interface Management1
    vrf managment
    ip address 10.43.192.33/24
 !
+interface Vlan3
+   ip address virtual 172.16.112.1/24
+!
 interface Vlan4094
    description MLAG PEER LINK "LEAF-5"
    ip address 172.16.56.1/24
 !
-no ip routing
+interface Vxlan1
+   vxlan source-interface Loopback1
+   vxlan udp-port 4789
+   vxlan vlan 3 vni 1234
+!
+ip virtual-router mac-address 00:1c:73:00:00:56
+!
+ip routing
 no ip routing vrf managment
 !
 mlag configuration
@@ -101,5 +122,49 @@ mlag configuration
    peer-link Port-Channel10
 !
 ip route vrf managment 0.0.0.0/0 10.43.192.254
+!
+router bgp 65004
+   router-id 172.16.0.15
+   maximum-paths 2 ecmp 2
+   neighbor DCI-SPINE peer group
+   neighbor DCI-SPINE remote-as 65002
+   neighbor DCI-SPINE bfd
+   neighbor DCI-SPINE maximum-routes 12000
+   neighbor DCI-SPINE-EVPN-TRANSIT peer group
+   neighbor DCI-SPINE-EVPN-TRANSIT remote-as 65002
+   neighbor DCI-SPINE-EVPN-TRANSIT update-source Loopback0
+   neighbor DCI-SPINE-EVPN-TRANSIT ebgp-multihop
+   neighbor DCI-SPINE-EVPN-TRANSIT send-community
+   neighbor DCI-SPINE-EVPN-TRANSIT maximum-routes 0
+   neighbor SPINE peer group
+   neighbor SPINE remote-as 65003
+   neighbor SPINE bfd
+   neighbor SPINE maximum-routes 12000
+   neighbor SPINE-EVPN-TRANSIT peer group
+   neighbor SPINE-EVPN-TRANSIT remote-as 65003
+   neighbor SPINE-EVPN-TRANSIT update-source Loopback0
+   neighbor SPINE-EVPN-TRANSIT ebgp-multihop
+   neighbor SPINE-EVPN-TRANSIT send-community
+   neighbor SPINE-EVPN-TRANSIT maximum-routes 0
+   neighbor 172.16.0.3 peer group SPINE-EVPN-TRANSIT
+   neighbor 172.16.0.4 peer group SPINE-EVPN-TRANSIT
+   neighbor 172.16.0.14 peer group DCI-SPINE-EVPN-TRANSIT
+   neighbor 172.16.200.33 peer group SPINE
+   neighbor 172.16.200.49 peer group SPINE
+   neighbor 172.16.200.65 peer group DCI-SPINE
+   redistribute connected
+   !
+   vlan 3
+      rd 5.5.5.5:3
+      route-target both 1:3
+      redistribute learned
+   !
+   address-family evpn
+      neighbor DCI-SPINE-EVPN-TRANSIT activate
+      neighbor SPINE-EVPN-TRANSIT activate
+   !
+   address-family ipv4
+      no neighbor DCI-SPINE-EVPN-TRANSIT activate
+      no neighbor SPINE-EVPN-TRANSIT activate
 !
 end

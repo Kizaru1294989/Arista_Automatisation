@@ -14,6 +14,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { getHostStatus } from '../../HostStatus/GetHostStatus';
 import { Chip } from '@mui/material';
 import { DeviceStatus } from '../../HostStatus/DeviceStatus';
+import SimpleBackdrop from '../../loading/Backdrop';
 
 export const HomeContainer = () => {
   const [lab, setLab] = useState("");

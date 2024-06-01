@@ -41,14 +41,14 @@ def ssh_connection(ip, bgp_router_id,rd_ip):
 def evpn():
     print("EVPN")
     
-    # print("SPINE_1")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_1/Spine.yml")
-    # print("SPINE_2")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_2/Spine.yml")
-    # print("SPINE_3")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_3/Spine.yml")
-    # print("SPINE_4")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_4/Spine.yml")
+    print("SPINE_1")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_1/Spine.yml")
+    print("SPINE_2")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_2/Spine.yml")
+    print("SPINE_3")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_3/Spine.yml")
+    print("SPINE_4")
+    run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Spine/Spine_4/Spine.yml")
     
     print("LEAF_1")
     run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/EVPN/Leaf/Leaf_1/Leaf1.yml")
