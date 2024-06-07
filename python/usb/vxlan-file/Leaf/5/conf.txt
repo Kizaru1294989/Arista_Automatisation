@@ -50,11 +50,6 @@ interface Port-Channel56
    switchport mode trunk
    mlag 56
 !
-interface Port-Channel80
-   description MLAG - LEAF4 & 5
-   switchport mode trunk
-   mlag 80
-!
 interface Ethernet1
    description "MLAG PEER LINK - LEAF-5"
    channel-group 10 mode active
@@ -126,6 +121,16 @@ ip route vrf managment 0.0.0.0/0 10.43.192.254
 router bgp 65004
    router-id 172.16.0.15
    maximum-paths 2 ecmp 2
+   neighbor PEER-LEAF peer group
+   neighbor PEER-LEAF remote-as 65004
+   neighbor PEER-LEAF bfd
+   neighbor PEER-LEAF maximum-routes 12000
+   neighbor PEER-LEAF-EVPN-TRANSIT peer group
+   neighbor PEER-LEAF-EVPN-TRANSIT remote-as 65004
+   neighbor PEER-LEAF-EVPN-TRANSIT update-source Loopback0
+   neighbor PEER-LEAF-EVPN-TRANSIT next-hop-self
+   neighbor PEER-LEAF-EVPN-TRANSIT send-community
+   neighbor PEER-LEAF-EVPN-TRANSIT maximum-routes 0
    neighbor DCI-SPINE peer group
    neighbor DCI-SPINE remote-as 65002
    neighbor DCI-SPINE bfd
@@ -152,6 +157,8 @@ router bgp 65004
    neighbor 172.16.200.33 peer group SPINE
    neighbor 172.16.200.49 peer group SPINE
    neighbor 172.16.200.65 peer group DCI-SPINE
+   neighbor 172.16.0.16 peer group PEER-LEAF-EVPN-TRANSIT
+   neighbor 172.16.56.2 peer group PEER-LEAF
    redistribute connected
    !
    vlan 3

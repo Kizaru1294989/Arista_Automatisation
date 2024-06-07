@@ -14,6 +14,7 @@ import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { ManualDialog } from './ManualDialog';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -30,7 +31,7 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
   const [over, setOver] = useState(false);
   const [overerror, setOvererror] = useState(false);
   const [labtitle, setLabTitle] = useState("");
-
+  const [labmanual, setlabmanual] = useState(false);
 
   const resetStates = () => {
     setStart(false);
@@ -44,35 +45,12 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
     resetStates();
     setStart(true);
     postData(lab);
-    GetDeviceStatus()
+    // GetDeviceStatus()
     setLabTitle(lab)
     handleClose();
+    localStorage.setItem('close', JSON.stringify(false));
 
 
-  };
-
-  
-  const GetDeviceStatus = async () => {
-    try {
-      const res = await fetch('http://127.0.0.1:5000/python/device', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      });
-
-      if (!res.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await res.json();
-
-      console.log(data)
-    } catch (error) {
-      setError(error.message);
-      console.log(error);
-    }
   };
 
   const postData = async (lab) => {
@@ -93,7 +71,6 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
       }
 
       const data = await res.json();
-      // console.log(data);
       setResponse(data.response);
       console.log(response);
     } catch (error) {
@@ -107,7 +84,9 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
     if (response == true) {
       setStart(false);
       setOver(true);
+      // setlabmanual(true)
       handleAutomatiqueDialogClose();
+      handleSubDialogClose()
       console.log("lab finis");
     }  
     if (response == false) {
@@ -116,6 +95,7 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
       setOver(false);
       setOvererror(true)
       handleAutomatiqueDialogClose();
+      handleSubDialogClose()
       console.log("lab FAILED");
     }
   }, [response]);
@@ -281,7 +261,7 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
 
                 <h2>Flexibilité offerte à l'utilisateur</h2>
 
-                <p>En laissant le Leaf 4 non configuré, 
+                <p>En laissant le Leaf 5 non configuré, 
                   nous offrons à l'utilisateur la possibilité de
                    se familirariser avec l'environnement Arista et de mieux 
                    comprendre les différents protocoles abordés dans ce lab
@@ -293,7 +273,18 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
                    nous lui fournirons les commandes nécessaires ainsi que des 
                    explications détaillées sur la manière de procéder.</p>
 
-
+                   <h2>Choissisez votre Lab</h2>
+                
+                  <Button onClick={() => SendToFlask("manuel mlag")}>
+                    MLAG
+                  </Button>
+                  <Button onClick={() => SendToFlask("manuel bgp")}>
+                    BGP
+                  </Button>
+                  <Button onClick={() => SendToFlask("manuel vxlan evpn")}>
+                    VXLAN EVPN L2
+                  </Button>
+             
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
@@ -310,6 +301,11 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
               >
                 <DialogTitle><strong>{"Mode Automatique"}</strong></DialogTitle>
                 <DialogContent>
+                  
+                <h2>Lab entièrement automatisé</h2>
+
+              <p>Choisissez le lab de votre choix et il sera entièrement configuré en moins d'une minute
+              .</p>
                   <Button onClick={() => SendToFlask("mlag")}>
                     MLAG
                   </Button>
@@ -319,9 +315,6 @@ export const SlideDialogLab = ({setLoadingDialog,formValue}) => {
                   <Button onClick={() => SendToFlask("vxlan evpn")}>
                     VXLAN EVPN L2
                   </Button>
-                  {/* <Button onClick={() => SendToFlask("all")}>
-                    ALL
-                  </Button> */}
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleAutomatiqueDialogClose}>Fermer</Button>

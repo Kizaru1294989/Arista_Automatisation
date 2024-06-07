@@ -5,22 +5,19 @@ from Labs.vxlan import vxlan
 from Labs.evpn import evpn
 from Labs.mlag import mlag
 from reset import reset
-import json
-import os
-import stat
 from database import *
-from MLAG.mlag_file import mlag_file
-from BGP.bgp_file import bgp_file
-from VXLAN.vxlan_file import vxlan_file
+from MLAG.mlag_file import mlag_file , mlag_file_manual
+from BGP.bgp_file import bgp_file , bgp_file_manual
+from VXLAN.vxlan_file import vxlan_file , vxlan_file_manual
+from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
 CORS(app)
 
-
-
 @app.route('/python/post', methods=['POST'])
 def receive_lab_type():
     try:
+       
         data = request.get_json()
         return_to_zero_device_record()
         print(f"Received data: {data}")
@@ -52,6 +49,7 @@ def receive_lab_type():
                     'lab': lab_type,     
                     'id': 1                
                 }
+            
             update_record(data)
             print("LAB FAILED")
             return {'message': f'{lab_type} lab Failed ', 'response': response}, 200
@@ -96,10 +94,9 @@ def send_lab_status():
             # print("spine2:", spine2)
             # print("spine3:", spine3)
             # print("spine4:", spine4)
-
-            print(statut)
-            print(labs)
-            return {'statut': statut,
+            print({str(labs) + " : " + str(statut)})
+            return {
+                    'statut': statut,
                     'labs': labs,
                     
                     'host1' : host1,
@@ -132,18 +129,25 @@ def call_lab_function(lab_type):
         response = mlag_file()
         return response
     elif lab_type == 'vxlan evpn':
-        # response = vxlan_file()
-        # return response
-        vxlan()
-        evpn()
-        
-        return True
+        response = vxlan_file()
+        return response
     elif lab_type == 'reset':
         response = reset()
+        return response
+    
+    if lab_type == 'manuel bgp':
+        response = bgp_file_manual()
+        return response
+    elif lab_type == 'manuel mlag':
+        response = mlag_file_manual()
+        return response
+    elif lab_type == 'manuel vxlan evpn':
+        response = vxlan_file_manual()
         return response
     else:
         print("Invalid lab type received")
     return None
 
 if __name__ == '__main__':
+    
     app.run(debug=True)

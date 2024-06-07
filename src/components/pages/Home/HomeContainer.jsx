@@ -22,6 +22,8 @@ export const HomeContainer = () => {
   const [loading, setLoading] = useState(true);
   const [loadingDialog, setLoadingDialog] = useState(false);
   const [dialog, setDialog] = useState(true);
+  const [accord, setAccord] = useState(false);
+  const [manuel, setManuel] = useState(false);
   const [error, setError] = useState("");
   const [formValue, setFormValue] = useState({
     host1: "",
@@ -65,7 +67,7 @@ export const HomeContainer = () => {
       const data = await res.json();
 
       if (data.labs !== "") {
-        // console.log(data)
+         console.log(data)
 
         setLab(data.labs[0]);
         setStatus(data.statut[0]);
@@ -93,7 +95,7 @@ export const HomeContainer = () => {
         setTimeout(() => {
           
           setLoading(false);
-        }, 3000);
+        }, 1000);
       }
     } catch (error) {
       setError(error.message);
@@ -106,14 +108,26 @@ export const HomeContainer = () => {
     // GetDeviceStatus()
     const interval = setInterval(() => {
       GetLabStatus();
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(interval);
+  }, []);
+
+
+  useEffect(() => {
+    const close = localStorage.getItem('close');
+    console.log(close)
+    if (close === 'false') {
+      setAccord(false);
+    } else {
+      setAccord(true);
+    }
   }, []);
 
   const handleClose = () => {
     setLoading(false)
     setDialog(false)
+    localStorage.setItem('close', JSON.stringify(true));
   };
 
   return (
@@ -146,12 +160,12 @@ export const HomeContainer = () => {
                 {/* <Loading />     */}
                 </Backdrop>
               )}
-              {status === 'finished' && (
-                                <Backdrop
-                                sx={{ flexDirection: 'column', alignItems: 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                                open={dialog}
-                              >
-                                       <Stack sx={{ width: '20%' }} spacing={2}>
+              {status === 'finished' && !accord &&  (
+                  <Backdrop
+                    sx={{ flexDirection: 'column', alignItems: 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                    open={dialog}
+                 >
+                 <Stack sx={{ width: '20%' }} spacing={2}>
                   <Alert severity="success">
                     <AlertTitle>Succès</AlertTitle>
                     LAB {lab} terminé — <strong>l'installation du lab {lab} est réussie!</strong>
@@ -165,16 +179,15 @@ export const HomeContainer = () => {
                     Fermer
                   </Button>
                 </Stack>
-                              </Backdrop>
-   
+                </Backdrop>
               )}
-                            {status === 'failed' && (
-                                <Backdrop
-                                sx={{ flexDirection: 'column', alignItems: 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                                open={dialog}
-                              >
-                                       <Stack sx={{ width: '20%' }} spacing={2}>
-                                       <Alert severity="error">
+                {status === 'failed' && (
+                  <Backdrop
+                  sx={{ flexDirection: 'column', alignItems: 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                  open={dialog}
+                    >
+                    <Stack sx={{ width: '20%' }} spacing={2}>
+                        <Alert severity="error">
                       <AlertTitle>Erreur</AlertTitle>
                       LAB {lab + " "}terminé avec une erreur — <strong>l'installation du lab a échoué!</strong>
                     </Alert>
@@ -187,10 +200,16 @@ export const HomeContainer = () => {
                     Fermer
                   </Button>
                 </Stack>
-                              </Backdrop>
-   
+              </Backdrop>
               )}
-              <HomeComponent lab={lab} status={status} setLoadingDialog={setLoadingDialog} formValue={formValue}/>
+              <HomeComponent 
+              lab={lab} 
+              status={status} 
+              setLoadingDialog={setLoadingDialog} 
+              formValue={formValue}
+              setManuel={setManuel}
+              manuel={manuel}
+              />
             </>
           )}
         </motion.div>

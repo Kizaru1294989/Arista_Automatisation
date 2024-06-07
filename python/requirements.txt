@@ -1,4 +1,8 @@
-configparser
-consolemenu
-jsonrpclib
+WSGIServer
+flask_cors
+flask
+psycopg2
 paramiko
+scp
+subprocess
+logging

@@ -118,6 +118,16 @@ ip route vrf managment 0.0.0.0/0 10.43.192.254
 router bgp 65002
    router-id 172.16.0.13
    maximum-paths 2 ecmp 2
+   neighbor PEER-LEAF peer group
+   neighbor PEER-LEAF remote-as 65002
+   neighbor PEER-LEAF bfd
+   neighbor PEER-LEAF maximum-routes 12000
+   neighbor PEER-LEAF-EVPN-TRANSIT peer group
+   neighbor PEER-LEAF-EVPN-TRANSIT remote-as 65002
+   neighbor PEER-LEAF-EVPN-TRANSIT update-source Loopback0
+   neighbor PEER-LEAF-EVPN-TRANSIT next-hop-self
+   neighbor PEER-LEAF-EVPN-TRANSIT send-community
+   neighbor PEER-LEAF-EVPN-TRANSIT maximum-routes 0
    neighbor SPINE peer group
    neighbor SPINE remote-as 65000
    neighbor SPINE bfd
@@ -132,6 +142,8 @@ router bgp 65002
    neighbor 172.16.0.2 peer group SPINE-EVPN-TRANSIT
    neighbor 172.16.200.9 peer group SPINE
    neighbor 172.16.200.25 peer group SPINE
+   neighbor 172.16.0.14 peer group PEER-LEAF-EVPN-TRANSIT
+   neighbor 172.16.34.2 peer group PEER-LEAF
    redistribute connected
    !
    vlan 3

@@ -231,16 +231,15 @@
         "documentation": {}
     },
     {
-        "label": "stat",
-        "kind": 6,
+        "label": "mlag_file",
+        "importPath": "MLAG.mlag_file",
+        "description": "MLAG.mlag_file",
         "isExtraImport": true,
-        "importPath": "stat",
-        "description": "stat",
-        "detail": "stat",
+        "detail": "MLAG.mlag_file",
         "documentation": {}
     },
     {
-        "label": "mlag_file",
+        "label": "mlag_file_manual",
         "importPath": "MLAG.mlag_file",
         "description": "MLAG.mlag_file",
         "isExtraImport": true,
@@ -256,11 +255,35 @@
         "documentation": {}
     },
     {
+        "label": "bgp_file_manual",
+        "importPath": "BGP.bgp_file",
+        "description": "BGP.bgp_file",
+        "isExtraImport": true,
+        "detail": "BGP.bgp_file",
+        "documentation": {}
+    },
+    {
         "label": "vxlan_file",
         "importPath": "VXLAN.vxlan_file",
         "description": "VXLAN.vxlan_file",
         "isExtraImport": true,
         "detail": "VXLAN.vxlan_file",
+        "documentation": {}
+    },
+    {
+        "label": "vxlan_file_manual",
+        "importPath": "VXLAN.vxlan_file",
+        "description": "VXLAN.vxlan_file",
+        "isExtraImport": true,
+        "detail": "VXLAN.vxlan_file",
+        "documentation": {}
+    },
+    {
+        "label": "WSGIServer",
+        "importPath": "gevent.pywsgi",
+        "description": "gevent.pywsgi",
+        "isExtraImport": true,
+        "detail": "gevent.pywsgi",
         "documentation": {}
     },
     {
@@ -448,7 +471,16 @@
         "kind": 2,
         "importPath": "python.BGP.bgp_file",
         "description": "python.BGP.bgp_file",
-        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command_manual(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "detail": "python.BGP.bgp_file",
+        "documentation": {}
+    },
+    {
+        "label": "execute_scp_command_manual",
+        "kind": 2,
+        "importPath": "python.BGP.bgp_file",
+        "description": "python.BGP.bgp_file",
+        "peekOfCode": "def execute_scp_command_manual(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 2\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/2/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 3\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/3/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 4\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/python/usb/bgp-file/Spine/4/conf.txt\", \"/home/cvpadmin/\")\n    print(\"LEAF 1\")",
         "detail": "python.BGP.bgp_file",
         "documentation": {}
     },
@@ -475,7 +507,16 @@
         "kind": 2,
         "importPath": "python.BGP.bgp_file",
         "description": "python.BGP.bgp_file",
-        "peekOfCode": "def bgp_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    bgp_file()",
+        "peekOfCode": "def bgp_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\ndef bgp_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    bgp_file()",
+        "detail": "python.BGP.bgp_file",
+        "documentation": {}
+    },
+    {
+        "label": "bgp_file_manual",
+        "kind": 2,
+        "importPath": "python.BGP.bgp_file",
+        "description": "python.BGP.bgp_file",
+        "peekOfCode": "def bgp_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    bgp_file()",
         "detail": "python.BGP.bgp_file",
         "documentation": {}
     },
@@ -592,7 +633,16 @@
         "kind": 2,
         "importPath": "python.MLAG.mlag_file",
         "description": "python.MLAG.mlag_file",
-        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command_manual(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "detail": "python.MLAG.mlag_file",
+        "documentation": {}
+    },
+    {
+        "label": "execute_scp_command_manual",
+        "kind": 2,
+        "importPath": "python.MLAG.mlag_file",
+        "description": "python.MLAG.mlag_file",
+        "peekOfCode": "def execute_scp_command_manual(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 2\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/2/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 3\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/3/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 4\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/python/usb/mlag-file/Spine/4/conf.txt\", \"/home/cvpadmin/\")\n    print(\"LEAF 1\")",
         "detail": "python.MLAG.mlag_file",
         "documentation": {}
     },
@@ -619,7 +669,16 @@
         "kind": 2,
         "importPath": "python.MLAG.mlag_file",
         "description": "python.MLAG.mlag_file",
-        "peekOfCode": "def mlag_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    mlag_file()",
+        "peekOfCode": "def mlag_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\ndef mlag_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    mlag_file()",
+        "detail": "python.MLAG.mlag_file",
+        "documentation": {}
+    },
+    {
+        "label": "mlag_file_manual",
+        "kind": 2,
+        "importPath": "python.MLAG.mlag_file",
+        "description": "python.MLAG.mlag_file",
+        "peekOfCode": "def mlag_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    mlag_file()",
         "detail": "python.MLAG.mlag_file",
         "documentation": {}
     },
@@ -628,7 +687,16 @@
         "kind": 2,
         "importPath": "python.VXLAN.vxlan_file",
         "description": "python.VXLAN.vxlan_file",
-        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/vxlan-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command_manual(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/vxlan-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "detail": "python.VXLAN.vxlan_file",
+        "documentation": {}
+    },
+    {
+        "label": "execute_scp_command_manual",
+        "kind": 2,
+        "importPath": "python.VXLAN.vxlan_file",
+        "description": "python.VXLAN.vxlan_file",
+        "peekOfCode": "def execute_scp_command_manual(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/vxlan-file/Spine/1/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 2\")\n    ssh_scp_files(\"10.43.192.26\", user, password, \"/home/rais/Arista_Automatisation/python/usb/vxlan-file/Spine/2/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 3\")\n    ssh_scp_files(\"10.43.192.27\", user, password, \"/home/rais/Arista_Automatisation/python/usb/vxlan-file/Spine/3/conf.txt\", \"/home/cvpadmin/\")\n    print(\"SPINE 4\")\n    ssh_scp_files(\"10.43.192.28\", user, password, \"/home/rais/Arista_Automatisation/python/usb/vxlan-file/Spine/4/conf.txt\", \"/home/cvpadmin/\")\n    print(\"LEAF 1\")",
         "detail": "python.VXLAN.vxlan_file",
         "documentation": {}
     },
@@ -655,7 +723,16 @@
         "kind": 2,
         "importPath": "python.VXLAN.vxlan_file",
         "description": "python.VXLAN.vxlan_file",
-        "peekOfCode": "def vxlan_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    vxlan_file()",
+        "peekOfCode": "def vxlan_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\ndef vxlan_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = execute_scp_command_manual(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    vxlan_file()",
+        "detail": "python.VXLAN.vxlan_file",
+        "documentation": {}
+    },
+    {
+        "label": "vxlan_file_manual",
+        "kind": 2,
+        "importPath": "python.VXLAN.vxlan_file",
+        "description": "python.VXLAN.vxlan_file",
+        "peekOfCode": "def vxlan_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = execute_scp_command_manual(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    vxlan_file()",
         "detail": "python.VXLAN.vxlan_file",
         "documentation": {}
     },
@@ -682,7 +759,7 @@
         "kind": 2,
         "importPath": "python.api",
         "description": "python.api",
-        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        response = bgp_file()\n        return response\n    elif lab_type == 'mlag':\n        response = mlag_file()\n        return response\n    elif lab_type == 'vxlan evpn':\n        # response = vxlan_file()\n        # return response",
+        "peekOfCode": "def call_lab_function(lab_type):\n    if lab_type == 'bgp':\n        response = bgp_file()\n        return response\n    elif lab_type == 'mlag':\n        response = mlag_file()\n        return response\n    elif lab_type == 'vxlan evpn':\n        response = vxlan_file()\n        return response",
         "detail": "python.api",
         "documentation": {}
     },
