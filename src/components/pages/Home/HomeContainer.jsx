@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import HomeComponent from "./HomeComponent";
 import { motion } from "framer-motion";
-import { InitialLoading } from '../../InitialLoading/InitialLoading';
-import { Loading } from '../../loading/Loading';
-import Backdrop from '@mui/material/Backdrop';
-import Stack from '@mui/material/Stack';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Button from '@mui/material/Button';
-import './index.scss';
-import DoneIcon from '@mui/icons-material/Done';
-import ErrorIcon from '@mui/icons-material/Error';
-import { getHostStatus } from '../../HostStatus/GetHostStatus';
-import { Chip } from '@mui/material';
-import { DeviceStatus } from '../../HostStatus/DeviceStatus';
-import SimpleBackdrop from '../../loading/Backdrop';
+import { InitialLoading } from "../../InitialLoading/InitialLoading";
+import { Loading } from "../../loading/Loading";
+import Backdrop from "@mui/material/Backdrop";
+import Stack from "@mui/material/Stack";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import Button from "@mui/material/Button";
+import "./index.scss";
+import DoneIcon from "@mui/icons-material/Done";
+import ErrorIcon from "@mui/icons-material/Error";
+import { getHostStatus } from "../../HostStatus/GetHostStatus";
+import { Chip } from "@mui/material";
+import { DeviceStatus } from "../../HostStatus/DeviceStatus";
+import SimpleBackdrop from "../../loading/Backdrop";
 
 export const HomeContainer = () => {
   const [lab, setLab] = useState("");
@@ -44,30 +44,26 @@ export const HomeContainer = () => {
     leaf6: "",
     leaf7: "",
     leaf8: "",
-
   });
-
-
-
 
   const GetLabStatus = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:5000/python/get', {
-        method: 'GET',
+      const res = await fetch("http://127.0.0.1:5000/python/get", {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
       });
 
       if (!res.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
 
       const data = await res.json();
 
       if (data.labs !== "") {
-         console.log(data)
+        console.log(data);
 
         setLab(data.labs[0]);
         setStatus(data.statut[0]);
@@ -89,11 +85,9 @@ export const HomeContainer = () => {
           leaf7: data.leaf7,
           leaf8: data.leaf8,
         });
-        setLoading(false)
-        
+        setLoading(false);
       } else {
         setTimeout(() => {
-          
           setLoading(false);
         }, 1000);
       }
@@ -113,11 +107,10 @@ export const HomeContainer = () => {
     return () => clearInterval(interval);
   }, []);
 
-
   useEffect(() => {
-    const close = localStorage.getItem('close');
-    console.log(close)
-    if (close === 'false') {
+    const close = localStorage.getItem("close");
+    console.log(close);
+    if (close === "false") {
       setAccord(false);
     } else {
       setAccord(true);
@@ -125,9 +118,9 @@ export const HomeContainer = () => {
   }, []);
 
   const handleClose = () => {
-    setLoading(false)
-    setDialog(false)
-    localStorage.setItem('close', JSON.stringify(true));
+    setLoading(false);
+    setDialog(false);
+    localStorage.setItem("close", JSON.stringify(true));
   };
 
   return (
@@ -146,69 +139,88 @@ export const HomeContainer = () => {
           initial={{ opacity: 0, scale: 1 }}
           animate={{ opacity: 3, scale: 1 }}
         >
- 
           {error ? (
             <p>Error: {error}</p>
           ) : (
             <>
-              {status === 'started' && !loadingDialog  && (
+              {status === "started" && !loadingDialog && (
                 <Backdrop
-                  sx={{ flexDirection: 'column', alignItems: 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                  sx={{
+                    flexDirection: "column",
+                    alignItems: "center",
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                  }}
                   open={dialog}
                 >
-                <DeviceStatus formValue={formValue} getHostStatus={getHostStatus}/>
-                {/* <Loading />     */}
+                  <DeviceStatus
+                    formValue={formValue}
+                    getHostStatus={getHostStatus}
+                  />
+                  {/* <Loading />     */}
                 </Backdrop>
               )}
-              {status === 'finished' && !accord &&  (
-                  <Backdrop
-                    sx={{ flexDirection: 'column', alignItems: 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                    open={dialog}
-                 >
-                 <Stack sx={{ width: '20%' }} spacing={2}>
-                  <Alert severity="success">
-                    <AlertTitle>Succès</AlertTitle>
-                    LAB {lab} terminé — <strong>l'installation du lab {lab} est réussie!</strong>
-                  </Alert>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleClose}
-                    sx={{ mt: 2 }}
-                  >
-                    Fermer
-                  </Button>
-                </Stack>
-                </Backdrop>
-              )}
-                {status === 'failed' && (
-                  <Backdrop
-                  sx={{ flexDirection: 'column', alignItems: 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              {status === "finished" && !accord && (
+                <Backdrop
+                  sx={{
+                    flexDirection: "column",
+                    alignItems: "center",
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                  }}
                   open={dialog}
-                    >
-                    <Stack sx={{ width: '20%' }} spacing={2}>
-                        <Alert severity="error">
-                      <AlertTitle>Erreur</AlertTitle>
-                      LAB {lab + " "}terminé avec une erreur — <strong>l'installation du lab a échoué!</strong>
+                >
+                  <Stack sx={{ width: "20%" }} spacing={2}>
+                    <Alert severity="success">
+                      <AlertTitle>Succès</AlertTitle>
+                      LAB {lab} terminé —{" "}
+                      <strong>l'installation du lab {lab} est réussie!</strong>
                     </Alert>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleClose}
-                    sx={{ mt: 2 }}
-                  >
-                    Fermer
-                  </Button>
-                </Stack>
-              </Backdrop>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleClose}
+                      sx={{ mt: 2 }}
+                    >
+                      Fermer
+                    </Button>
+                  </Stack>
+                </Backdrop>
               )}
-              <HomeComponent 
-              lab={lab} 
-              status={status} 
-              setLoadingDialog={setLoadingDialog} 
-              formValue={formValue}
-              setManuel={setManuel}
-              manuel={manuel}
+              {status === "failed" && (
+                <Backdrop
+                  sx={{
+                    flexDirection: "column",
+                    alignItems: "center",
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                  }}
+                  open={dialog}
+                >
+                  <Stack sx={{ width: "20%" }} spacing={2}>
+                    <Alert severity="error">
+                      <AlertTitle>Erreur</AlertTitle>
+                      LAB {lab + " "}terminé avec une erreur —{" "}
+                      <strong>l'installation du lab a échoué!</strong>
+                    </Alert>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleClose}
+                      sx={{ mt: 2 }}
+                    >
+                      Fermer
+                    </Button>
+                  </Stack>
+                </Backdrop>
+              )}
+              <HomeComponent
+                lab={lab}
+                status={status}
+                setLoadingDialog={setLoadingDialog}
+                formValue={formValue}
+                setManuel={setManuel}
+                manuel={manuel}
               />
             </>
           )}

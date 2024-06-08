@@ -5,40 +5,37 @@ import { HomeContainer } from "../components/pages/Home/HomeContainer";
 import Error404Component from "../components/pages/error/Error";
 import { motion } from "framer-motion";
 
-
 export const pageTransition = {
-    initial: { opacity: 0 },
-    animate: { opacity: 4 },
-    exit: { opacity: 2 },
-  };
-  
-
+  initial: { opacity: 0 },
+  animate: { opacity: 4 },
+  exit: { opacity: 2 },
+};
 
 export const Rooter = () => {
   return (
     <BrowserRouter>
-        <Routes>
-          <Route
-            index
-            exact
-            path={ROUTES.HOME.PATH}
-            element={<HomeContainer />}
-          />
+      <Routes>
+        <Route
+          index
+          exact
+          path={ROUTES.HOME.PATH}
+          element={<HomeContainer />}
+        />
 
-          <Route
-            path="*"
-            element={
-              <motion.div
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={pageTransition}
-              >
-                <Error404Component />
-              </motion.div>
-            }
-          />
-        </Routes>
+        <Route
+          path="*"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageTransition}
+            >
+              <Error404Component />
+            </motion.div>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 };

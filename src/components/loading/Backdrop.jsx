@@ -1,13 +1,23 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import Backdrop from '@mui/material/Backdrop';
-import Button from '@mui/material/Button';
-import { getHostStatus } from '../HostStatus/GetHostStatus';
-import { DeviceStatus } from '../HostStatus/DeviceStatus';
+import * as React from "react";
+import { useState, useEffect } from "react";
+import Backdrop from "@mui/material/Backdrop";
+import Button from "@mui/material/Button";
+import { getHostStatus } from "../HostStatus/GetHostStatus";
+import { DeviceStatus } from "../HostStatus/DeviceStatus";
 
-export default function SimpleBackdrop({over , setOver, start, setStart, title, formValue, response, handleAutomatiqueDialogClose , setLoadingDialog }) {
+export default function SimpleBackdrop({
+  over,
+  setOver,
+  start,
+  setStart,
+  title,
+  formValue,
+  response,
+  handleAutomatiqueDialogClose,
+  setLoadingDialog,
+}) {
   useEffect(() => {
-    setLoadingDialog(true)
+    setLoadingDialog(true);
     if (response) {
       setOver(true);
       handleAutomatiqueDialogClose();
@@ -20,10 +30,15 @@ export default function SimpleBackdrop({over , setOver, start, setStart, title, 
       <Button onClick={() => setStart(true)}>{title}</Button>
       {start && !over && (
         <Backdrop
-          sx={{ flexDirection : 'column', alignItems : 'center', color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          sx={{
+            flexDirection: "column",
+            alignItems: "center",
+            color: "#fff",
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+          }}
           open={true}
         >
-          <DeviceStatus formValue={formValue} getHostStatus={getHostStatus}/>
+          <DeviceStatus formValue={formValue} getHostStatus={getHostStatus} />
           {/* <Loading /> */}
         </Backdrop>
       )}

@@ -1,8 +1,8 @@
 import "./index.scss";
 import { Button } from "@mui/material";
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
-export const ButtonTarif = ({onClick, Text }) => {
+export const ButtonTarif = ({ onClick, Text }) => {
   return (
     <Button
       sx={{
@@ -13,7 +13,7 @@ export const ButtonTarif = ({onClick, Text }) => {
         textTransform: "none",
         fontSize: "20px",
       }}
-      startIcon={<PlayArrowIcon/>}
+      startIcon={<PlayArrowIcon />}
       className="btn draw-border"
       onClick={onClick}
     >
