@@ -723,7 +723,7 @@
         "kind": 2,
         "importPath": "python.VXLAN.vxlan_file",
         "description": "python.VXLAN.vxlan_file",
-        "peekOfCode": "def vxlan_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\ndef vxlan_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = execute_scp_command_manual(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    vxlan_file()",
+        "peekOfCode": "def vxlan_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\ndef vxlan_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    vxlan_file()",
         "detail": "python.VXLAN.vxlan_file",
         "documentation": {}
     },
@@ -732,7 +732,7 @@
         "kind": 2,
         "importPath": "python.VXLAN.vxlan_file",
         "description": "python.VXLAN.vxlan_file",
-        "peekOfCode": "def vxlan_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = execute_scp_command_manual(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    vxlan_file()",
+        "peekOfCode": "def vxlan_file_manual():\n    execute_scp_command_manual(\"Exaprobe1234\" , \"cvpadmin\")\n    playbook = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    return playbook\nif __name__ == '__main__':\n    vxlan_file()",
         "detail": "python.VXLAN.vxlan_file",
         "documentation": {}
     },

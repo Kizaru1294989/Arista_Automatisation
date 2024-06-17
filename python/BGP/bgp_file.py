@@ -36,7 +36,7 @@ def execute_scp_command_manual(password, user):
     print("LEAF 4")
     ssh_scp_files("10.43.192.32", user, password, "/home/rais/Arista_Automatisation/python/usb/bgp-file/Leaf/4/conf.txt", "/home/cvpadmin/")
     print("LEAF 5")
-    ssh_scp_files("10.43.192.33", user, password, "/home/rais/Arista_Automatisation/python/usb/basic-config/Leaf/5/conf.txt", "/home/cvpadmin/")
+    ssh_scp_files("10.43.192.33", user, password, "/home/rais/Arista_Automatisation/python/usb/mlag-file/Leaf/5/conf.txt", "/home/cvpadmin/")
     print("LEAF 6")
     ssh_scp_files("10.43.192.34", user, password, "/home/rais/Arista_Automatisation/python/usb/bgp-file/Leaf/6/conf.txt", "/home/cvpadmin/")
     print("LEAF 7")
