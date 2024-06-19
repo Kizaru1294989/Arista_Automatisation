@@ -1,11 +1,11 @@
-import pexpect
+
 from paramiko import SSHClient 
 from scp import SCPClient
 import logging
 import os
 import subprocess
 import paramiko
-import time
+
 
 
 def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):

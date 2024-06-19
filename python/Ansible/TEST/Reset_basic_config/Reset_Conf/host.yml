@@ -4,7 +4,7 @@
   connection: httpapi
   gather_facts: no
   vars:
-    ansible_python_interpreter: "python"
+    ansible_python_interpreter: "/usr/bin/python3"
 
   tasks:
 
@@ -20,4 +20,3 @@
         python3 /home/rais/Arista_Automatisation/python/insert_record_device.py
         '{"{{ inventory_hostname }}": true}' {{ inventory_hostname }}
       when: ansible_network_os == 'eos'
-# UPDATE BDD 

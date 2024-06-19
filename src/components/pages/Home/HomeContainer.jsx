@@ -48,7 +48,7 @@ export const HomeContainer = () => {
 
   const GetLabStatus = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/python/get", {
+      const res = await fetch("http://10.43.193.195:5000/python/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

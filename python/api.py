@@ -9,10 +9,10 @@ from database import *
 from MLAG.mlag_file import mlag_file , mlag_file_manual
 from BGP.bgp_file import bgp_file , bgp_file_manual
 from VXLAN.vxlan_file import vxlan_file , vxlan_file_manual
-from gevent.pywsgi import WSGIServer
 
 app = Flask(__name__)
 CORS(app)
+
 
 @app.route('/python/post', methods=['POST'])
 def receive_lab_type():

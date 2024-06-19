@@ -1,14 +1,13 @@
-import pexpect
 from paramiko import SSHClient 
 from scp import SCPClient
-import logging
+# import logging
 import os
 import subprocess
 import paramiko
 import time
 
 def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):
-    logging.info("In ssh_scp_files() method, copying files to the server")
+    # logging.info("In ssh_scp_files() method, copying files to the server")
     ssh = SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)
@@ -63,8 +62,9 @@ def run_ansible_playbook(playbook_path):
 
 def reset():
     execute_scp_command("Exaprobe1234" , "cvpadmin")
+    print("ANSBILE PLAYBOOK")
     run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml")
-    # run_ansible_playbook("/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml")
+    print("ANSBILE PLAYBOOK end")
     return True
 
 if __name__ == '__main__':

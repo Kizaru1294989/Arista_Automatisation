@@ -25,15 +25,6 @@
         "documentation": {}
     },
     {
-        "label": "pexpect",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pexpect",
-        "description": "pexpect",
-        "detail": "pexpect",
-        "documentation": {}
-    },
-    {
         "label": "paramiko",
         "kind": 6,
         "isExtraImport": true,
@@ -276,14 +267,6 @@
         "description": "VXLAN.vxlan_file",
         "isExtraImport": true,
         "detail": "VXLAN.vxlan_file",
-        "documentation": {}
-    },
-    {
-        "label": "WSGIServer",
-        "importPath": "gevent.pywsgi",
-        "description": "gevent.pywsgi",
-        "isExtraImport": true,
-        "detail": "gevent.pywsgi",
         "documentation": {}
     },
     {
@@ -831,7 +814,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
+        "peekOfCode": "def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):\n    # logging.info(\"In ssh_scp_files() method, copying files to the server\")\n    ssh = SSHClient()\n    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())\n    ssh.connect(ssh_host, username=ssh_user, password=ssh_password, look_for_keys=False)\n    with SCPClient(ssh.get_transport()) as scp:\n        scp.put(source_volume, recursive=True, remote_path=destination_volume)\ndef execute_scp_command(password, user):\n    print(\"SPINE 1\")\n    ssh_scp_files(\"10.43.192.25\", user, password, \"/home/rais/Arista_Automatisation/python/usb/basic-config/Spine/1/conf.txt\", \"/home/cvpadmin/\")",
         "detail": "python.reset",
         "documentation": {}
     },
@@ -858,7 +841,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def reset():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    # run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/connectivity/get-version.yml\")\n    return True\nif __name__ == '__main__':\n    reset()",
+        "peekOfCode": "def reset():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    print(\"ANSBILE PLAYBOOK\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    print(\"ANSBILE PLAYBOOK end\")\n    return True\nif __name__ == '__main__':\n    reset()",
         "detail": "python.reset",
         "documentation": {}
     }
