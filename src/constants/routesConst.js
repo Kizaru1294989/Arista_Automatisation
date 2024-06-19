@@ -3,4 +3,8 @@ export const ROUTES = {
     NAME: "home",
     PATH: "/",
   },
+  LOG: {
+    NAME: "log",
+    PATH: "log"
+  },
 };

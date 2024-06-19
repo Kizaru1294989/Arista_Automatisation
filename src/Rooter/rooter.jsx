@@ -4,6 +4,7 @@ import { ROUTES } from "../constants/routesConst";
 import { HomeContainer } from "../components/pages/Home/HomeContainer";
 import Error404Component from "../components/pages/error/Error";
 import { motion } from "framer-motion";
+import { LogComponent } from "../components/pages/Log/LogComponent";
 
 export const pageTransition = {
   initial: { opacity: 0 },
@@ -20,6 +21,13 @@ export const Rooter = () => {
           exact
           path={ROUTES.HOME.PATH}
           element={<HomeContainer />}
+        />
+
+        <Route
+          index
+          exact
+          path={ROUTES.LOG.PATH}
+          element={<LogComponent />}
         />
 
         <Route
