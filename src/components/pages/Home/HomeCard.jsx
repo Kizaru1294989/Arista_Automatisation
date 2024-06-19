@@ -19,13 +19,13 @@ export const HomeCard = ({ setLoadingDialog, formValue }) => {
           alignItems: "center",
         }}
       >
-        EVE NG :
+        {/* EVE NG :
         <a href="http://10.43.192.129/" target="_blank">
           10.43.192.129
         </a>
-        <p>Username : cvpadmin Password : Exaprobe1234</p>
+        <p>Username : cvpadmin Password : Exaprobe1234 Enable : Exaprobe1234</p> */}
         <div>
-          <p>4 Spines</p>
+          {/* <p>4 Spines</p> */}
           <p color={"white"} variant="subtitle1" component="div">
             Spine 1 :{" "}
             <a href="telnet://10.43.192.129:32777" target="_blank">
@@ -53,11 +53,11 @@ export const HomeCard = ({ setLoadingDialog, formValue }) => {
           </p>
         </div>
         <div>
-          <p color={"white"} variant="subtitle1" component="div">
+          {/* <p color={"white"} variant="subtitle1" component="div">
             8 Leafs
-          </p>
+          </p> */}
           <p color={"white"} variant="subtitle1" component="div">
-            Leaf 1 :{""}
+            Leaf 1 :{" "}
             <a
               href="telnet://10.43.192.129:32769"
               target="_blank"
@@ -130,9 +130,9 @@ export const HomeCard = ({ setLoadingDialog, formValue }) => {
           </p>
         </div>
         <div>
-          <p color={"white"} variant="subtitle1" component="div">
+          {/* <p color={"white"} variant="subtitle1" component="div">
             4 Hosts
-          </p>
+          </p> */}
           <p color={"white"} variant="subtitle1" component="div">
             Host 1 :{" "}
             <a

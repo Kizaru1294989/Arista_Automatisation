@@ -84,7 +84,7 @@ export default function MediaControlCard({
       <img
         src={currentLab.image}
         alt={`${currentLab.name} Lab Image`}
-        style={{ width: "1700px", height: "700px" }}
+        style={{ width: "1500px", height: "620px" }}
       />
     );
   };
@@ -123,7 +123,17 @@ export default function MediaControlCard({
         }}
       >
         <Card>
-          <CardContent sx={{ backgroundColor: "black" }}>
+          
+          <CardContent sx={{ backgroundColor: "black"  , color : "white"}}>
+            <Grid sx={{ display : "flex" , justifyContent : 'center' , alignItems : 'center'}}>
+            EVE NG :
+        <a href="http://10.43.192.129/" target="_blank">
+          10.43.192.129
+        </a>
+        <p>Username : cvpadmin Password : Exaprobe1234 Enable : Exaprobe1234</p>
+
+            </Grid>
+
             <Grid>
               <h1
                 style={{
@@ -145,6 +155,7 @@ export default function MediaControlCard({
                   alignItems: "center",
                 }}
               >
+                
                 Etape actuelle : {lab + " LAB " + status}
               </h1>
               {renderLabImage()}
