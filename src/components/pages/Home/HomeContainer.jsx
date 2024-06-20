@@ -187,7 +187,7 @@ export const HomeContainer = () => {
                   </Stack>
                 </Backdrop>
               )}
-              {status === "failed" && (
+              {status === "failed" && !accord &&  (
                 <Backdrop
                   sx={{
                     flexDirection: "column",

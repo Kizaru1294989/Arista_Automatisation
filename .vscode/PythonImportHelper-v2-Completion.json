@@ -270,6 +270,15 @@
         "documentation": {}
     },
     {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
         "label": "psycopg2",
         "kind": 6,
         "isExtraImport": true,
@@ -841,7 +850,7 @@
         "kind": 2,
         "importPath": "python.reset",
         "description": "python.reset",
-        "peekOfCode": "def reset():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    print(\"ANSBILE PLAYBOOK\")\n    run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    print(\"ANSBILE PLAYBOOK end\")\n    return True\nif __name__ == '__main__':\n    reset()",
+        "peekOfCode": "def reset():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")\n    print(\"ANSBILE PLAYBOOK\")\n    ply = run_ansible_playbook(\"/home/rais/Arista_Automatisation/python/Ansible/TEST/Reset_basic_config/Reset_Conf/host.yml\")\n    print(\"ANSBILE PLAYBOOK end\")\n    return ply\nif __name__ == '__main__':\n    reset()",
         "detail": "python.reset",
         "documentation": {}
     }
