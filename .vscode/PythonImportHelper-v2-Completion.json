@@ -150,6 +150,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",
@@ -660,7 +668,7 @@
         "kind": 2,
         "importPath": "python.MLAG.mlag_file",
         "description": "python.MLAG.mlag_file",
-        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\ndef mlag_file():\n    execute_scp_command(\"Exaprobe1234\" , \"cvpadmin\")",
+        "peekOfCode": "def run_ansible_playbook(playbook_path):\n    os.chdir(os.path.dirname(playbook_path))\n    try:\n        subprocess.run([\"ansible-playbook\", os.path.basename(playbook_path)], check=True)\n    except subprocess.CalledProcessError as e:\n        return False\n    else:\n        return True\n# def run_ansible_playbook(playbook_path):\n#     os.chdir(os.path.dirname(playbook_path))",
         "detail": "python.MLAG.mlag_file",
         "documentation": {}
     },
@@ -778,6 +786,15 @@
         "importPath": "python.database",
         "description": "python.database",
         "peekOfCode": "def update_record(data):\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.lab'\n    update_query = f\"\"\"",
+        "detail": "python.database",
+        "documentation": {}
+    },
+    {
+        "label": "insert_log_record",
+        "kind": 2,
+        "importPath": "python.database",
+        "description": "python.database",
+        "peekOfCode": "def insert_log_record(data):\n    conn_params = {\n        'dbname': 'lab',\n        'user': 'rais',\n        'password': 'rais',\n        'host': 'localhost',\n        'port': '5432'\n    }\n    table = 'regular.log'\n    insert_query = f\"\"\"",
         "detail": "python.database",
         "documentation": {}
     },

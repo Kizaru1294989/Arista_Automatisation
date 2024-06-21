@@ -4,6 +4,7 @@ import logging
 import os
 import subprocess
 import paramiko
+from database import *
 
 
 def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):
@@ -97,6 +98,30 @@ def run_ansible_playbook(playbook_path):
         return False
     else:
         return True
+    
+# def run_ansible_playbook(playbook_path):
+#     os.chdir(os.path.dirname(playbook_path))
+#     result_path = os.path.join(os.path.dirname(playbook_path), "ansible_output.log")  # Chemin où l'output sera sauvegardé
+#     try:
+#         # On capture la sortie dans un objet CompletedProcess
+#         completed_process = subprocess.run(
+#             ["ansible-playbook", os.path.basename(playbook_path)],
+#             check=True,
+#             text=True,  # Assure que la sortie est traitée comme du texte
+#             stdout=subprocess.PIPE,  # Capture la sortie standard
+#             stderr=subprocess.STDOUT  # Redirige les erreurs vers la sortie standard
+#         )
+        
+#         # Écriture formatée de la sortie dans un fichier
+#         with open(result_path, "w") as file:
+#             for line in completed_process.stdout.splitlines():
+#                 file.write(f"LOG: {line}\n")  # Préfixe chaque ligne avec "LOG :"
+#                 print(f"LOG: {line}")  # Imprime chaque ligne formatée dans la console
+#     except subprocess.CalledProcessError as e:
+#         print("LOG: Error executing playbook")
+#         return False
+#     else:
+#         return True
 
 def mlag_file():
     execute_scp_command("Exaprobe1234" , "cvpadmin")

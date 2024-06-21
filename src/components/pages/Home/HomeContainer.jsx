@@ -2,24 +2,18 @@ import React, { useState, useEffect } from "react";
 import HomeComponent from "./HomeComponent";
 import { motion } from "framer-motion";
 import { InitialLoading } from "../../InitialLoading/InitialLoading";
-import { Loading } from "../../loading/Loading";
 import Backdrop from "@mui/material/Backdrop";
 import Stack from "@mui/material/Stack";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Button from "@mui/material/Button";
 import "./index.scss";
-import DoneIcon from "@mui/icons-material/Done";
-import ErrorIcon from "@mui/icons-material/Error";
 import { getHostStatus } from "../../HostStatus/GetHostStatus";
-import { Chip } from "@mui/material";
 import { DeviceStatus } from "../../HostStatus/DeviceStatus";
-import SimpleBackdrop from "../../loading/Backdrop";
 
 export const HomeContainer = () => {
   const [lab, setLab] = useState("");
   const [status, setStatus] = useState("");
-  // const [log, setLogs] = useState("");
   const [loading, setLoading] = useState(true);
   const [loadingDialog, setLoadingDialog] = useState(false);
   const [dialog, setDialog] = useState(true);
@@ -31,12 +25,10 @@ export const HomeContainer = () => {
     host2: "",
     host3: "",
     host4: "",
-
     spine1: "",
     spine2: "",
     spine3: "",
     spine4: "",
-
     leaf1: "",
     leaf2: "",
     leaf3: "",
@@ -65,11 +57,9 @@ export const HomeContainer = () => {
 
       if (data.labs !== "") {
         console.log(data);
-
         setLab(data.labs[0]);
         setStatus(data.statut[0]);
-        // setLogs(data.log[0]);
-        
+
         setFormValue({
           host1: data.host1,
           host2: data.host2,
@@ -102,7 +92,8 @@ export const HomeContainer = () => {
 
   useEffect(() => {
     GetLabStatus();
-    // GetDeviceStatus()
+    console.log({ status });
+    console.log({ accord });
     const interval = setInterval(() => {
       GetLabStatus();
     }, 1000);
@@ -112,13 +103,13 @@ export const HomeContainer = () => {
 
   useEffect(() => {
     const close = localStorage.getItem("close");
-    console.log(close);
     if (close === "false") {
       setAccord(false);
     } else {
       setAccord(true);
     }
   }, []);
+
 
   const handleClose = () => {
     setLoading(false);
@@ -160,7 +151,6 @@ export const HomeContainer = () => {
                     formValue={formValue}
                     getHostStatus={getHostStatus}
                   />
-                  {/* <Loading />     */}
                 </Backdrop>
               )}
               {status === "finished" && !accord && (
@@ -190,7 +180,7 @@ export const HomeContainer = () => {
                   </Stack>
                 </Backdrop>
               )}
-              {status === "failed" && !accord &&  (
+              {status === "failed" && !accord && (
                 <Backdrop
                   sx={{
                     flexDirection: "column",
@@ -203,7 +193,7 @@ export const HomeContainer = () => {
                   <Stack sx={{ width: "20%" }} spacing={2}>
                     <Alert severity="error">
                       <AlertTitle>Erreur</AlertTitle>
-                      LAB {lab + " "}terminé avec une erreur —{" "}
+                      LAB {lab} terminé avec une erreur —{" "}
                       <strong>l'installation du lab a échoué!</strong>
                     </Alert>
                     <Button

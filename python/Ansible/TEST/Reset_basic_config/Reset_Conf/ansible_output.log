@@ -1,0 +1,57 @@
+LOG: 
+LOG: PLAY [Run commands on remote cEOS-lab device] **********************************
+LOG: 
+LOG: TASK [Reset Configuration] *****************************************************
+LOG: ok: [spine1]
+LOG: ok: [leaf1]
+LOG: ok: [spine3]
+LOG: ok: [spine4]
+LOG: ok: [spine2]
+LOG: ok: [leaf2]
+LOG: ok: [leaf4]
+LOG: ok: [leaf3]
+LOG: ok: [leaf5]
+LOG: ok: [leaf6]
+LOG: ok: [leaf7]
+LOG: ok: [host1]
+LOG: ok: [host3]
+LOG: ok: [host2]
+LOG: ok: [host4]
+LOG: ok: [leaf8]
+LOG: 
+LOG: TASK [Execute Python function with parameters] *********************************
+LOG: changed: [leaf1]
+LOG: changed: [spine3]
+LOG: changed: [spine4]
+LOG: changed: [spine1]
+LOG: changed: [spine2]
+LOG: changed: [leaf2]
+LOG: changed: [leaf3]
+LOG: changed: [leaf6]
+LOG: changed: [leaf5]
+LOG: changed: [leaf4]
+LOG: changed: [host1]
+LOG: changed: [leaf7]
+LOG: changed: [host2]
+LOG: changed: [host3]
+LOG: changed: [leaf8]
+LOG: changed: [host4]
+LOG: 
+LOG: PLAY RECAP *********************************************************************
+LOG: host1                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: host2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: host3                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: host4                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: leaf1                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: leaf2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: leaf3                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: leaf4                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: leaf5                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: leaf6                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: leaf7                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: leaf8                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: spine1                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: spine2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: spine3                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: spine4                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+LOG: 

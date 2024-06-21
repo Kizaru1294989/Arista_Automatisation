@@ -35,6 +35,41 @@ def update_record(data):
     except Exception as e:
         print(f"An error occurred: {e}")
         
+def insert_log_record(data):
+    conn_params = {
+        'dbname': 'lab',
+        'user': 'rais',
+        'password': 'rais',
+        'host': 'localhost',
+        'port': '5432'
+    }
+    
+    table = 'regular.log'
+    
+    insert_query = f"""
+    INSERT INTO {table} (statut, lab)
+    VALUES (%s, %s)
+    """
+    
+    try:
+        # Connect to the database
+        conn = psycopg2.connect(**conn_params)
+        cursor = conn.cursor()
+        print(data)
+        
+        # Execute the insert query
+        cursor.execute(insert_query, (data['statut'], data['lab']))
+        
+        # Commit the changes
+        conn.commit()
+        
+        # Close the cursor and connection
+        cursor.close()
+        conn.close()
+        print("Record inserted successfully.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        
 def insert_record_device(data, device):
     # Set the ID for the record to be updated
     record_id = 1
