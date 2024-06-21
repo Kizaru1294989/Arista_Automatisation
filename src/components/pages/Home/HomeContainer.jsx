@@ -19,6 +19,7 @@ import SimpleBackdrop from "../../loading/Backdrop";
 export const HomeContainer = () => {
   const [lab, setLab] = useState("");
   const [status, setStatus] = useState("");
+  // const [log, setLogs] = useState("");
   const [loading, setLoading] = useState(true);
   const [loadingDialog, setLoadingDialog] = useState(false);
   const [dialog, setDialog] = useState(true);
@@ -48,7 +49,7 @@ export const HomeContainer = () => {
 
   const GetLabStatus = async () => {
     try {
-      const res = await fetch("http://10.43.193.195:5000/python/get", {
+      const res = await fetch("/python/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -67,6 +68,8 @@ export const HomeContainer = () => {
 
         setLab(data.labs[0]);
         setStatus(data.statut[0]);
+        // setLogs(data.log[0]);
+        
         setFormValue({
           host1: data.host1,
           host2: data.host2,

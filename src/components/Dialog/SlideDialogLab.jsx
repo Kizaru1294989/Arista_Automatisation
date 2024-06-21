@@ -55,7 +55,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
     console.log(lab);
 
     try {
-      const res = await fetch("http://10.43.193.195:5000/python/post", {
+      const res = await fetch("/python/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
