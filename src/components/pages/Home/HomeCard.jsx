@@ -1,181 +1,91 @@
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { ButtonTarif } from "../../ButtonTarif/ButtonTarif";
+import Paper from "@mui/material/Paper";
 import { SlideDialog } from "../../Dialog/SlideDialog";
-import InfoTips from "./InfoTips";
 import { SlideDialogLab } from "../../Dialog/SlideDialogLab";
-import React, { useState, useEffect } from "react";
+import { styled } from "@mui/material/styles";
+import { links } from "./Managment";
+import { Grid } from "@mui/material";
 
 export const HomeCard = ({ setLoadingDialog, formValue }) => {
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.body2,
+    padding: '8px',
+    gap: '8px' ,
+    textAlign: "center",
+    borderRadius: "5px",
+    color: theme.palette.text.secondary,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent : 'center'
+    
+  }));
+  const bubbleStyle = {
+    margin: "3.5px 0",
+  
+
+    width: "200px",
+    height: "50px",
+    fontSize: "1rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+  };
+
+  const containerStyle = {
+
+  };
+
+  const cardStyle = {
+    borderRadius: "5px",
+    padding: "20px",
+ 
+    width: "100%",
+    height : '100%',
+    margin: "20px auto",
+  };
+
+  const cardContentStyle = {
+    color: "white",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
+
+
   return (
     <>
-      <CardContent
-        style={{
-          color: "white",
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* EVE NG :
-        <a href="http://10.43.192.129/" target="_blank">
-          10.43.192.129
-        </a>
-        <p>Username : cvpadmin Password : Exaprobe1234 Enable : Exaprobe1234</p> */}
-        <div>
-          {/* <p>4 Spines</p> */}
-          <p color={"white"} variant="subtitle1" component="div">
-            Spine 1 :{" "}
-            <a href="telnet://10.43.192.129:32777" target="_blank">
-              10.43.192.25
-            </a>
-          </p>
-
-          <p color={"white"} variant="subtitle1" component="div">
-            Spine 2 :{" "}
-            <a href="telnet://10.43.192.129:32778" target="_blank">
-              10.43.192.26
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Spine 3 :{" "}
-            <a href="telnet://10.43.192.129:32779" target="_blank">
-              10.43.192.27
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Spine 4 :{" "}
-            <a href="telnet://10.43.192.129:32780" target="_blank">
-              10.43.192.28
-            </a>
-          </p>
-        </div>
-        <div>
-          {/* <p color={"white"} variant="subtitle1" component="div">
-            8 Leafs
-          </p> */}
-          <p color={"white"} variant="subtitle1" component="div">
-            Leaf 1 :{" "}
-            <a
-              href="telnet://10.43.192.129:32769"
-              target="_blank"
-            >
-              10.43.192.29
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Leaf 2 :{" "}
-            <a
-              href="telnet://10.43.192.129:32770"
-              target="_blank"
-            >
-              10.43.192.30
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Leaf 3 :{" "}
-            <a
-              href="telnet://10.43.192.129:32771"
-              target="_blank"
-            >
-              10.43.192.31
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Leaf 4 :{" "}
-            <a
-              href="telnet://10.43.192.129:32772"
-              target="_blank"
-            >
-              10.43.192.32
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Leaf 5 :{" "}
-            <a
-              href="telnet://10.43.192.129:32773"
-              target="_blank"
-            >
-              10.43.192.33
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Leaf 6 :{" "}
-            <a
-              href="telnet://10.43.192.129:32774"
-              target="_blank"
-            >
-              10.43.192.34
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Leaf 7 :{" "}
-            <a
-              href="telnet://10.43.192.129:32775"
-              target="_blank"
-            >
-              10.43.192.35
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Leaf 8 :{" "}
-            <a
-              href="telnet://10.43.192.129:32776"
-              target="_blank"
-            >
-              10.43.192.36
-            </a>
-          </p>
-        </div>
-        <div>
-          {/* <p color={"white"} variant="subtitle1" component="div">
-            4 Hosts
-          </p> */}
-          <p color={"white"} variant="subtitle1" component="div">
-            Host 1 :{" "}
-            <a
-              href="telnet://10.43.192.129:32783"
-              target="_blank"
-            >
-              10.43.192.37
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Host 2 :{" "}
-            <a
-              href="telnet://10.43.192.129:32781"
-              target="_blank"
-            >
-              10.43.192.38
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Host 3 :{" "}
-            <a
-              href="telnet://10.43.192.129:32782"
-    
-            >
-              10.43.192.39
-            </a>
-          </p>
-          <p color={"white"} variant="subtitle1" component="div">
-            Host 4 :{" "}
-            <a
-              href="telnet://10.43.192.129:32784"
-              target="_blank"
-            >
-              10.43.192.40
-            </a>
-          </p>
-        </div>
-        <SlideDialogLab
+    <Grid>
+    {/* <Item>IP Managment</Item> */}
+    <Grid >
+      
+      <CardContent style={cardContentStyle}>
+        
+        <Grid style={containerStyle}>
+        
+          {links.map((link, index) => (
+            <Item key={index} style={bubbleStyle}>
+              <p style={{ margin: 0 }} variant="subtitle1" component="div">
+                {link.title} :{" "}
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  {link.ip}
+                </a>
+              </p>
+            </Item>
+          ))}
+        </Grid>
+        {/* Uncomment these if you need to use them */}
+        {/* <SlideDialogLab
           setLoadingDialog={setLoadingDialog}
           formValue={formValue}
         />
-        <SlideDialog />
+        <SlideDialog /> */}
       </CardContent>
+    </Grid>
+    </Grid>
     </>
   );
 };

@@ -55,7 +55,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
     console.log(lab);
 
     try {
-      const res = await fetch("/python/post", {
+      const res = await fetch("http://10.43.193.242:5000/python/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -193,14 +193,14 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
         <>
           <Button
             sx={{
-              width: "200px",
-              height: "60px",
-              fontFamily: "DM Sans",
-              color: "#58afd1",
-              textTransform: "none",
-              fontSize: "20px",
-              marginTop: "10px",
-              marginBottom: "10px",
+              // width: "200px",
+              // height: "60px",
+              // fontFamily: "DM Sans",
+              // color: "#58afd1",
+              // textTransform: "none",
+              // fontSize: "20px",
+              // marginTop: "10px",
+              // marginBottom: "10px",
             }}
             startIcon={<PlayArrowIcon />}
             className="btn draw-border"
@@ -210,13 +210,13 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
           </Button>
           <Button
             sx={{
-              width: "200px",
-              height: "60px",
-              fontFamily: "DM Sans",
-              color: "#58afd1",
-              textTransform: "none",
-              fontSize: "20px",
-              marginBottom: "10px",
+              // width: "200px",
+              // height: "60px",
+              // fontFamily: "DM Sans",
+              // color: "#58afd1",
+              // textTransform: "none",
+              // fontSize: "20px",
+              // marginBottom: "10px",
             }}
             startIcon={<RestartAltIcon />}
             className="btn draw-border"

@@ -1,8 +1,1 @@
-
-
-
-export const LogComponent = () => {
-
-
-    
-}
+export const LogComponent = () => {};

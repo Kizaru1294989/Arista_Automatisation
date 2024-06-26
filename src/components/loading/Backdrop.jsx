@@ -27,7 +27,7 @@ export default function SimpleBackdrop({
 
   return (
     <div>
-      <Button onClick={() => setStart(true)}>{title}</Button>
+      <Button onClick={() => setStart(true)}></Button>
       {start && !over && (
         <Backdrop
           sx={{

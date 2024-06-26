@@ -23,12 +23,7 @@ export const Rooter = () => {
           element={<HomeContainer />}
         />
 
-        <Route
-          index
-          exact
-          path={ROUTES.LOG.PATH}
-          element={<LogComponent />}
-        />
+        <Route index exact path={ROUTES.LOG.PATH} element={<LogComponent />} />
 
         <Route
           path="*"

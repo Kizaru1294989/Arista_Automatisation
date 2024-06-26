@@ -5,6 +5,6 @@ export const ROUTES = {
   },
   LOG: {
     NAME: "log",
-    PATH: "log"
+    PATH: "log",
   },
 };

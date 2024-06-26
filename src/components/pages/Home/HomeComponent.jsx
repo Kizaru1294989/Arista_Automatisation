@@ -8,36 +8,73 @@ import EVPN from "../../../assets/img/evpn.png";
 import HomeCard from "./HomeCard";
 import LabSelection from "./TSX/LabSelection";
 import { ManualDialog } from "../../Dialog/ManualDialog";
+import { labs } from "./ComponentData/Component";
+import { renderLabImage } from "./ComponentData/Component";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import IconButton from "@mui/material/IconButton";
+import { SlideDialog } from "../../Dialog/SlideDialog";
+import { SlideDialogLab } from "../../Dialog/SlideDialogLab";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import KeyIcon from '@mui/icons-material/Key';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import HandymanIcon from '@mui/icons-material/Handyman';
+import BuildIcon from '@mui/icons-material/Build';
+import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import ErrorIcon from '@mui/icons-material/Error';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 
-const labs = [
-  { name: "MLAG", image: MLAG, title: "Lab Arista étape I : MLAG" },
-  { name: "BGP", image: BGP, title: "Lab Arista étape II : BGP" },
-  {
-    name: "VXLAN L2 EVPN",
-    image: EVPN,
-    title: "Lab Arista étape III : VXLAN L2 EVPN",
-  },
-];
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: '8px',
+  gap: '8px' ,
+  textAlign: "center",
+  borderRadius: "5px",
+  color: theme.palette.text.secondary,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent : 'center',
+  
+}));
 
-export default function MediaControlCard({
+const ItemTitle = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: '8px',
+  gap: '8px' ,
+  textAlign: "center",
+  borderRadius: "5px",
+  color: theme.palette.text.secondary,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent : 'center',
+  fontSize : '40px'
+  
+}));
+
+export const HomeComponent = ({
   lab,
   status,
   setLoadingDialog,
   formValue,
   setManuel,
   manuel,
-}) {
+}) => {
   const [currentLabIndex, setCurrentLabIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const [instructions, setInstructions] = useState("");
+  const [Logo, setLogo] = useState(null);
 
   const handleNextLab = () => {
     setCurrentLabIndex((prevIndex) => (prevIndex + 1) % labs.length);
   };
-
   const handleInstructionsLab = (labactual) => {
     console.log(labactual);
-    // setInstructions(labactual)
     setOpen(true);
     console.log(open);
   };
@@ -77,130 +114,154 @@ export default function MediaControlCard({
         break;
     }
   }, [lab]);
+  useEffect(() => {
+    // Update the logo based on the status
+    switch (status) {
+      case "started":
+        setLogo(<HourglassBottomIcon style={{width : '100px' , height : '58px'}}/>);
+        break;
+      case "finished":
+        setLogo(<CheckCircleOutlineIcon style={{width : '100px' , height : '58px' , color : 'green'}}/>);
+        break;
+      default:
+        setLogo(ErrorIcon);
+        break;
+    }
+  }, [status]);
 
-  const renderLabImage = () => {
-    const currentLab = labs[currentLabIndex];
-    return (
-      <img
-        src={currentLab.image}
-        alt={`${currentLab.name} Lab Image`}
-        style={{ width: "1500px", height: "620px" }}
-      />
-    );
+  const maingrid = {
+    display: "flex",
+
+    margin: "30px",
+  };
+
+  const firstgrid = {
+    display: "flex",
+    flexDirection: "column",
+  };
+
+  const secondgrid = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+  };
+
+  const thirdgrid = {
+    backgroundColor: "black",
+    color: "white",
+  };
+
+  const fourthgrid = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   return (
     <>
-      <Grid
-        sx={{
-          display: "flex",
-          backgroundColor: "#2d3436",
-          backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
-          width: "300px",
-        }}
-      >
-        <Grid sx={{ display: "flex", flexDirection: "column" }}>
+      <Grid style={maingrid}>
+        <Grid style={firstgrid}>
           <HomeCard setLoadingDialog={setLoadingDialog} formValue={formValue} />
-          <Grid
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "125px",
-              pl: 1,
-              pb: 1,
-            }}
-          ></Grid>
         </Grid>
       </Grid>
-      <Grid
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <Card>
+      <Grid style={secondgrid}>
+        <Grid container spacing={2}>
+          <Grid item xs={1.5} md={1.5}>
+            <Item> <HomeRepairServiceIcon/> 10.43.192.129</Item>
+          </Grid>
+          <Grid item xs={1.5} md={1.5}>
+            <Item> <AccountCircleIcon/> cvpadmin</Item>
+          </Grid>
+          <Grid item xs={1.5} md={1.5}>
+            <Item> <KeyIcon/> Exaprobe1234</Item>
+          </Grid>
+          <Grid item xs={1.5} md={1.5}>
+            <Item>  <LockOpenIcon/> Exaprobe1234</Item>
+          </Grid>
+          <Grid item xs={5} md={5}>
+            <Item>  <BuildIcon/> {labs[currentLabIndex].title}</Item>
+          </Grid>
+  
+          <Grid item xs={8} md={8}>
+            <ItemTitle>  <HandymanIcon style={{width : '100px' , height : '58px'}}/> Etape actuelle : {lab + " LAB " + status}</ItemTitle>
+          </Grid>
+
+          <Grid item xs={3} md={3}>
+            <ItemTitle>  {Logo} </ItemTitle>
+          </Grid>
           
-          <CardContent sx={{ backgroundColor: "black"  , color : "white"}}>
-            <Grid sx={{ display : "flex" , justifyContent : 'center' , alignItems : 'center'}}>
-            EVE NG :
-        <a href="http://10.43.192.129/" target="_blank">
-          10.43.192.129
-        </a>
-        <p>Username : cvpadmin Password : Exaprobe1234 Enable : Exaprobe1234</p>
 
-            </Grid>
 
-            <Grid>
-              <h1
-                style={{
-                  display: "flex",
-                  color: "white",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {labs[currentLabIndex].title}
-              </h1>
-            </Grid>
-            <Grid>
-              <h1
-                style={{
-                  display: "flex",
-                  color: "white",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                
-                Etape actuelle : {lab + " LAB " + status}
-              </h1>
-              {renderLabImage()}
-            </Grid>
-            <Grid
-              sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
-            >
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handlePrevLab}
-              >
-                Lab Précédent
-              </Button>
+          <Grid item xs={10} md={11}>
+            <Item>
+     
+              {renderLabImage({ labs, currentLabIndex })}
+            </Item>
+          </Grid>
+
+
+          <Grid item xs={2} md={2}>
+            <ItemTitle>   <Button startIcon={<ArrowBackIosIcon/>} color="primary" onClick={handlePrevLab}>
+              Lab Précédent
+            </Button> </ItemTitle>
+          </Grid>
+     
+ 
+
+
+          <Grid item xs={2} md={2}>
               {manuel && (
-                <Button
-                  style={{ display: "flex", justifyContent: "center" }}
-                  variant="contained"
-                  onClick={() =>
-                    handleInstructionsLab(labs[currentLabIndex].name)
-                  }
-                >
-                  Afficher les instructions
-                </Button>
-              )}
-
+               <ItemTitle> 
               <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNextLab}
+                style={{ display: "flex", justifyContent: "center" }}
+                // variant="contained"
+                onClick={() =>
+                  handleInstructionsLab(labs[currentLabIndex].name)
+                }
               >
-                Lab Suivant
+                Instructions Lab
               </Button>
-            </Grid>
-            <ManualDialog
-              lab={lab}
-              instructions={instructions}
-              setInstructions={setInstructions}
-              open={open}
-              setOpen={setOpen}
-              currentLabIndex={currentLabIndex}
+              </ItemTitle>
+            )}
+          </Grid>
+
+         
+          <Grid item xs={2} md={2}>
+            <ItemTitle>  
+            <SlideDialog />
+              
+            </ItemTitle>
+          </Grid>
+           
+          <Grid item xs={3} md={3}>
+            <ItemTitle>  
+            <SlideDialogLab
+              setLoadingDialog={setLoadingDialog}
+              formValue={formValue}
             />
-          </CardContent>
-        </Card>
+            </ItemTitle>
+          </Grid>
+      
+            <Grid item xs={2} md={2}>
+            <ItemTitle>    <Button endIcon={<ArrowForwardIosIcon/>} color="primary" onClick={handleNextLab}>
+              Lab Suivant
+            </Button></ItemTitle>
+          </Grid>
+          </Grid>
+
+          <ManualDialog
+            lab={lab}
+            instructions={instructions}
+            setInstructions={setInstructions}
+            open={open}
+            setOpen={setOpen}
+            currentLabIndex={currentLabIndex}
+          />
+    
       </Grid>
     </>
   );
-}
+};
+
+export default HomeComponent;

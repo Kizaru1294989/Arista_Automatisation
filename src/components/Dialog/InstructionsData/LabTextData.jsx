@@ -116,11 +116,7 @@ export const stepsMlag = [
 
 Ces explications ajoutent un contexte et une justification à chaque étape de la configuration, permettant une meilleure compréhension et facilitant le dépannage et la maintenance futurs. `,
 
-    commandes: [
-      [
-        "Host1#ping 172.16.112.203",
-      ],
-    ],
+    commandes: [["Host1#ping 172.16.112.203"]],
   },
 ];
 
@@ -155,12 +151,7 @@ export const stepsBgp = [
     label: "Interface Loopback0",
     description: `Création d'une interface Loopback pour fournir une adresse IP stable utilisée comme identifiant de routeur dans les configurations BGP. 
                   Les adresses Loopback sont préférées pour le BGP car elles ne dépendent pas de l'état physique des liens.`,
-    commandes: [
-      [
-        "interface Loopback0",
-        " ip address 172.16.0.15/32",
-      ],
-    ],
+    commandes: [["interface Loopback0", " ip address 172.16.0.15/32"]],
   },
   {
     label: "Vlan 3",
@@ -172,9 +163,7 @@ export const stepsBgp = [
         " ip address 172.16.117.2/24",
         " ip virtual-router address 172.16.117.1",
       ],
-      [
-        "ip virtual-router mac-address 00:1c:73:00:00:56",
-      ],
+      ["ip virtual-router mac-address 00:1c:73:00:00:56"],
     ],
   },
   {
@@ -211,14 +200,9 @@ export const stepsBgp = [
     label: "TEST",
     description: `Test de la connectivité pour valider la configuration réseau. Utilisation de commandes ping pour vérifier la disponibilité des hôtes à travers le réseau BGP configuré, 
                   assurant que les modifications répondent aux exigences opérationnelles et à la configuration prévue.`,
-    commandes: [
-      [
-        "Host1#ping 172.16.117.100",
-      ],
-    ],
+    commandes: [["Host1#ping 172.16.117.100"]],
   },
 ];
-
 
 export const stepsVxlan = [
   {
@@ -238,12 +222,7 @@ export const stepsVxlan = [
     label: "Interfaces Vlan3",
     description: `Configuration d'une interface VLAN pour la segmentation du trafic à l'intérieur du réseau. 
                   L'adresse IP virtuelle sert à faciliter la gestion du trafic et à offrir de la redondance pour les services critiques.`,
-    commandes: [
-      [
-        "interface vlan3",
-        " ip address virtual 172.16.112.1/24",
-      ],
-    ],
+    commandes: [["interface vlan3", " ip address virtual 172.16.112.1/24"]],
   },
   {
     label: "Routeur bgp",
@@ -308,4 +287,3 @@ export const stepsVxlan = [
     ],
   },
 ];
-

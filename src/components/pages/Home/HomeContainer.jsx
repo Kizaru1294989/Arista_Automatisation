@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import HomeComponent from "./HomeComponent";
+import { HomeComponent } from "./HomeComponent";
 import { motion } from "framer-motion";
 import { InitialLoading } from "../../InitialLoading/InitialLoading";
 import Backdrop from "@mui/material/Backdrop";
@@ -41,7 +41,7 @@ export const HomeContainer = () => {
 
   const GetLabStatus = async () => {
     try {
-      const res = await fetch("/python/get", {
+      const res = await fetch("http://10.43.193.242:5000/python/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -109,7 +109,6 @@ export const HomeContainer = () => {
       setAccord(true);
     }
   }, []);
-
 
   const handleClose = () => {
     setLoading(false);

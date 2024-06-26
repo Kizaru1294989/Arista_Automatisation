@@ -27,12 +27,7 @@ export const SlideDialog = () => {
     <React.Fragment>
       <Button
         sx={{
-          width: "200px",
-          height: "60px",
-          fontFamily: "DM Sans",
-          color: "#58afd1",
-          textTransform: "none",
-          fontSize: "20px",
+
         }}
         startIcon={<HelpIcon />}
         className="btn draw-border"
