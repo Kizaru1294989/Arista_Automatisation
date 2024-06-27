@@ -19,10 +19,10 @@ export const DeviceStatus = ({ getHostStatus, formValue }) => {
         <Loading />
       ) : (
         <>
-          <h3>
+          <h4>
             Cela peut prendre moins d'une minute, merci de patienter durant
             l'installation du Lab
-          </h3>
+          </h4>
           <Chip
             sx={{ color: "white", margin: "5px" }}
             icon={getHostStatus(formValue.host1)}

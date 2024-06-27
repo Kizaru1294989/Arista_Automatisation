@@ -23,7 +23,7 @@ const Error404Component = () => {
           spacing={2}
           justifyContent="center"
           alignItems="center"
-          style={{ height: "100vh" }}
+          style={{ height: "80vh" }}
         >
           <section>
             <div class="content">

@@ -78,7 +78,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
   };
 
   useEffect(() => {
-    console.log(response);
+    console.log({'response' : response});
     if (response == true) {
       setStart(false);
       setOver(true);

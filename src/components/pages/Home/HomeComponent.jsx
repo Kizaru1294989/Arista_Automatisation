@@ -27,6 +27,7 @@ import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import ErrorIcon from '@mui/icons-material/Error';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -183,11 +184,11 @@ export const HomeComponent = ({
             <Item>  <BuildIcon/> {labs[currentLabIndex].title}</Item>
           </Grid>
   
-          <Grid item xs={8} md={8}>
-            <ItemTitle>  <HandymanIcon style={{width : '100px' , height : '58px'}}/> Etape actuelle : {lab + " LAB " + status}</ItemTitle>
+          <Grid item xs={10} md={10}>
+            <ItemTitle>  <HandymanIcon style={{width : '100px' , height : '58px'}}/> Dernier Lab Selectionné : {lab + " LAB"}</ItemTitle>
           </Grid>
 
-          <Grid item xs={3} md={3}>
+          <Grid item xs={1} md={1}>
             <ItemTitle>  {Logo} </ItemTitle>
           </Grid>
           
@@ -211,20 +212,19 @@ export const HomeComponent = ({
 
 
           <Grid item xs={2} md={2}>
-              {manuel && (
-               <ItemTitle> 
-              <Button
-                style={{ display: "flex", justifyContent: "center" }}
-                // variant="contained"
-                onClick={() =>
-                  handleInstructionsLab(labs[currentLabIndex].name)
-                }
-              >
-                Instructions Lab
-              </Button>
-              </ItemTitle>
-            )}
-          </Grid>
+  {manuel ? (
+    <ItemTitle>
+      <Button
+        style={{ display: "flex", justifyContent: "center" }}
+        onClick={() => handleInstructionsLab(labs[currentLabIndex].name)}
+      >
+        Instructions Lab
+      </Button>
+    </ItemTitle>
+  ) : (
+    <Item><SettingsSuggestIcon style={{width : '50px' , height : '36px'}}/>mode automatique activé</Item>
+  )}
+</Grid>
 
          
           <Grid item xs={2} md={2}>
