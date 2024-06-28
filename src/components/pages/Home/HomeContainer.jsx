@@ -41,7 +41,7 @@ export const HomeContainer = () => {
 
   const GetLabStatus = async () => {
     try {
-      const res = await fetch("http://10.43.193.242:5000/python/get", {
+      const res = await fetch("/python/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export const HomeContainer = () => {
       const data = await res.json();
 
       if (data.labs !== "") {
-        console.log(data);
+        // console.log(data);
         setLab(data.labs[0]);
         setStatus(data.statut[0]);
 
@@ -84,16 +84,16 @@ export const HomeContainer = () => {
           setLoading(false);
         }, 1000);
       }
-    } catch (error) {
+    } catch (error) { 
       setError(error.message);
-      console.log(error);
+      console.log('ERROR :' + error);
     }
   };
 
   useEffect(() => {
     GetLabStatus();
-    console.log({ status });
-    console.log({ accord });
+    // console.log({ status });
+    // console.log({ accord });
     const interval = setInterval(() => {
       GetLabStatus();
     }, 1000);

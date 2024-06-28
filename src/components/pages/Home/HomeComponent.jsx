@@ -75,9 +75,9 @@ export const HomeComponent = ({
     setCurrentLabIndex((prevIndex) => (prevIndex + 1) % labs.length);
   };
   const handleInstructionsLab = (labactual) => {
-    console.log(labactual);
+    // console.log(labactual);
     setOpen(true);
-    console.log(open);
+    // console.log(open);
   };
 
   const handlePrevLab = () => {
@@ -125,7 +125,7 @@ export const HomeComponent = ({
         setLogo(<CheckCircleOutlineIcon style={{width : '100px' , height : '58px' , color : 'green'}}/>);
         break;
       default:
-        setLogo(ErrorIcon);
+        setLogo(<ErrorIcon style={{width : '100px' , height : '58px' , color : 'red'}}/>);
         break;
     }
   }, [status]);

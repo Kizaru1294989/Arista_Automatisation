@@ -32,7 +32,7 @@ def receive_lab_type():
         }
         update_record(data)
         response = call_lab_function(lab_type)
-        print(response)
+        print('response : ' + response)
         
         if response:
             data = {

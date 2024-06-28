@@ -31,7 +31,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
   const [over, setOver] = useState(false);
   const [overerror, setOvererror] = useState(false);
   const [labtitle, setLabTitle] = useState("");
-  const [labmanual, setlabmanual] = useState(false);
+  const [labmanual, setLabManual] = useState(false);
 
   const resetStates = () => {
     setStart(false);
@@ -40,22 +40,21 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
     setResponse(null);
     setError(null);
   };
+
   const SendToFlask = (lab) => {
-    console.log(lab);
+    console.log("Lab envoyé :", lab);
     resetStates();
     setStart(true);
     postData(lab);
-    // GetDeviceStatus()
     setLabTitle(lab);
     handleClose();
     localStorage.setItem("close", JSON.stringify(false));
   };
 
   const postData = async (lab) => {
-    console.log(lab);
-
+    // console.log("Envoi des données pour le lab :", lab);
     try {
-      const res = await fetch("http://10.43.193.242:5000/python/post", {
+      const res = await fetch("/python/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,32 +68,35 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
       }
 
       const data = await res.json();
+      
       setResponse(data.response);
-      console.log(response);
+      console.log("Réponse reçue :", data);
     } catch (error) {
       setError(error.message);
-      console.log(error);
+      console.log("Erreur lors de l'envoi :", error);
     }
   };
 
   useEffect(() => {
-    console.log({'response' : response});
-    if (response == true) {
-      setStart(false);
-      setOver(true);
-      // setlabmanual(true)
-      handleAutomatiqueDialogClose();
-      handleSubDialogClose();
-      console.log("lab finis");
-    }
-    if (response == false) {
-      setStart(false);
-      setOver(false);
-      setOvererror(true);
-      handleAutomatiqueDialogClose();
-      handleSubDialogClose();
-      console.log("lab FAILED");
-    }
+    const interval = setInterval(() => {
+      // console.log("État de réponse mis à jour :", response);
+      if (response === true) {
+        setStart(false);
+        setOver(true);
+        handleAutomatiqueDialogClose();
+        handleSubDialogClose();
+        console.log("Lab terminé avec succès");
+      } else if (response === false) {
+        setStart(false);
+        setOver(false);
+        setOvererror(true);
+        handleAutomatiqueDialogClose();
+        handleSubDialogClose();
+        console.log("Lab échoué");
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, [response]);
 
   const handleClickOpen = () => {
@@ -124,10 +126,12 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
 
   const handleOverClose = () => {
     setOver(false);
+    setResponse(null); // Reset the response to allow re-rendering for new requests
   };
 
   const handleOverErrorClose = () => {
     setOvererror(false);
+    setResponse(null); // Reset the response to allow re-rendering for new requests
   };
 
   return (
@@ -192,16 +196,6 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
       ) : (
         <>
           <Button
-            sx={{
-              // width: "200px",
-              // height: "60px",
-              // fontFamily: "DM Sans",
-              // color: "#58afd1",
-              // textTransform: "none",
-              // fontSize: "20px",
-              // marginTop: "10px",
-              // marginBottom: "10px",
-            }}
             startIcon={<PlayArrowIcon />}
             className="btn draw-border"
             onClick={handleClickOpen}
@@ -209,15 +203,6 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
             {"Start"}
           </Button>
           <Button
-            sx={{
-              // width: "200px",
-              // height: "60px",
-              // fontFamily: "DM Sans",
-              // color: "#58afd1",
-              // textTransform: "none",
-              // fontSize: "20px",
-              // marginBottom: "10px",
-            }}
             startIcon={<RestartAltIcon />}
             className="btn draw-border"
             onClick={() => SendToFlask("reset")}
@@ -269,21 +254,21 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
 
                 <p>
                   En laissant le Leaf 5 non configuré, nous offrons à
-                  l'utilisateur la possibilité de se familirariser avec
+                  l'utilisateur la possibilité de se familiariser avec
                   l'environnement Arista et de mieux comprendre les différents
                   protocoles abordés dans ce lab en configurant manuellement le
-                  switch .
+                  switch.
                 </p>
                 <h2>Assistance</h2>
 
                 <p>
-                  Bien que la configuration du Leaf 4 soit laissée à
+                  Bien que la configuration du Leaf 5 soit laissée à
                   l'utilisateur, nous lui fournirons les commandes nécessaires
                   ainsi que des explications détaillées sur la manière de
                   procéder.
                 </p>
 
-                <h2>Choissisez votre Lab</h2>
+                <h2>Choisissez votre Lab</h2>
 
                 <Button onClick={() => SendToFlask("manuel mlag")}>MLAG</Button>
                 <Button onClick={() => SendToFlask("manuel bgp")}>BGP</Button>
@@ -312,7 +297,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
 
               <p>
                 Choisissez le lab de votre choix et il sera entièrement
-                configuré en moins d'une minute .
+                configuré en moins d'une minute.
               </p>
               <Button onClick={() => SendToFlask("mlag")}>MLAG</Button>
               <Button onClick={() => SendToFlask("bgp")}>BGP</Button>
