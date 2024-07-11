@@ -3,21 +3,9 @@ import { Chip } from "@mui/material";
 import { Loading } from "../loading/Loading";
 
 export const DeviceStatus = ({ getHostStatus, formValue }) => {
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
-    <>
-      {loading ? (
-        <Loading />
-      ) : (
         <>
           <h4>
             Cela peut prendre moins d'une minute, merci de patienter durant
@@ -106,7 +94,5 @@ export const DeviceStatus = ({ getHostStatus, formValue }) => {
             label="Spine 4"
           />
         </>
-      )}
-    </>
   );
 };

@@ -54,7 +54,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
   const postData = async (lab) => {
     // console.log("Envoi des données pour le lab :", lab);
     try {
-      const res = await fetch("/python/post", {
+      const res = await fetch("http://10.43.193.242:5000/python/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -246,7 +246,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
               <DialogContentText id="alert-dialog-slide-description">
                 <p>
                   En sélectionnant le mode manuel l'automatisation se déroulera
-                  normalement mais laissera volontairement l'équipement Leaf4
+                  normalement mais laissera volontairement l'équipement Leaf 5
                   non configuré
                 </p>
 

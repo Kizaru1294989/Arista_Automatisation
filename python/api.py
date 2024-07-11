@@ -1,16 +1,11 @@
 from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
-from Labs.bgp import bgp
-from Labs.vxlan import vxlan
-from Labs.evpn import evpn
-from Labs.mlag import mlag
 from reset import reset
 from database import *
 from MLAG.mlag_file import mlag_file , mlag_file_manual
 from BGP.bgp_file import bgp_file , bgp_file_manual
 from VXLAN.vxlan_file import vxlan_file , vxlan_file_manual
-import subprocess
-import threading
+
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -31,9 +26,8 @@ def receive_lab_type():
             'id': 1                
         }
         update_record(data)
+        print('call lab function')
         response = call_lab_function(lab_type)
-        print('response : ' + response)
-        
         if response:
             data = {
                 'statut': 'finished',  
@@ -54,7 +48,15 @@ def receive_lab_type():
             return {'message': f'{lab_type} lab Failed ', 'response': response}, 200
 
     except Exception as e:
-        return {'error': str(e)}, 500 
+            print(e)
+            data = {
+                'statut': 'failed',  
+                'lab': lab_type,     
+                'id': 1                
+            }
+            update_record(data)
+            print("LAB FAILED")
+            return {'message': f'{lab_type} lab Failed ', 'response': response}, 200
 
 @app.route('/python/get', methods=['GET'])
 def send_lab_status():
@@ -125,7 +127,7 @@ def call_lab_function(lab_type):
         return vxlan_file_manual()
     else:
         print("Invalid lab type received")
-    return None
+    return False
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

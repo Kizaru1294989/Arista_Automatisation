@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
 import { ROUTES } from "../constants/routesConst";
-import { HomeContainer } from "../components/pages/Home/HomeContainer";
+import { HomeContainer } from "../components/pages/Home/HomeContainer/HomeContainer";
 import Error404Component from "../components/pages/error/Error";
 import { motion } from "framer-motion";
 import { LogComponent } from "../components/pages/Log/LogComponent";

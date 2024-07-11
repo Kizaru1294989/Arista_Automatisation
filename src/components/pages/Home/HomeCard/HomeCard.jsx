@@ -2,10 +2,10 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Paper from "@mui/material/Paper";
-import { SlideDialog } from "../../Dialog/SlideDialog";
-import { SlideDialogLab } from "../../Dialog/SlideDialogLab";
+import { SlideDialog } from "../../../Dialog/SlideDialog";
+import { SlideDialogLab } from "../../../Dialog/SlideDialogLab";
 import { styled } from "@mui/material/styles";
-import { links } from "./Managment";
+import { links } from "../IP/Managment";
 import { Grid } from "@mui/material";
 
 export const HomeCard = ({ setLoadingDialog, formValue }) => {
