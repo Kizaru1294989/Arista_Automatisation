@@ -188,12 +188,12 @@ export const stepsBgp = [
         " network 172.16.1.56/32",
         " network 172.16.117.0/24",
       ],
-      [
-        "interface Port-Channel80",
-        " description MLAG - LEAF4 & 5",
-        " switchport mode trunk",
-        " mlag 80",
-      ],
+      // [
+      //   "interface Port-Channel80",
+      //   " description MLAG - LEAF4 & 5",
+      //   " switchport mode trunk",
+      //   " mlag 80",
+      // ],
     ],
   },
   {

@@ -3,6 +3,7 @@ from scp import SCPClient
 import os
 import subprocess
 import paramiko
+import ipaddress
 
 def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_volume):
     try:
@@ -12,7 +13,7 @@ def ssh_scp_files(ssh_host, ssh_user, ssh_password, source_volume, destination_v
         with SCPClient(ssh.get_transport()) as scp:
             scp.put(source_volume, recursive=True, remote_path=destination_volume)
         return True
-    except (paramiko.SSHException, SCPClient.Error) as e:
+    except (paramiko.SSHException, paramiko.ssh_exception.NoValidConnectionsError, TimeoutError, Exception) as e:
         print(f"Error copying files to {ssh_host}: {e}")
         return False
 
@@ -24,13 +25,17 @@ def execute_scp_command(password, user):
     ]
 
     for device_type, base_ip, count in devices:
-        for i in range(1, count + 1):
-            ip = base_ip[:-1] + str(int(base_ip[-1]) + i - 1)
-            print(f"{device_type} {i}")
-            source_path = f"/home/rais/Arista_Automatisation/python/usb/basic-config/{device_type}/{i}/conf.txt"
+        base_ip_addr = ipaddress.ip_address(base_ip)
+        for i in range(count):
+            ip = str(base_ip_addr + i)
+            device_number = i + 1
+            print(f"{device_type} {device_number}")
+            source_path = f"/home/rais/Arista_Automatisation/python/usb/basic-config/{device_type}/{device_number}/conf.txt"
             success = ssh_scp_files(ip, user, password, source_path, "/home/cvpadmin/")
-            if not success:
-                print(f"Failed to copy files to {device_type} {i} at {ip}")
+            if success:
+                print(f"Successfully copied to {device_type} {device_number} at {ip}")
+            else:
+                print(f"Failed to copy files to {device_type} {device_number} at {ip}")
                 return False
     return True
 

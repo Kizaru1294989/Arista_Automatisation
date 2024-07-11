@@ -54,7 +54,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
   const postData = async (lab) => {
     // console.log("Envoi des données pour le lab :", lab);
     try {
-      const res = await fetch("http://10.43.193.242:5000/python/post", {
+      const res = await fetch("/python/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,10 +62,11 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
         },
         body: JSON.stringify({ lab }),
       });
+      console.log(res)
 
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
-      }
+      // if (!res.ok) {
+      //   throw new Error("Network response was not ok");
+      // }
 
       const data = await res.json();
       

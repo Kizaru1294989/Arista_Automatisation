@@ -7,6 +7,7 @@ import { FailedComponent } from "../../../FailedComponent/FailedComponent";
 import { StartComponent } from "../../../StartComponent/StartComponent";
 import { getHostStatus } from "../../../HostStatus/GetHostStatus";
 import { GetLabStatus } from "./GetLabStatus";
+import { FLASK_SERVER_IP } from "../../../../tools/ip_flask";
 import "./index.scss";
 
 export const HomeContainer = () => {
@@ -39,7 +40,7 @@ export const HomeContainer = () => {
   useEffect(() => {
     const GetLabStatus = async () => {
       try {
-        const res = await fetch("http://10.43.193.242:5000/python/get", {
+        const res = await fetch(`${FLASK_SERVER_IP}/python/get`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

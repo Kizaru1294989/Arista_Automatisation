@@ -56,7 +56,7 @@ def receive_lab_type():
             }
             update_record(data)
             print("LAB FAILED")
-            return {'message': f'{lab_type} lab Failed ', 'response': response}, 200
+            # return {'message': f'{lab_type} lab Failed ', 'response': response}, 200
 
 @app.route('/python/get', methods=['GET'])
 def send_lab_status():
@@ -79,7 +79,7 @@ def send_lab_status():
         spine2 = device_statut[0]['spine2']
         spine3 = device_statut[0]['spine3']
         spine4 = device_statut[0]['spine4']
-        print({str(labs) + " : " + str(statut)})
+        # print({str(labs) + " : " + str(statut)})
         return {
             'statut': statut,
             'labs': labs,
