@@ -63,14 +63,15 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
         },
         body: JSON.stringify({ lab }),
       });
-      console.log(res)
-
-      // if (!res.ok) {
-      //   throw new Error("Network response was not ok");
-      // }
-
+  
+      if (!res.ok) {
+        throw new Error(`Network response was not ok: ${res.statusText}`);
+      }
+  
+      // Wait for 10 seconds before processing the response
+      await new Promise(resolve => setTimeout(resolve, 10000));
+  
       const data = await res.json();
-      
       setResponse(data.response);
       console.log("Réponse reçue :", data);
     } catch (error) {
