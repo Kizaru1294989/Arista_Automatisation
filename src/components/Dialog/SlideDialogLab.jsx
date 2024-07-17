@@ -15,6 +15,7 @@ import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { FLASK_SERVER_IP } from "../../tools/ip_flask";
+import axios from 'axios';
 import { ManualDialog } from "./ManualDialog";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -52,33 +53,36 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
     localStorage.setItem("close", JSON.stringify(false));
   };
 
+
   const postData = async (lab) => {
-    // console.log("Envoi des données pour le lab :", lab);
     try {
-      const res = await fetch(`${FLASK_SERVER_IP}/python/post`, {
-        method: "POST",
+      const res = await axios.post(`${FLASK_SERVER_IP}/python/post`, { lab }, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ lab }),
+        timeout: 0, // Désactiver le délai d'attente
       });
-  
-      if (!res.ok) {
-        throw new Error(`Network response was not ok: ${res.statusText}`);
-      }
-  
-      // Wait for 10 seconds before processing the response
-      await new Promise(resolve => setTimeout(resolve, 10000));
-  
-      const data = await res.json();
+      const data = res.data;
       setResponse(data.response);
       console.log("Réponse reçue :", data);
     } catch (error) {
-      setError(error.message);
-      console.log("Erreur lors de l'envoi :", error);
+      if (error.response) {
+        // Le serveur a répondu avec un statut autre que 2xx
+        setError(`Error: ${error.response.statusText}`);
+        console.log("Erreur lors de l'envoi :", error.response);
+      } else if (error.request) {
+        // La requête a été faite mais aucune réponse n'a été reçue
+        setError("No response received from server");
+        console.log("Erreur lors de l'envoi :", error.request);
+      } else {
+        // Autre erreur lors de la configuration de la requête
+        setError(`Error: ${error.message}`);
+        console.log("Erreur lors de l'envoi :", error.message);
+      }
     }
   };
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
