@@ -14,6 +14,7 @@ import Stack from "@mui/material/Stack";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import { FLASK_SERVER_IP } from "../../tools/ip_flask";
 import { ManualDialog } from "./ManualDialog";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -54,7 +55,7 @@ export const SlideDialogLab = ({ setLoadingDialog, formValue }) => {
   const postData = async (lab) => {
     // console.log("Envoi des données pour le lab :", lab);
     try {
-      const res = await fetch("/python/post", {
+      const res = await fetch(`${FLASK_SERVER_IP}/python/post`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

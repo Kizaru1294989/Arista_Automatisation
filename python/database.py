@@ -1,7 +1,5 @@
 import psycopg2
 
-
-
 # update regular.lab SET statut = 'finished' WHERE id = 1;
 def update_record(data):
 
@@ -12,7 +10,7 @@ def update_record(data):
         'host': 'localhost',
         'port': '5432'
     }
-    
+
     table = 'regular.lab'
     
     update_query = f"""

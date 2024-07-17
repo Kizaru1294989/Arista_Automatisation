@@ -56,7 +56,7 @@ def receive_lab_type():
             }
             update_record(data)
             print("LAB FAILED")
-            # return {'message': f'{lab_type} lab Failed ', 'response': response}, 200
+            return {'message': f'{lab_type} lab Failed ', 'response': response}, 200
 
 @app.route('/python/get', methods=['GET'])
 def send_lab_status():
