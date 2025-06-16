@@ -79,7 +79,6 @@ def send_lab_status():
         spine2 = device_statut[0]['spine2']
         spine3 = device_statut[0]['spine3']
         spine4 = device_statut[0]['spine4']
-        # print({str(labs) + " : " + str(statut)})
         return {
             'statut': statut,
             'labs': labs,
